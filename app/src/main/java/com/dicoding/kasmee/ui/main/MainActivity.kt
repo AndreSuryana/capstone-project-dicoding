@@ -1,4 +1,4 @@
-package com.dicoding.kasmee
+package com.dicoding.kasmee.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

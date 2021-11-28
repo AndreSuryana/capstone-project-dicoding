@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     ext {
         // Kotlin
         coreKtxVersion = '1.7.0'

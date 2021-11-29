@@ -41,7 +41,6 @@ android {
 
 dependencies {
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     ext {
         // Kotlin
         coreKtxVersion = '1.7.0'
@@ -61,6 +60,10 @@ dependencies {
 
         // Lifecycle
         lifecycleVersion = '2.4.0'
+
+        // Navigation
+        navigationVersion = '2.3.5'
+        legacyVersion = '1.0.0'
 
         // Coroutines
         coroutinesVersion = '1.5.2'
@@ -97,6 +100,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"

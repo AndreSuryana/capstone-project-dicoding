@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.CashFragmentBinding
 
 class CashFragment : Fragment() {
@@ -19,7 +18,8 @@ class CashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.cash_fragment, container, false)
+        _binding = CashFragmentBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,8 +27,8 @@ class CashFragment : Fragment() {
 
         // Test
         viewModel = ViewModelProvider(this)[CashViewModel::class.java]
-        viewModel.text.observe(viewLifecycleOwner) {
-            binding?.tvSample?.text = it
+        viewModel.text.observe(viewLifecycleOwner) { text ->
+            binding?.tvSample?.text = text
         }
     }
 

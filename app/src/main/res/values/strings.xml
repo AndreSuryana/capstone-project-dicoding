@@ -29,4 +29,14 @@
     <!-- Content Description -->
     <string name="logo_description">Kasmee Logo</string>
     <string name="back_to_login">Back to Login</string>
+
+    <!-- Shared Prefs Key -->
+    <string name="user_token">Token</string>
+
+    <!-- Error -->
+    <string name="error_name">Nama tidak boleh kosong</string>
+    <string name="error_email">Email tidak boleh kosong</string>
+    <string name="error_phone_number">Nomor telepon tidak boleh kosong</string>
+    <string name="error_password">Password tidak boleh kosong</string>
+    <string name="error_confirm_password">Konfirmasi password tidak boleh kosong</string>
 </resources>

@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/drawable/ic_back.xml" value="0.35572916666666665" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_login.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/edit_text_background.xml" value="0.36944444444444446" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/ic_kasmee_logo.xml" value="0.21875" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/splash_screen.xml" value="0.33055555555555555" />

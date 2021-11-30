@@ -1,21 +1,32 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Kasmee</string>
+
+    <!-- Title -->
     <string name="title_home">Home</string>
     <string name="title_cash">Cash</string>
     <string name="title_transactions">Transactions</string>
     <string name="title_profile">Profile</string>
+
+    <!-- Label -->
     <string name="label_email">Email Address</string>
     <string name="label_password">Password</string>
+    <string name="label_name">Name</string>
+    <string name="label_phone">Phone Number</string>
+    <string name="label_repassword">Re-Password</string>
+    <string name="label_or">or</string>
+
+    <!-- Hint -->
     <string name="hint_email_address" tools:ignore="TypographyEllipsis">Enter your email address...</string>
     <string name="hint_password" tools:ignore="TypographyEllipsis">Enter your password...</string>
-    <string name="login">Login</string>
-    <string name="or">or</string>
-    <string name="register">Register</string>
-    <string name="logo_description">Kasmee Logo</string>
-    <string name="label_name">Name</string>
     <string name="hint_name" tools:ignore="TypographyEllipsis">Enter your name...</string>
-    <string name="label_phone">Phone Number</string>
     <string name="hint_phone" tools:ignore="TypographyEllipsis">Enter your phone number...</string>
-    <string name="label_repassword">Re-Password</string>
     <string name="hint_repassword" tools:ignore="TypographyEllipsis">Re-Enter your password...</string>
+
+    <!-- Button -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <!-- Content Description -->
+    <string name="logo_description">Kasmee Logo</string>
+    <string name="back_to_login">Back to Login</string>
 </resources>

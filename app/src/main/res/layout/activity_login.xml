@@ -20,23 +20,18 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_email_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Typography.Label"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:text="@string/label_email"
-        android:textColor="@color/green"
-        android:textSize="12sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Typography.Hint"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="40dp"
@@ -45,24 +40,18 @@
         android:elevation="4dp"
         android:hint="@string/hint_email_address"
         android:inputType="textEmailAddress"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="11sp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_email_label"
         app:layout_constraintStart_toStartOf="@+id/tv_email_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_email_label" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_password_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Typography.Label"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:text="@string/label_password"
-        android:textColor="@color/green"
-        android:textSize="12sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/et_email"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_email"
@@ -70,8 +59,7 @@
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Typography.Hint"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="40dp"
@@ -80,50 +68,41 @@
         android:elevation="4dp"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="11sp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_password_label"
         app:layout_constraintStart_toStartOf="@+id/tv_password_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_password_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Button.Login"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/green"
         android:text="@string/login"
-        android:textAllCaps="false"
-        app:cornerRadius="8dp"
+        android:textAppearance="@style/Typography.Button"
         app:layout_constraintEnd_toEndOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="@+id/et_password"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_or"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Typography.Body1"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:text="@string/or"
+        android:text="@string/label_or"
         android:textAlignment="center"
-        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Button.Register"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/blue"
         android:text="@string/register"
-        android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:layout_constraintEnd_toEndOf="@+id/tv_or"
         app:layout_constraintStart_toStartOf="@+id/tv_or"
         app:layout_constraintTop_toBottomOf="@+id/tv_or" />

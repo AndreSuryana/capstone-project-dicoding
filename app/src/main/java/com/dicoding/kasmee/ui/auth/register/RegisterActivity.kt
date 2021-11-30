@@ -1,11 +1,11 @@
-package com.dicoding.kasmee.ui.register
+package com.dicoding.kasmee.ui.auth.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ActivityRegisterBinding
-import com.dicoding.kasmee.ui.login.LoginActivity
+import com.dicoding.kasmee.ui.auth.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
 

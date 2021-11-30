@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/KasmeeSplashScreenTheme">
         <activity
-            android:name=".ui.register.RegisterActivity"
+            android:name="com.dicoding.kasmee.ui.auth.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.dicoding.kasmee.ui.auth.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -2,12 +2,12 @@ package com.dicoding.kasmee.di
 
 import android.content.Context
 import com.dicoding.kasmee.BuildConfig
-import com.dicoding.kasmee.data.network.ApiService
-import com.dicoding.kasmee.data.network.Interceptor
-import com.dicoding.kasmee.data.repository.auth.AuthRepository
-import com.dicoding.kasmee.data.repository.auth.AuthRepositoryImpl
-import com.dicoding.kasmee.data.source.RemoteDataSource
-import com.dicoding.kasmee.data.source.RemoteDataSourceImpl
+import com.dicoding.kasmee.data.source.remote.api.ApiService
+import com.dicoding.kasmee.data.source.remote.api.Interceptor
+import com.dicoding.kasmee.data.repository.KasmeeRepository
+import com.dicoding.kasmee.data.repository.KasmeeRepositoryImpl
+import com.dicoding.kasmee.data.source.remote.RemoteDataSource
+import com.dicoding.kasmee.data.source.remote.RemoteDataSourceImpl
 import com.dicoding.kasmee.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -63,7 +63,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAuthRepositoryImpl(
+    fun provideKasmeeRepositoryImpl(
         remoteDataSourceImpl: RemoteDataSourceImpl
-    ) = AuthRepositoryImpl(remoteDataSourceImpl) as AuthRepository
+    ) = KasmeeRepositoryImpl(remoteDataSourceImpl) as KasmeeRepository
 }

@@ -1,10 +1,10 @@
-package com.dicoding.kasmee.data.source
+package com.dicoding.kasmee.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
-import com.dicoding.kasmee.data.network.ApiService
+import com.dicoding.kasmee.data.source.remote.api.ApiService
 import com.dicoding.kasmee.util.Resource
 import javax.inject.Inject
 

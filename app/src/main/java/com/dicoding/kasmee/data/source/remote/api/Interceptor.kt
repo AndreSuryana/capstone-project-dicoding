@@ -1,4 +1,4 @@
-package com.dicoding.kasmee.data.network
+package com.dicoding.kasmee.data.source.remote.api
 
 import android.content.Context
 import com.dicoding.kasmee.util.SessionManager

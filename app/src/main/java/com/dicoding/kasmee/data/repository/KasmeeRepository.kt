@@ -1,11 +1,11 @@
-package com.dicoding.kasmee.data.source
+package com.dicoding.kasmee.data.repository
 
 import androidx.lifecycle.LiveData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.util.Resource
 
-interface RemoteDataSource {
+interface KasmeeRepository {
 
     suspend fun login(
         email: String,

@@ -1,4 +1,4 @@
-package com.dicoding.kasmee.data.network
+package com.dicoding.kasmee.data.source.remote.api
 
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse

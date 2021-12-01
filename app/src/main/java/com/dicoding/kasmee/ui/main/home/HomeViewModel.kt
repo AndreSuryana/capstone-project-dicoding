@@ -3,9 +3,14 @@ package com.dicoding.kasmee.ui.main.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dicoding.kasmee.data.repository.KasmeeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val repository: KasmeeRepository
+): ViewModel() {
 
-    private var _text = MutableLiveData("Home")
-    val text: LiveData<String> = _text
+    // TODO : Use repository to get data
 }

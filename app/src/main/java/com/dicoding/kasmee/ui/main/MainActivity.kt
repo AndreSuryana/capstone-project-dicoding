@@ -7,7 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null

@@ -24,12 +24,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Test
-        viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
-        viewModel.text.observe(viewLifecycleOwner) { text ->
-            binding?.tvSample?.text = text
-        }
     }
 
     override fun onDestroy() {

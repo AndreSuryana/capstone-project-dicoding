@@ -25,11 +25,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Test
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        viewModel.text.observe(viewLifecycleOwner) { text ->
-            binding?.tvSample?.text = text
-        }
     }
 
     override fun onDestroy() {

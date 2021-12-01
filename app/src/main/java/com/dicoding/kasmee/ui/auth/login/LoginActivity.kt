@@ -2,7 +2,6 @@ package com.dicoding.kasmee.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -13,6 +12,7 @@ import com.dicoding.kasmee.ui.auth.register.RegisterActivity
 import com.dicoding.kasmee.ui.main.MainActivity
 import com.dicoding.kasmee.util.SessionManager
 import com.dicoding.kasmee.util.Status
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
                         when (resource.status) {
                             Status.SUCCESS -> {
                                 hideProgressBar()
-                                sessionManager.saveAuthToken(resource.data?.data?.accessToken!!)
+                                resource.data?.data?.accessToken?.let { sessionManager.saveAuthToken(it) }
                                 Intent(this@LoginActivity, MainActivity::class.java).also {
                                     it.flags =
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                             Status.ERROR -> {
                                 hideProgressBar()
-                                showToast(resource.message.toString())
+                                showSnackBar(resource.message.toString())
                             }
                             Status.LOADING -> {
                                 showProgressBar()
@@ -104,7 +104,13 @@ class LoginActivity : AppCompatActivity() {
         binding?.progressBar?.isVisible = false
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    private fun showSnackBar(message: String) {
+        binding?.root?.let {
+            Snackbar.make(
+                it,
+                message,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 }

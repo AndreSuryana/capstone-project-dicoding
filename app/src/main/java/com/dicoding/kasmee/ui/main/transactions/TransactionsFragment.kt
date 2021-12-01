@@ -25,11 +25,6 @@ class TransactionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Test
-        viewModel = ViewModelProvider(this)[TransactionsViewModel::class.java]
-        viewModel.text.observe(viewLifecycleOwner) {
-            binding?.tvSample?.text = it
-        }
     }
 
     override fun onDestroy() {

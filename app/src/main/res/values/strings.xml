@@ -2,10 +2,10 @@
     <string name="app_name">Kasmee</string>
 
     <!-- Title -->
-    <string name="title_home">Home</string>
-    <string name="title_cash">Cash</string>
-    <string name="title_transactions">Transactions</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_cash">Kas</string>
+    <string name="title_transactions">Transaksi</string>
+    <string name="title_profile">Profil</string>
 
     <!-- Label -->
     <string name="label_email">Email Address</string>
@@ -39,4 +39,31 @@
     <string name="error_phone_number">Nomor telepon tidak boleh kosong</string>
     <string name="error_password">Password tidak boleh kosong</string>
     <string name="error_confirm_password">Konfirmasi password tidak boleh kosong</string>
+
+    <!-- Home Fragment -->
+    <string name="home_greetings">Halo, %1$s</string>
+    <string name="home_sub_greetings">Apakah kamu sudah mencatat keuanganmu hari ini?</string>
+    <string name="today_transaction_label">Transaksi Hari Ini</string>
+    <string name="home_no_transaction">Hari ini kamu belum melakukan transaksi</string>
+    <string name="no_transaction_image">No Transaction Image</string>
+    <string name="home_cash_label">Buku Kas Kamu</string>
+    <string name="income_label">Pemasukan</string>
+    <string name="outcome_label">Pengeluaran</string>
+    <string name="profit_label">Keuntungan</string>
+    <string name="home_transaction_label">Transaksi Terbaru Kamu</string>
+    <string name="rupiah_value">Rp %1$s</string>
+    <string name="item_cash_title">Judul Kas</string>
+    <string name="cash_icon_image">Cash Icon Image</string>
+    <string name="item_transaction_title">Judul Transaksi</string>
+    <string name="transaction_date">28/11/2021</string>
+    <string name="profit_text">Keuntungan diperoleh Rp %1$s</string>
+    <string name="add_transaction">Tambah Transaksi</string>
+
+    <!-- Profile Fragment -->
+    <string name="profile_user_name">User Name</string>
+    <string name="profile_email_address">Email Address</string>
+    <string name="profile_phone_number">Phone Number</string>
+    <string name="button_logout_text">Logout</string>
+
+
 </resources>

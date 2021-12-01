@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="10dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_transaction_title"
+            style="@style/Typography.BlackText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/item_transaction_title"
+            app:layout_constraintEnd_toStartOf="@+id/tv_income_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_transaction_date"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/transaction_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_transaction_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_transaction_title" />
+
+        <TextView
+            android:id="@+id/tv_income_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/income_label"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/tv_transaction_title" />
+
+        <TextView
+            android:id="@+id/tv_income"
+            style="@style/Typography.BlackText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            app:layout_constraintStart_toStartOf="@+id/tv_income_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
+
+        <TextView
+            android:id="@+id/tv_outcome_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/outcome_label"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/tv_transaction_title" />
+
+        <TextView
+            android:id="@+id/tv_outcome"
+            style="@style/Typography.BlackText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label" />
+
+        <TextView
+            android:id="@+id/tv_profit"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/profit_text"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_outcome_label"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="160dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="290dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

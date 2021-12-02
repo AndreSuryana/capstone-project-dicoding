@@ -1,18 +1,19 @@
 package com.dicoding.kasmee.ui.main.cash
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.dicoding.kasmee.databinding.CashFragmentBinding
 
 class CashFragment : Fragment() {
 
     private var _binding: CashFragmentBinding? = null
     private val binding get() = _binding
-    private lateinit var viewModel: CashViewModel
+
+    private val viewModel: CashViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,11 +21,6 @@ class CashFragment : Fragment() {
     ): View? {
         _binding = CashFragmentBinding.inflate(inflater, container, false)
         return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onDestroy() {

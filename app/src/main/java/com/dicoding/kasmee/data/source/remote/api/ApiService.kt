@@ -2,9 +2,11 @@ package com.dicoding.kasmee.data.source.remote.api
 
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
+import com.dicoding.kasmee.data.model.response.cash.CashResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -25,4 +27,7 @@ interface ApiService {
         @Field("password") password: String,
         @Field("password_confirmation") confirmPassword: String
     ): Response<Wrapper<AuthResponse>>
+
+    @GET("cash")
+    suspend fun cash(): Response<Wrapper<CashResponse>>
 }

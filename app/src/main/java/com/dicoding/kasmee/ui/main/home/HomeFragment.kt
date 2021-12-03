@@ -7,7 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.kasmee.R
+import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
+import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,13 +33,54 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO : Use showNoTodayTransaction if there is no today transaction data
-
+        // TODO : Get username of currently login user
+        val username = "Dummy"
+        binding?.tvGreetings?.text = getString(R.string.home_greetings, username)
+        setCash()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setCash() {
+        val cashAdapter = CashAdapter(::onCashClicked)
+
+        binding?.rvCash?.apply {
+            layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            setHasFixedSize(true)
+            adapter = cashAdapter
+        }
+
+        viewModel.generateCash()
+        viewModel.cash.observe(viewLifecycleOwner) { resource ->
+            when (resource.status) {
+                Status.SUCCESS -> {
+                    hideProgressBar()
+                    hideNoTodayTransaction()
+                    resource?.data?.data?.data?.let {
+                        cashAdapter.submitList(it)
+                    }
+                }
+                Status.ERROR -> {
+                    showNoTodayTransaction()
+                    resource?.message?.let { showSnackBar(it) }
+                }
+                Status.LOADING -> {
+                    showProgressBar()
+                    showNoTodayTransaction()
+                }
+            }
+        }
+    }
+
+    private fun onCashClicked(cash: Cash) {
+        // TODO : Create an intent to cash detail
     }
 
     private fun showProgressBar() {

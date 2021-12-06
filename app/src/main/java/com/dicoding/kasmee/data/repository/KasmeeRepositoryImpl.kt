@@ -3,6 +3,7 @@ package com.dicoding.kasmee.data.repository
 import androidx.lifecycle.LiveData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
+import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
 import com.dicoding.kasmee.data.source.remote.RemoteDataSource
 import com.dicoding.kasmee.util.Resource
@@ -27,6 +28,9 @@ class KasmeeRepositoryImpl @Inject constructor(
     ): LiveData<Resource<Wrapper<AuthResponse>>> =
         remoteDataSource.register(name, email, phoneNumber, password, confirmPassword)
 
-    override suspend fun cash(): LiveData<Resource<Wrapper<CashResponse>>> =
-        remoteDataSource.cash()
+    override suspend fun getUserInfo(): Resource<User> =
+        remoteDataSource.getUserInfo()
+
+    override suspend fun getAllCash(): Resource<CashResponse> =
+        remoteDataSource.getAllCash()
 }

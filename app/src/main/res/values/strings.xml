@@ -39,6 +39,7 @@
     <string name="error_phone_number">Nomor telepon tidak boleh kosong</string>
     <string name="error_password">Password tidak boleh kosong</string>
     <string name="error_confirm_password">Konfirmasi password tidak boleh kosong</string>
+    <string name="error_occurred">Maaf terjadi kesalahan!</string>
 
     <!-- Label -->
     <string name="today_transaction_label">Transaksi Hari Ini</string>
@@ -66,6 +67,8 @@
     <string name="no_transaction_image">No Transaction Image</string>
     <string name="cash_icon_image">Cash Icon Image</string>
     <string name="add_transaction">Tambah Transaksi</string>
+    <string name="no_cash_image">No Cash Image</string>
+    <string name="no_cash_message">Maaf saat ini kamu belum memiliki buku kas</string>
 
     <!-- Profile Fragment -->
     <string name="profile_user_name">User Name</string>
@@ -73,7 +76,6 @@
     <string name="profile_phone_number">Phone Number</string>
     <string name="button_logout_text">Logout</string>
 
-
-    <string name="error_occurred">Maaf terjadi kesalahan!</string>
+    <string name="fab_icon">FAB Icon</string>
 
 </resources>

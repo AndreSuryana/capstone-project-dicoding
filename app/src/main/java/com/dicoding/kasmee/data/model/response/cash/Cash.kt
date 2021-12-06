@@ -1,6 +1,5 @@
 package com.dicoding.kasmee.data.model.response.cash
 
-import com.dicoding.kasmee.data.model.response.auth.User
 import com.google.gson.annotations.SerializedName
 
 data class Cash(
@@ -11,17 +10,14 @@ data class Cash(
     @SerializedName("id_user")
     val idUser: Int,
 
-    @SerializedName("id_transaksi")
-    val idTransaksi: Int,
+    @SerializedName("nama")
+    val name: String,
+
+    @SerializedName("slug")
+    val slug: String,
 
     @SerializedName("target")
     val target: Int,
-
-    @SerializedName("transaksi")
-    val transaksi: Transaction,
-
-    @SerializedName("user")
-    val user: User,
 
     @SerializedName("created_at")
     val createdAt: String,

@@ -26,7 +26,7 @@ data class CashResponse(
     val links: List<Links>,
 
     @SerializedName("next_page_url")
-    val nextPageUrl: Any,
+    val nextPageUrl: String,
 
     @SerializedName("path")
     val path: String,
@@ -35,7 +35,7 @@ data class CashResponse(
     val perPage: Int,
 
     @SerializedName("prev_page_url")
-    val prevPageUrl: Any,
+    val prevPageUrl: String,
 
     @SerializedName("to")
     val to: Int,

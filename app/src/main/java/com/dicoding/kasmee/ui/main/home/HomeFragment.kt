@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
@@ -14,6 +15,7 @@ import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -21,6 +23,9 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding
     private val viewModel: HomeViewModel by viewModels()
+    private val cashAdapter: CashAdapter by lazy {
+        CashAdapter(::onCashClicked)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +38,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO : Get username of currently login user
-        val username = "Dummy"
-        binding?.tvGreetings?.text = getString(R.string.home_greetings, username)
+        setTodayTransaction()
+        setUserInfo()
         setCash()
     }
 
@@ -44,9 +48,32 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun setCash() {
-        val cashAdapter = CashAdapter(::onCashClicked)
+    private fun setTodayTransaction() {
+        // TODO : Check if there is transaction today. If there is no transaction showNoTodayTransaction
+        showNoTodayTransaction()
+    }
 
+    private fun setUserInfo(){
+
+        lifecycleScope.launch {
+            viewModel.user.observe(viewLifecycleOwner) { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        val userName = getString(R.string.home_greetings, resource.data?.name)
+                        binding?.tvGreetings?.text = userName
+                    }
+                    Status.ERROR -> {
+                        resource?.message?.let { showSnackBar(it) }
+                    }
+                    else -> showSnackBar(getString(R.string.error_occurred))
+                }
+            }
+        }
+    }
+
+    private fun setCash() {
+
+        // RecyclerView Setup
         binding?.rvCash?.apply {
             layoutManager = LinearLayoutManager(
                 context,
@@ -57,30 +84,34 @@ class HomeFragment : Fragment() {
             adapter = cashAdapter
         }
 
+        // Observe List of Cash
         viewModel.generateCash()
         viewModel.cash.observe(viewLifecycleOwner) { resource ->
             when (resource.status) {
                 Status.SUCCESS -> {
                     hideProgressBar()
-                    hideNoTodayTransaction()
-                    resource?.data?.data?.data?.let {
+                    resource?.data?.listCash?.let {
                         cashAdapter.submitList(it)
                     }
                 }
                 Status.ERROR -> {
-                    showNoTodayTransaction()
                     resource?.message?.let { showSnackBar(it) }
                 }
                 Status.LOADING -> {
                     showProgressBar()
-                    showNoTodayTransaction()
                 }
             }
         }
     }
 
     private fun onCashClicked(cash: Cash) {
-        // TODO : Create an intent to cash detail
+        binding?.root?.let {
+            Snackbar.make(
+                it,
+                cash.name,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun showProgressBar() {

@@ -26,14 +26,14 @@ class HomeViewModel @Inject constructor(
 
     fun getUserInfo() {
         viewModelScope.launch {
-            _cash.value = Resource.loading()
+            _user.value = Resource.loading()
 
             val result = repository.getUserInfo()
 
             if (result.data?.name.isNullOrEmpty()) {
-                result.message?.let { Resource.error(it) }
+                _user.value = result.message?.let { Resource.error(it) }
             } else {
-                Resource.success(result.data)
+                _user.value = Resource.success(result.data)
             }
         }
     }

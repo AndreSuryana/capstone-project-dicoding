@@ -2,7 +2,7 @@ package com.dicoding.kasmee.util
 
 object StringHelper {
 
-    fun formatIntoIDR(number: Int): String {
+    fun formatIntoIDR(number: Long): String {
 
         val numberStr = number.toString()
         val stringBuilder = StringBuilder(numberStr)
@@ -15,5 +15,10 @@ object StringHelper {
         }
 
         return stringBuilder.toString()
+    }
+
+    fun getTargetPercentage(target: Long, totalProfit: Long): String {
+        val result = (totalProfit.toDouble() / target) * 100
+        return String.format("%2.02f", result)
     }
 }

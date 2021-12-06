@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
@@ -56,16 +57,24 @@ class HomeFragment : Fragment() {
     private fun setUserInfo(){
 
         lifecycleScope.launch {
+            viewModel.getUserInfo()
             viewModel.user.observe(viewLifecycleOwner) { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         val userName = getString(R.string.home_greetings, resource.data?.name)
                         binding?.tvGreetings?.text = userName
+                        binding?.ivProfileImage?.let {
+                            Glide.with(this@HomeFragment)
+                                .load(resource.data?.profilePhotoPath)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.placeholder)
+                                .into(it)
+                        }
                     }
                     Status.ERROR -> {
                         resource?.message?.let { showSnackBar(it) }
                     }
-                    else -> showSnackBar(getString(R.string.error_occurred))
+                    Status.LOADING -> Any() // Do nothing
                 }
             }
         }
@@ -90,15 +99,18 @@ class HomeFragment : Fragment() {
             when (resource.status) {
                 Status.SUCCESS -> {
                     hideProgressBar()
+                    hideNoCash()
                     resource?.data?.listCash?.let {
                         cashAdapter.submitList(it)
                     }
                 }
                 Status.ERROR -> {
+                    showNoCash()
                     resource?.message?.let { showSnackBar(it) }
                 }
                 Status.LOADING -> {
                     showProgressBar()
+                    showNoCash()
                 }
             }
         }
@@ -128,6 +140,14 @@ class HomeFragment : Fragment() {
 
     private fun hideNoTodayTransaction() {
         binding?.noTransaction?.isVisible = false
+    }
+
+    private fun showNoCash() {
+        binding?.noCash?.isVisible = true
+    }
+
+    private fun hideNoCash() {
+        binding?.noCash?.isVisible = false
     }
 
     private fun showSnackBar(message: String) {

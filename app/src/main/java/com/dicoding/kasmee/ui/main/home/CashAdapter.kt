@@ -31,9 +31,6 @@ class CashAdapter(
 
         fun bind(cash: Cash) {
             binding.apply {
-                /* TODO : Add and then change tvCashTitle value to cash.title,
-                 * currently there is no "title" in the cash model
-                 */
                 tvCashTitle.text = cash.name
                 tvIncome.text =
                     itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalIncome))

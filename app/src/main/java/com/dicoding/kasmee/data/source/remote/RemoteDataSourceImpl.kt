@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
+import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
 import com.dicoding.kasmee.data.source.remote.api.ApiService
 import com.dicoding.kasmee.util.Resource
@@ -50,17 +51,25 @@ class RemoteDataSourceImpl @Inject constructor(
         return resultRegister
     }
 
-    override suspend fun cash(): LiveData<Resource<Wrapper<CashResponse>>> {
-        val resultCash = MutableLiveData<Resource<Wrapper<CashResponse>>>()
-        val response = apiService.cash()
+    override suspend fun getUserInfo(): Resource<User> {
+        val response = apiService.getUserInfo()
         val result = response.body()
 
-        if (response.isSuccessful && response.body()?.meta?.status == "success") {
-            resultCash.value = result.let { Resource.success(it) }
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
         } else {
-            resultCash.value = Resource.error(response.message())
+            Resource.error(response.message())
         }
+    }
 
-        return resultCash
+    override suspend fun getAllCash(): Resource<CashResponse> {
+        val response = apiService.getAllCash()
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
     }
 }

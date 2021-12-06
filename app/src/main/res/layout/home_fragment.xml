@@ -126,7 +126,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cash"
             android:layout_width="0dp"
-            android:layout_height="170dp"
+            android:layout_height="180dp"
             android:layout_marginTop="10dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
@@ -137,6 +137,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_cash_label"
             tools:listitem="@layout/item_cash" />
+
+        <ImageView
+            android:id="@+id/iv_no_cash"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/no_cash_image"
+            android:src="@drawable/ic_empty"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_cash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_cash"
+            app:layout_constraintVertical_bias="0.4"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_no_cash"
+            style="@style/Typography.GreenText.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_cash_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_no_cash" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/no_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_no_cash,tv_no_cash" />
 
         <TextView
             android:id="@+id/tv_transaction_label"

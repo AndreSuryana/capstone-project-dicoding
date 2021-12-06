@@ -8,7 +8,7 @@ data class CashResponse(
     val currentPage: Int,
 
     @SerializedName("data")
-    val data: List<Cash>,
+    val listCash: List<Cash>,
 
     @SerializedName("first_page_url")
     val firstPageUrl: String,

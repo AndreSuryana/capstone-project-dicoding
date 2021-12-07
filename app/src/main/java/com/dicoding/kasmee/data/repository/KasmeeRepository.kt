@@ -7,6 +7,8 @@ import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.transaction.Transaction
+import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
 import com.dicoding.kasmee.util.Resource
 
 interface KasmeeRepository {
@@ -29,4 +31,8 @@ interface KasmeeRepository {
     suspend fun getAllCash(): Resource<CashResponse>
 
     fun getAllCashPager(): LiveData<PagingData<Cash>>
+
+    suspend fun getAllTransaction(): Resource<TransactionResponse>
+
+    fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
 }

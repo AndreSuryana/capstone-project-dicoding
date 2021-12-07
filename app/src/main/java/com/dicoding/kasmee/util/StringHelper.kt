@@ -19,6 +19,11 @@ object StringHelper {
 
     fun getTargetPercentage(target: Long, totalProfit: Long): String {
         val result = (totalProfit.toDouble() / target) * 100
-        return String.format("%2.02f", result)
+        var stringResult = String.format("%2.02f", result)
+
+        if (result >= 100)
+            stringResult = "100"
+
+        return stringResult
     }
 }

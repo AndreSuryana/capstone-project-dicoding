@@ -80,6 +80,9 @@ dependencies {
         // Retrofit
         retrofitVersion = '2.9.0'
         loggingInterceptorVersion = '4.9.2'
+
+        // Paging 3
+        pagingVersion = "3.1.0"
     }
 
     // Kotlin
@@ -127,4 +130,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+
+    // Paging 3
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    testImplementation "androidx.paging:paging-common:$pagingVersion"
+
 }

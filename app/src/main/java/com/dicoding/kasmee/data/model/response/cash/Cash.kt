@@ -8,7 +8,7 @@ data class Cash(
     val id: Int,
 
     @SerializedName("id_user")
-    val idUser: Int,
+    val userId: Int,
 
     @SerializedName("nama")
     val name: String,

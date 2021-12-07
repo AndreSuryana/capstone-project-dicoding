@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.kasmee.R
-import com.dicoding.kasmee.data.model.response.cash.home.Cash
+import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar

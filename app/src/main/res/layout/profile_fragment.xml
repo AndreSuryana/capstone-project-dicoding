@@ -36,90 +36,45 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginTop="40dp"
-            android:elevation="4dp"
+            android:elevation="2dp"
             android:src="@drawable/placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_text_input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            style="@style/Typography.BlackText.Large"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:elevation="4dp"
-            android:hint="@string/profile_user_name"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="@string/dummy_name"
+            app:layout_constraintEnd_toEndOf="@+id/iv_profile_image"
+            app:layout_constraintStart_toStartOf="@+id/iv_profile_image"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile_image" />
+
+        <View
+            android:id="@+id/divider_top"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_profile_image">
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_user_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:maxLines="1" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_text_input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:hint="@string/profile_email_address"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_text_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_email_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:maxLines="1" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phone_text_input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:hint="@string/profile_phone_number"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_text_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:maxLines="1" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_profile" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_logout"
@@ -131,7 +86,11 @@
             android:gravity="center"
             android:text="@string/button_logout_text"
             android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@+id/phone_text_input_layout" />
+            android:textAppearance="@style/Typography.Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

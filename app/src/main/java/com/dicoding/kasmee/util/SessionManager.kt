@@ -1,5 +1,6 @@
 package com.dicoding.kasmee.util
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +10,7 @@ import com.dicoding.kasmee.util.Constants.USER_TOKEN
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 @Singleton
 class SessionManager @Inject constructor(
@@ -32,7 +34,8 @@ class SessionManager @Inject constructor(
         if (fetchAuthToken() != null) {
             Intent(context, MainActivity::class.java).also {
                 it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                context.applicationContext.startActivity(it)
+                context.startActivity(it)
+                (context as Activity).finish()
             }
         }
     }

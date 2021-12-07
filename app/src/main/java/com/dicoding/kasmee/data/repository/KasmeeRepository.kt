@@ -35,4 +35,5 @@ interface KasmeeRepository {
     suspend fun getAllTransaction(): Resource<TransactionResponse>
 
     fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
+
 }

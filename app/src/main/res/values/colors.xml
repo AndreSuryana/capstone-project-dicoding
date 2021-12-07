@@ -14,4 +14,7 @@
     <color name="yellow">#FFA700</color>
     <color name="windowColor">#F6F6F6</color>
     <color name="red">#D63C32</color>
+
+    <color name="divider">#D8D8D8</color>
+    <color name="shimmer">#E7E7E7</color>
 </resources>

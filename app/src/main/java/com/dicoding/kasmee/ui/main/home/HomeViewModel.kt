@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
 import com.dicoding.kasmee.data.repository.KasmeeRepository
 import com.dicoding.kasmee.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repository: KasmeeRepository
-): ViewModel() {
+) : ViewModel() {
 
     private var _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> = _user
@@ -23,9 +24,8 @@ class HomeViewModel @Inject constructor(
     private var _cash = MutableLiveData<Resource<CashResponse>>()
     val cash: LiveData<Resource<CashResponse>> = _cash
 
-    // This for the future resources :
-    // private var _transaction = MutableLiveData<Resource<Transaction>>()
-    // val transaction: LiveData<Transaction> = _transaction
+    private var _transaction = MutableLiveData<Resource<TransactionResponse>>()
+    val transaction: LiveData<Resource<TransactionResponse>> = _transaction
 
     fun getUserInfo() {
         viewModelScope.launch {
@@ -51,6 +51,20 @@ class HomeViewModel @Inject constructor(
                 _cash.value = result.message?.let { Resource.error(it) }
             } else {
                 _cash.value = Resource.success(result.data)
+            }
+        }
+    }
+
+    fun generateTransaction() {
+        viewModelScope.launch {
+            _transaction.value = Resource.loading()
+
+            val result = repository.getAllTransaction()
+
+            if (result.data?.listTransaction?.isEmpty() == true) {
+                _transaction.value = result.message?.let { Resource.error(it) }
+            } else {
+                _transaction.value = Resource.success(result.data)
             }
         }
     }

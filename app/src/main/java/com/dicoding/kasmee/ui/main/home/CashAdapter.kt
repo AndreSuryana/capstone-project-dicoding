@@ -32,14 +32,22 @@ class CashAdapter(
         fun bind(cash: Cash) {
             binding.apply {
                 tvCashTitle.text = cash.name
-                tvIncome.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalIncome))
-                tvOutcome.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalOutcome))
-                tvProfit.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalProfit))
-                tvTarget.text =
-                    itemView.resources.getString(R.string.target_percentage, StringHelper.getTargetPercentage(cash.target, cash.totalProfit))
+                tvIncome.text = itemView.resources.getString(
+                    R.string.rupiah_value,
+                    StringHelper.formatIntoIDR(cash.totalIncome)
+                )
+                tvOutcome.text = itemView.resources.getString(
+                    R.string.rupiah_value,
+                    StringHelper.formatIntoIDR(cash.totalOutcome)
+                )
+                tvProfit.text = itemView.resources.getString(
+                    R.string.rupiah_value,
+                    StringHelper.formatIntoIDR(cash.totalProfit)
+                )
+                tvTarget.text = itemView.resources.getString(
+                    R.string.target_percentage,
+                    StringHelper.getTargetPercentage(cash.target, cash.totalProfit)
+                )
 
                 itemView.setOnClickListener {
                     onClick(cash)

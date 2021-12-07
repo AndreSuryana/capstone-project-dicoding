@@ -22,6 +22,7 @@ class CashFragment : Fragment() {
     private var _binding: CashFragmentBinding? = null
     private val binding get() = _binding
     private val viewModel: CashViewModel by viewModels()
+
     private val cashPagingAdapter: CashPagingAdapter by lazy {
         CashPagingAdapter(::onCashClicked)
     }
@@ -48,12 +49,13 @@ class CashFragment : Fragment() {
     private fun setCash() {
 
         // RecyclerView Setup
-        if (context?.applicationContext?.resources?.configuration?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding?.rvCash?.layoutManager = GridLayoutManager(context, 2)
-        } else {
-            binding?.rvCash?.layoutManager = LinearLayoutManager(context)
-        }
         binding?.rvCash?.apply {
+            layoutManager =
+                if (context?.applicationContext?.resources?.configuration?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    GridLayoutManager(context, 2)
+                } else {
+                    LinearLayoutManager(context)
+                }
             setHasFixedSize(true)
             adapter = cashPagingAdapter
         }

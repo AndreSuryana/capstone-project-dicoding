@@ -60,7 +60,9 @@ interface ApiService {
     ): Response<Wrapper<Cash>>
 
     @GET("transaction")
-    suspend fun getAllTransaction(): Response<Wrapper<TransactionResponse>>
+    suspend fun getAllTransaction(
+        @Query("page") page: Int
+    ): Response<Wrapper<TransactionResponse>>
 
     @FormUrlEncoded
     @POST("transaction")

@@ -49,6 +49,7 @@ dependencies {
         appCompatVersion = '1.4.0'
         materialVersion = '1.4.0'
         constraintLayoutVersion = '2.1.2'
+        preference_version = "1.1.1"
 
         // Circle Image View
         circleImageVersion = '3.1.0'
@@ -83,6 +84,9 @@ dependencies {
 
         // Paging 3
         pagingVersion = "3.1.0"
+
+        // Shimmer
+        shimmerVersion = "0.5.0"
     }
 
     // Kotlin
@@ -92,6 +96,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.preference:preference-ktx:$preference_version"
 
     // Circle Image View
     implementation "de.hdodenhof:circleimageview:$circleImageVersion"
@@ -132,7 +137,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
 
     // Paging 3
-    implementation "androidx.paging:paging-runtime:$pagingVersion"
-    testImplementation "androidx.paging:paging-common:$pagingVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+    testImplementation "androidx.paging:paging-common-ktx:$pagingVersion"
 
+    // Shimmer
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
 }

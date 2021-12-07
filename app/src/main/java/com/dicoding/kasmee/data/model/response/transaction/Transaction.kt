@@ -8,19 +8,19 @@ data class Transaction(
     val id: Int,
 
     @SerializedName("id_kas")
-    val idKas: Int,
+    val cashId: Int,
 
     @SerializedName("id_user")
-    val idUser: Int,
+    val userId: Int,
 
     @SerializedName("pemasukan")
-    val pemasukan: Int,
+    val income: Long,
 
     @SerializedName("pengeluaran")
-    val pengeluaran: Int,
+    val outcome: Long,
 
     @SerializedName("keuntungan")
-    val keuntungan: Int,
+    val profit: Long,
 
     @SerializedName("created_at")
     val createdAt: String,

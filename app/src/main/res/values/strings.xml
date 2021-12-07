@@ -58,7 +58,7 @@
     <string name="item_cash_title">Judul Kas</string>
     <string name="transaction_date">28/11/2021</string>
     <string name="item_transaction_title">Judul Transaksi</string>
-    <string name="profit_text">Keuntungan diperoleh Rp %1$s</string>
+    <string name="profit_text">Keuntungan Rp %1$s</string>
     <string name="target_percentage">%1$s %%</string>
 
     <!-- Greetings -->

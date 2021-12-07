@@ -50,12 +50,13 @@ class CashFragment : Fragment() {
     private fun setCash() {
 
         // RecyclerView Setup
-        if (context?.applicationContext?.resources?.configuration?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding?.rvCash?.layoutManager = GridLayoutManager(context, 2)
-        } else {
-            binding?.rvCash?.layoutManager = LinearLayoutManager(context)
-        }
         binding?.rvCash?.apply {
+            layoutManager =
+                if (context?.applicationContext?.resources?.configuration?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    GridLayoutManager(context, 2)
+                } else {
+                    LinearLayoutManager(context)
+                }
             setHasFixedSize(true)
             adapter = cashPagingAdapter
         }

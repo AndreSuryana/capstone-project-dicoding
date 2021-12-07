@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/windowColor"
     android:fillViewport="true"
     tools:context=".ui.main.home.HomeFragment">
@@ -136,6 +136,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_cash_label"
+            tools:itemCount="5"
             tools:listitem="@layout/item_cash" />
 
         <ImageView
@@ -165,7 +166,8 @@
             android:id="@+id/no_cash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="iv_no_cash,tv_no_cash" />
+            app:constraint_referenced_ids="iv_no_cash,tv_no_cash"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_transaction_label"
@@ -182,15 +184,17 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_transaction"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
+            android:isScrollContainer="false"
+            android:nestedScrollingEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_transaction_label"
+            tools:itemCount="5"
             tools:listitem="@layout/item_transaction" />
 
         <ProgressBar

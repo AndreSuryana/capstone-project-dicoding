@@ -1,11 +1,14 @@
 package com.dicoding.kasmee.ui.main.transactions
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dicoding.kasmee.data.repository.KasmeeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TransactionsViewModel : ViewModel() {
+@HiltViewModel
+class TransactionsViewModel @Inject constructor(
+    repository: KasmeeRepository
+): ViewModel() {
 
-    private var _text = MutableLiveData("Transactions")
-    val text: LiveData<String> = _text
+    val transaction = repository.getAllTransactionPager()
 }

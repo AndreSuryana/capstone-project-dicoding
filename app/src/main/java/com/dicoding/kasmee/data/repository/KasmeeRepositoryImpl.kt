@@ -7,6 +7,8 @@ import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.transaction.Transaction
+import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
 import com.dicoding.kasmee.data.source.remote.RemoteDataSource
 import com.dicoding.kasmee.util.Resource
 import javax.inject.Inject
@@ -38,4 +40,10 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override fun getAllCashPager(): LiveData<PagingData<Cash>> =
         remoteDataSource.getAllCashPager()
+
+    override suspend fun getAllTransaction(): Resource<TransactionResponse> =
+        remoteDataSource.getAllTransaction()
+
+    override fun getAllTransactionPager(): LiveData<PagingData<Transaction>> =
+        remoteDataSource.getAllTransactionPager()
 }

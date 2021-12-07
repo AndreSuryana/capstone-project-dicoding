@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
+import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar
@@ -24,8 +25,13 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding
     private val viewModel: HomeViewModel by viewModels()
+
     private val cashAdapter: CashAdapter by lazy {
         CashAdapter(::onCashClicked)
+    }
+
+    private val transactionAdapter: TransactionAdapter by lazy {
+        TransactionAdapter(::onTransactionClicked)
     }
 
     override fun onCreateView(
@@ -42,6 +48,7 @@ class HomeFragment : Fragment() {
         setTodayTransaction()
         setUserInfo()
         setCash()
+        setTransaction()
     }
 
     override fun onDestroy() {
@@ -117,13 +124,43 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCashClicked(cash: Cash) {
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                cash.name,
-                Snackbar.LENGTH_SHORT
-            ).show()
+        // TODO : Get rid of the snackbar and create an detail cash intent
+        showSnackBar(cash.name)
+    }
+
+    private fun setTransaction() {
+
+        // RecyclerView Setup
+        binding?.rvTransaction?.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = transactionAdapter
         }
+
+        // Observe List of Transaction
+        lifecycleScope.launch {
+            viewModel.generateTransaction()
+            viewModel.transaction.observe(viewLifecycleOwner) { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        hideProgressBar()
+                        transactionAdapter.submitList(resource.data?.listTransaction)
+                    }
+                    Status.ERROR -> {
+                        hideProgressBar()
+                        resource.message?.let { showSnackBar(it) }
+                    }
+                    Status.LOADING -> {
+                        showProgressBar()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun onTransactionClicked(transaction: Transaction) {
+        // TODO : Get rid of the snackbar and create an intent of detail transaction
+        showSnackBar(transaction.id.toString())
     }
 
     private fun showProgressBar() {

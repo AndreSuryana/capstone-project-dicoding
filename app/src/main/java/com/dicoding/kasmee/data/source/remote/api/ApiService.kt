@@ -5,7 +5,6 @@ import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
-import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
 import retrofit2.Response
@@ -34,10 +33,9 @@ interface ApiService {
     suspend fun getUserInfo(): Response<Wrapper<User>>
 
     @GET("cash/home")
-    suspend fun home(): Response<Wrapper<CashHomeResponse>>
-
-    @GET("cash")
-    suspend fun getAllCash(): Response<Wrapper<CashResponse>>
+    suspend fun getAllCash(
+        @Query("page") page: Int
+    ): Response<Wrapper<CashResponse>>
 
     @FormUrlEncoded
     @POST("cash")

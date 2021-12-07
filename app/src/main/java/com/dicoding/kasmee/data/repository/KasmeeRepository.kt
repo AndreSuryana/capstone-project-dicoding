@@ -5,6 +5,7 @@ import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.util.Resource
 
 interface KasmeeRepository {
@@ -23,6 +24,8 @@ interface KasmeeRepository {
     ): LiveData<Resource<Wrapper<AuthResponse>>>
 
     suspend fun getUserInfo(): Resource<User>
+
+    suspend fun home(): Resource<CashHomeResponse>
 
     suspend fun getAllCash(): Resource<CashResponse>
 }

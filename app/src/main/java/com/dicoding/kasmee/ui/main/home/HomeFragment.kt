@@ -1,17 +1,17 @@
 package com.dicoding.kasmee.ui.main.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.kasmee.R
-import com.dicoding.kasmee.data.model.response.cash.Cash
+import com.dicoding.kasmee.data.model.response.cash.home.Cash
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar

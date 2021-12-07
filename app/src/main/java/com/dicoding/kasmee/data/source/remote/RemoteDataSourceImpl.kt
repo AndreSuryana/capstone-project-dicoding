@@ -6,6 +6,7 @@ import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.data.source.remote.api.ApiService
 import com.dicoding.kasmee.util.Resource
 import javax.inject.Inject
@@ -53,6 +54,17 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getUserInfo(): Resource<User> {
         val response = apiService.getUserInfo()
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun home(): Resource<CashHomeResponse> {
+        val response = apiService.home()
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {

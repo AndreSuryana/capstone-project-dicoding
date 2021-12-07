@@ -1,8 +1,11 @@
 package com.dicoding.kasmee.ui.main.home
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.dicoding.kasmee.data.model.response.auth.User
-import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.data.repository.KasmeeRepository
 import com.dicoding.kasmee.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +20,8 @@ class HomeViewModel @Inject constructor(
     private var _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> = _user
 
-    private var _cash = MutableLiveData<Resource<CashResponse>>()
-    val cash: LiveData<Resource<CashResponse>> = _cash
+    private var _cash = MutableLiveData<Resource<CashHomeResponse>>()
+    val cash: LiveData<Resource<CashHomeResponse>> = _cash
 
     // This for the future resources :
     // private var _transaction = MutableLiveData<Resource<Transaction>>()
@@ -42,7 +45,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _cash.value = Resource.loading()
 
-            val result = repository.getAllCash()
+            val result = repository.home()
 
             if (result.data?.listCash?.isEmpty() == true) {
                 _cash.value = result.message?.let { Resource.error(it) }

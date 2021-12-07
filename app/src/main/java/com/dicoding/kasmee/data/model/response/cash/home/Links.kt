@@ -1,4 +1,4 @@
-package com.dicoding.kasmee.data.model.response.cash
+package com.dicoding.kasmee.data.model.response.cash.home
 
 import com.google.gson.annotations.SerializedName
 

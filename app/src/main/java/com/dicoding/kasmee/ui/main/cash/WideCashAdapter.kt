@@ -5,10 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.ItemCashWideBinding
-import com.dicoding.kasmee.util.StringHelper
 
 class WideCashAdapter(
     private val onClick: (Cash) -> Unit
@@ -32,14 +30,14 @@ class WideCashAdapter(
         fun bind(cash: Cash) {
             binding.apply {
                 tvCashTitle.text = cash.name
-                tvIncome.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalIncome))
-                tvOutcome.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalOutcome))
-                tvProfit.text =
-                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalProfit))
-                tvTarget.text =
-                    itemView.resources.getString(R.string.target_percentage, StringHelper.getTargetPercentage(cash.target, cash.totalProfit))
+                tvIncome.text = ""
+//                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalIncome))
+                tvOutcome.text = ""
+//                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalOutcome))
+                tvProfit.text = ""
+//                    itemView.resources.getString(R.string.rupiah_value, StringHelper.formatIntoIDR(cash.totalProfit))
+                tvTarget.text = ""
+//                    itemView.resources.getString(R.string.target_percentage, StringHelper.getTargetPercentage(cash.target, cash.totalProfit))
 
                 itemView.setOnClickListener {
                     onClick(cash)

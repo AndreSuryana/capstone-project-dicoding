@@ -5,6 +5,7 @@ import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.data.source.remote.RemoteDataSource
 import com.dicoding.kasmee.util.Resource
 import javax.inject.Inject
@@ -30,6 +31,9 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun getUserInfo(): Resource<User> =
         remoteDataSource.getUserInfo()
+
+    override suspend fun home(): Resource<CashHomeResponse> =
+        remoteDataSource.home()
 
     override suspend fun getAllCash(): Resource<CashResponse> =
         remoteDataSource.getAllCash()

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.kasmee.R
-import com.dicoding.kasmee.data.model.response.cash.Cash
+import com.dicoding.kasmee.data.model.response.cash.home.Cash
 import com.dicoding.kasmee.databinding.ItemCashBinding
 import com.dicoding.kasmee.util.StringHelper
 

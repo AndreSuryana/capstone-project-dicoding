@@ -3,12 +3,13 @@ package com.dicoding.kasmee.data.source.remote.api
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
+import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
+import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
+import com.dicoding.kasmee.data.model.response.transaction.Transaction
+import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -32,6 +33,62 @@ interface ApiService {
     @GET("user")
     suspend fun getUserInfo(): Response<Wrapper<User>>
 
+    @GET("cash/home")
+    suspend fun home(): Response<Wrapper<CashHomeResponse>>
+
     @GET("cash")
     suspend fun getAllCash(): Response<Wrapper<CashResponse>>
+
+    @FormUrlEncoded
+    @POST("cash")
+    suspend fun addCash(
+        @Field("nama") name: String,
+        @Field("id_user") userId: String,
+        @Field("target") target: Long,
+    ): Response<Wrapper<Cash>>
+
+    @FormUrlEncoded
+    @POST("cash/{id}")
+    suspend fun updateCash(
+        @Path("id") cashId: String,
+        @Field("nama") name: String,
+        @Field("id_user") userId: String,
+        @Field("target") target: Long,
+    ): Response<Wrapper<Cash>>
+
+    @DELETE("cash/{id}")
+    suspend fun deleteCash(
+        @Path("id") cashId: String,
+    ): Response<Wrapper<Cash>>
+
+    @GET("transaction")
+    suspend fun getAllTransaction(): Response<Wrapper<TransactionResponse>>
+
+    @FormUrlEncoded
+    @POST("transaction")
+    suspend fun addTransaction(
+        @Field("id_kas") cashId: String,
+        @Field("id_user") userId: String,
+        @Field("pemasukan") pemasukan: Long,
+        @Field("pengeluaran") pengeluaran: Long,
+        @Field("keuntungan") keuntungan: Long,
+        @Field("keterangan") keterangan: String,
+    ): Response<Wrapper<Transaction>>
+
+    @FormUrlEncoded
+    @POST("transaction/{id}")
+    suspend fun updateTransaction(
+        @Path("id") transactionId: String,
+        @Field("id_kas") cashId: String,
+        @Field("id_user") userId: String,
+        @Field("pemasukan") pemasukan: Long,
+        @Field("pengeluaran") pengeluaran: Long,
+        @Field("keuntungan") keuntungan: Long,
+        @Field("keterangan") keterangan: String,
+    ): Response<Wrapper<Transaction>>
+
+    @DELETE("cash/{id}")
+    suspend fun deleteTransaction(
+        @Path("id") transactionId: String,
+    ): Response<Wrapper<Transaction>>
 }

@@ -2,11 +2,16 @@ package com.dicoding.kasmee.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
+import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
-import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
+import com.dicoding.kasmee.data.source.paging.CashPagingSource
 import com.dicoding.kasmee.data.source.remote.api.ApiService
 import com.dicoding.kasmee.util.Resource
 import javax.inject.Inject
@@ -63,19 +68,8 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun home(): Resource<CashHomeResponse> {
-        val response = apiService.home()
-        val result = response.body()
-
-        return if (response.isSuccessful && result?.meta?.status == "success") {
-            Resource.success(result.data)
-        } else {
-            Resource.error(response.message())
-        }
-    }
-
     override suspend fun getAllCash(): Resource<CashResponse> {
-        val response = apiService.getAllCash()
+        val response = apiService.getAllCash(1)
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
@@ -84,4 +78,14 @@ class RemoteDataSourceImpl @Inject constructor(
             Resource.error(response.message())
         }
     }
+
+    override fun getAllCashPager(): LiveData<PagingData<Cash>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { CashPagingSource(apiService) }
+        ).liveData
 }

@@ -1,11 +1,12 @@
 package com.dicoding.kasmee.data.repository
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.dicoding.kasmee.data.model.response.Wrapper
 import com.dicoding.kasmee.data.model.response.auth.AuthResponse
 import com.dicoding.kasmee.data.model.response.auth.User
+import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.cash.CashResponse
-import com.dicoding.kasmee.data.model.response.cash.home.CashHomeResponse
 import com.dicoding.kasmee.util.Resource
 
 interface KasmeeRepository {
@@ -25,7 +26,7 @@ interface KasmeeRepository {
 
     suspend fun getUserInfo(): Resource<User>
 
-    suspend fun home(): Resource<CashHomeResponse>
-
     suspend fun getAllCash(): Resource<CashResponse>
+
+    fun getAllCashPager(): LiveData<PagingData<Cash>>
 }

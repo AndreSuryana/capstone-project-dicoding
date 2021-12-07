@@ -17,11 +17,20 @@ data class Cash(
     val slug: String,
 
     @SerializedName("target")
-    val target: Int,
+    val target: Long,
 
     @SerializedName("created_at")
     val createdAt: String,
 
     @SerializedName("updated_at")
     val updatedAt: String,
+
+    @SerializedName("total_pemasukan")
+    val totalIncome: Long,
+
+    @SerializedName("total_pengeluaran")
+    val totalOutcome: Long,
+
+    @SerializedName("total_keuntungan")
+    val totalProfit: Long
 )

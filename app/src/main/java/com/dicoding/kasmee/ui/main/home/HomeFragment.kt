@@ -28,6 +28,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding
     private val viewModel: HomeViewModel by viewModels()
 
+    private var firstVisit = false
+
     private val cashAdapter: CashAdapter by lazy {
         CashAdapter(::onCashClicked)
     }
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        firstVisit = true
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -56,6 +59,18 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (firstVisit)
+            firstVisit = false
+        else {
+            // Refresh cash and transaction
+            setCash()
+            setTransaction()
+        }
     }
 
     private fun setTodayTransaction() {
@@ -120,7 +135,7 @@ class HomeFragment : Fragment() {
 
     private fun onCashClicked(cash: Cash) {
         Intent(activity, DetailCashActivity::class.java).also {
-            it.putExtra(DetailCashActivity.EXTRA_CASH, cash)
+            it.putExtra(DetailCashActivity.EXTRA_CASH_ID, cash.id)
             startActivity(it)
         }
     }

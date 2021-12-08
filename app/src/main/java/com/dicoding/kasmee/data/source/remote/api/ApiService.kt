@@ -41,22 +41,22 @@ interface ApiService {
     @POST("cash")
     suspend fun addCash(
         @Field("nama") name: String,
-        @Field("id_user") userId: String,
+        @Field("id_user") userId: Int,
         @Field("target") target: Long,
     ): Response<Wrapper<Cash>>
 
     @FormUrlEncoded
     @POST("cash/{id}")
     suspend fun updateCash(
-        @Path("id") cashId: String,
+        @Path("id") cashId: Int,
         @Field("nama") name: String,
-        @Field("id_user") userId: String,
+        @Field("id_user") userId: Int,
         @Field("target") target: Long,
     ): Response<Wrapper<Cash>>
 
     @DELETE("cash/{id}")
     suspend fun deleteCash(
-        @Path("id") cashId: String,
+        @Path("id") cashId: Int,
     ): Response<Wrapper<Cash>>
 
     @GET("transaction")
@@ -67,8 +67,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("transaction")
     suspend fun addTransaction(
-        @Field("id_kas") cashId: String,
-        @Field("id_user") userId: String,
+        @Field("id_kas") cashId: Int,
+        @Field("id_user") userId: Int,
         @Field("pemasukan") pemasukan: Long,
         @Field("pengeluaran") pengeluaran: Long,
         @Field("keuntungan") keuntungan: Long,
@@ -78,9 +78,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("transaction/{id}")
     suspend fun updateTransaction(
-        @Path("id") transactionId: String,
-        @Field("id_kas") cashId: String,
-        @Field("id_user") userId: String,
+        @Path("id") transactionId: Int,
+        @Field("id_kas") cashId: Int,
+        @Field("id_user") userId: Int,
         @Field("pemasukan") pemasukan: Long,
         @Field("pengeluaran") pengeluaran: Long,
         @Field("keuntungan") keuntungan: Long,
@@ -89,6 +89,6 @@ interface ApiService {
 
     @DELETE("cash/{id}")
     suspend fun deleteTransaction(
-        @Path("id") transactionId: String,
+        @Path("id") transactionId: Int,
     ): Response<Wrapper<Transaction>>
 }

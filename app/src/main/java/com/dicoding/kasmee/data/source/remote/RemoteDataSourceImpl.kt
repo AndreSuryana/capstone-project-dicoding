@@ -93,6 +93,48 @@ class RemoteDataSourceImpl @Inject constructor(
             pagingSourceFactory = { CashPagingSource(apiService) }
         ).liveData
 
+    override suspend fun addCash(
+        name: String,
+        userId: Int,
+        target: Long
+    ): Resource<Cash> {
+        val response = apiService.addCash(name, userId, target)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun updateCash(
+        cashId: Int,
+        name: String,
+        userId: Int,
+        target: Long
+    ): Resource<Cash> {
+        val response = apiService.updateCash(cashId, name, userId, target)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun deleteCash(cashId: Int): Resource<Cash> {
+        val response = apiService.deleteCash(cashId)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
     override suspend fun getAllTransaction(): Resource<TransactionResponse> {
         val page = 1
         val response = apiService.getAllTransaction(page)
@@ -114,4 +156,61 @@ class RemoteDataSourceImpl @Inject constructor(
             ),
             pagingSourceFactory = { TransactionPagingSource(apiService) }
         ).liveData
+
+    override suspend fun addTransaction(
+        cashId: Int,
+        userId: Int,
+        income: Long,
+        outcome: Long,
+        profit: Long,
+        description: String
+    ): Resource<Transaction> {
+        val response =
+            apiService.addTransaction(cashId, userId, income, outcome, profit, description)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun updateTransaction(
+        transactionId: Int,
+        cashId: Int,
+        userId: Int,
+        income: Long,
+        outcome: Long,
+        profit: Long,
+        description: String
+    ): Resource<Transaction> {
+        val response = apiService.updateTransaction(
+            transactionId,
+            cashId,
+            userId,
+            income,
+            outcome,
+            profit,
+            description
+        )
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun deleteTransaction(transactionId: Int): Resource<Transaction> {
+        val response = apiService.deleteTransaction(transactionId)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
 }

@@ -49,6 +49,8 @@ interface RemoteDataSource {
 
     suspend fun getAllTransaction(): Resource<TransactionResponse>
 
+    suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse>
+
     fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
 
     suspend fun addTransaction(

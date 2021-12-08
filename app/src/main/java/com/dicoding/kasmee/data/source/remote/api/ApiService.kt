@@ -64,6 +64,12 @@ interface ApiService {
         @Query("page") page: Int
     ): Response<Wrapper<TransactionResponse>>
 
+    @GET("transaction/{id}")
+    suspend fun getTransactionByCashId(
+        @Path("id") cashId: Int,
+        @Query("page") page: Int
+    ): Response<Wrapper<TransactionResponse>>
+
     @FormUrlEncoded
     @POST("transaction")
     suspend fun addTransaction(

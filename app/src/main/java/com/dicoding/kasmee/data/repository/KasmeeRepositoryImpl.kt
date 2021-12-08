@@ -58,6 +58,9 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun getAllTransaction(): Resource<TransactionResponse> =
         remoteDataSource.getAllTransaction()
 
+    override suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse> =
+        remoteDataSource.getAllTransactionByCashId(cashId)
+
     override fun getAllTransactionPager(): LiveData<PagingData<Transaction>> =
         remoteDataSource.getAllTransactionPager()
 

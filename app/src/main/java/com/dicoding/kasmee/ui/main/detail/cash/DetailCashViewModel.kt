@@ -29,7 +29,17 @@ class DetailCashViewModel @Inject constructor(
     val undoDelete: LiveData<Event<Cash>> = _undoDelete
 
     fun getTransaction(cashId: Int) {
-        // TODO : Get transaction list from repository
+        viewModelScope.launch {
+            _transaction.value = Resource.loading()
+
+            val result = repository.getAllTransactionByCashId(cashId)
+
+            if (result.data?.listTransaction?.isEmpty() == true) {
+                _transaction.value = Resource.error("Kamu belum pernah menambah transaksi!")
+            } else {
+                _transaction.value = Resource.success(result.data)
+            }
+        }
     }
 
     fun deleteCash(cash: Cash) {

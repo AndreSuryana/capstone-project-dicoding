@@ -147,6 +147,18 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse> {
+        val page = 1
+        val response = apiService.getTransactionByCashId(cashId, page)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
     override fun getAllTransactionPager(): LiveData<PagingData<Transaction>> =
         Pager(
             config = PagingConfig(

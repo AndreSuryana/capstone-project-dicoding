@@ -2,10 +2,10 @@ package com.dicoding.kasmee.ui.main.transactions
 
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,7 +24,7 @@ class TransactionsFragment : Fragment() {
     private val viewModel: TransactionsViewModel by viewModels()
 
     private val transactionPagingAdapter: TransactionPagingAdapter by lazy {
-        TransactionPagingAdapter(::onTransactionClicked)
+        TransactionPagingAdapter(::onTransactionClicked, requireContext())
     }
 
     override fun onCreateView(

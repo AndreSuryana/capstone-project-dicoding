@@ -1,10 +1,7 @@
 package com.dicoding.kasmee.data.model.response.cash
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Cash(
 
     @SerializedName("id")
@@ -36,4 +33,4 @@ data class Cash(
 
     @SerializedName("total_keuntungan")
     val totalProfit: Long
-) : Parcelable
+)

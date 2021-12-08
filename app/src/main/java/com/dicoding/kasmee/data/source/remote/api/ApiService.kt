@@ -32,10 +32,15 @@ interface ApiService {
     @GET("user")
     suspend fun getUserInfo(): Response<Wrapper<User>>
 
-    @GET("cash/home")
+    @GET("cash")
     suspend fun getAllCash(
         @Query("page") page: Int
     ): Response<Wrapper<CashResponse>>
+
+    @GET("cash/{id}")
+    suspend fun getCashById(
+        @Path("id") cashId: Int
+    ): Response<Wrapper<List<Cash>>>
 
     @FormUrlEncoded
     @POST("cash")
@@ -70,6 +75,9 @@ interface ApiService {
         @Query("page") page: Int
     ): Response<Wrapper<TransactionResponse>>
 
+    @GET("transaction/today")
+    suspend fun getTodayTransaction(): Response<Wrapper<TransactionResponse>>
+
     @FormUrlEncoded
     @POST("transaction")
     suspend fun addTransaction(
@@ -93,7 +101,7 @@ interface ApiService {
         @Field("keterangan") keterangan: String,
     ): Response<Wrapper<Transaction>>
 
-    @DELETE("cash/{id}")
+    @DELETE("transaction/{id}")
     suspend fun deleteTransaction(
         @Path("id") transactionId: Int,
     ): Response<Wrapper<Transaction>>

@@ -93,6 +93,17 @@ class RemoteDataSourceImpl @Inject constructor(
             pagingSourceFactory = { CashPagingSource(apiService) }
         ).liveData
 
+    override suspend fun getCashById(cashId: Int): Resource<Cash> {
+        val response = apiService.getCashById(cashId)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data.first())
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
     override suspend fun addCash(
         name: String,
         userId: Int,
@@ -154,6 +165,18 @@ class RemoteDataSourceImpl @Inject constructor(
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
             Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun getTodayTransaction(): Resource<Transaction> {
+        val response = apiService.getTodayTransaction()
+        val result = response.body()
+        val transaction = result?.data?.listTransaction?.first()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(transaction)
         } else {
             Resource.error(response.message())
         }

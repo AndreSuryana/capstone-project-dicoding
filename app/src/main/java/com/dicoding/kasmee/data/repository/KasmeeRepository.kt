@@ -32,6 +32,8 @@ interface KasmeeRepository {
 
     fun getAllCashPager(): LiveData<PagingData<Cash>>
 
+    suspend fun getCashById(cashId: Int): Resource<Cash>
+
     suspend fun addCash(
         name: String,
         userId: Int,
@@ -52,6 +54,8 @@ interface KasmeeRepository {
     suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse>
 
     fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
+
+    suspend fun getTodayTransaction(): Resource<Transaction>
 
     suspend fun addTransaction(
         cashId: Int,

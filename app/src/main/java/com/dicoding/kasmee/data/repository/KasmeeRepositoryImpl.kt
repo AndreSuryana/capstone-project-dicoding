@@ -41,6 +41,9 @@ class KasmeeRepositoryImpl @Inject constructor(
     override fun getAllCashPager(): LiveData<PagingData<Cash>> =
         remoteDataSource.getAllCashPager()
 
+    override suspend fun getCashById(cashId: Int): Resource<Cash> =
+        remoteDataSource.getCashById(cashId)
+
     override suspend fun addCash(name: String, userId: Int, target: Long): Resource<Cash> =
         remoteDataSource.addCash(name, userId, target)
 
@@ -58,11 +61,14 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun getAllTransaction(): Resource<TransactionResponse> =
         remoteDataSource.getAllTransaction()
 
-    override suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse> =
-        remoteDataSource.getAllTransactionByCashId(cashId)
-
     override fun getAllTransactionPager(): LiveData<PagingData<Transaction>> =
         remoteDataSource.getAllTransactionPager()
+
+    override suspend fun getTodayTransaction(): Resource<Transaction> =
+        remoteDataSource.getTodayTransaction()
+
+    override suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse> =
+        remoteDataSource.getAllTransactionByCashId(cashId)
 
     override suspend fun addTransaction(
         cashId: Int,

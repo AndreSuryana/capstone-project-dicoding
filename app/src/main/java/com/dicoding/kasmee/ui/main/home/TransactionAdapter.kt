@@ -35,7 +35,10 @@ class TransactionAdapter(
     inner class TransactionViewHolder(private val binding: ItemTransactionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        lateinit var getTransaction: Transaction
+
         fun bind(transaction: Transaction) {
+            getTransaction = transaction
             binding.apply {
                 tvIncome.text = itemView.resources.getString(
                     R.string.rupiah_value,

@@ -5,22 +5,25 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginBottom="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="12dp"
         android:paddingVertical="10dp">
 
         <TextView
             android:id="@+id/tv_transaction_date"
-            style="@style/Typography.BlackText.Medium"
-            android:layout_width="wrap_content"
+            style="@style/Typography.BlackText.Small"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/transaction_date"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:maxLength="10"
+            android:text="@string/transaction_date"
+            app:layout_constraintEnd_toStartOf="@+id/tv_income"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +34,8 @@
             android:layout_height="wrap_content"
             android:text="@string/income_label"
             android:textAlignment="textEnd"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@+id/tv_transaction_date" />
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_income"
@@ -41,8 +43,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rupiah_value"
-            android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="@+id/tv_income_label"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_income_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
 
@@ -51,11 +53,11 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/outcome_label"
             android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income" />
 
         <TextView
             android:id="@+id/tv_outcome"
@@ -63,8 +65,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rupiah_value"
-            android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_income"
             app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label" />
 
@@ -73,23 +76,19 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/profit_text"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="@+id/tv_transaction_date"
-            app:layout_constraintTop_toBottomOf="@+id/tv_income" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_transaction_date" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="285dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="240dp" />
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

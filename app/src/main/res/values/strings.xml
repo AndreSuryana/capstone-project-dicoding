@@ -87,11 +87,21 @@
     <string name="pref_key_notify">key_notification</string>
     <string name="pref_notify_name">Notifikasi</string>
 
-    <!-- Detail Cash ACtivity -->
+    <!-- Detail Cash Activity -->
     <string name="detail_cash_title">Detail Buku Kas</string>
     <string name="target_label">Target</string>
     <string name="percentage_detail">(Persentase capaian %1$s %%)</string>
     <string name="detail_transaction_label">Transaksi Buku Kas</string>
     <string name="cash_deleted">Buku kas telah dihapus!</string>
     <string name="delete_button">Delete Button</string>
+
+    <!-- Dialog Alert -->
+    <string name="delete_cash_alert">Apakah kamu yakin menghapus buku kas ini?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
+
+    <!-- Snack Bar -->
+    <string name="delete_cash_success">Buku kas berhasil dihapus</string>
+    <string name="transaction_deleted">Transaksi berhasil dihapus</string>
+
 </resources>

@@ -59,6 +59,7 @@
     <string name="transaction_date">28/11/2021</string>
     <string name="item_transaction_title">Judul Transaksi</string>
     <string name="profit_text">Keuntungan Rp %1$s</string>
+    <string name="loss_text">Kerugian Rp %1$s</string>
     <string name="target_percentage">%1$s %%</string>
 
     <!-- Greetings -->
@@ -93,6 +94,4 @@
     <string name="detail_transaction_label">Transaksi Buku Kas</string>
     <string name="cash_deleted">Buku kas telah dihapus!</string>
     <string name="delete_button">Delete Button</string>
-
-
 </resources>

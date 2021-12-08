@@ -1,5 +1,6 @@
 package com.dicoding.kasmee.ui.main.cash
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.CashFragmentBinding
-import com.google.android.material.snackbar.Snackbar
+import com.dicoding.kasmee.ui.main.detail.cash.DetailCashActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -69,12 +70,9 @@ class CashFragment : Fragment() {
     }
 
     private fun onCashClicked(cash: Cash) {
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                cash.name,
-                Snackbar.LENGTH_SHORT
-            ).show()
+        Intent(activity, DetailCashActivity::class.java).also {
+            it.putExtra(DetailCashActivity.EXTRA_CASH_ID, cash.id)
+            startActivity(it)
         }
     }
 }

@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.ui.main.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.util.Status
+import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
     }
 
     private val transactionAdapter: TransactionAdapter by lazy {
-        TransactionAdapter(::onTransactionClicked)
+        TransactionAdapter(::onTransactionClicked, requireContext())
     }
 
     override fun onCreateView(
@@ -72,13 +72,7 @@ class HomeFragment : Fragment() {
                     Status.SUCCESS -> {
                         val userName = getString(R.string.home_greetings, resource.data?.name)
                         binding?.tvGreetings?.text = userName
-                        binding?.ivProfileImage?.let {
-                            Glide.with(this@HomeFragment)
-                                .load(resource.data?.profilePhotoPath)
-                                .placeholder(R.drawable.placeholder)
-                                .error(R.drawable.placeholder)
-                                .into(it)
-                        }
+                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
                     }
                     Status.ERROR -> {
                         resource?.message?.let { showSnackBar(it) }
@@ -98,7 +92,6 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            setHasFixedSize(true)
             adapter = cashAdapter
         }
 
@@ -137,7 +130,6 @@ class HomeFragment : Fragment() {
         // RecyclerView Setup
         binding?.rvTransaction?.apply {
             layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
             adapter = transactionAdapter
         }
 

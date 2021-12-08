@@ -21,6 +21,7 @@ class CashFragment : Fragment() {
 
     private var _binding: CashFragmentBinding? = null
     private val binding get() = _binding
+
     private val viewModel: CashViewModel by viewModels()
 
     private val cashPagingAdapter: CashPagingAdapter by lazy {

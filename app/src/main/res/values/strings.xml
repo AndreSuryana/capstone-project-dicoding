@@ -6,6 +6,7 @@
     <string name="title_cash">Kas</string>
     <string name="title_transactions">Transaksi</string>
     <string name="title_profile">Profil</string>
+    <string name="title_settings">Pengaturan</string>
 
     <!-- Label -->
     <string name="label_email">Email Address</string>
@@ -29,6 +30,8 @@
     <!-- Content Description -->
     <string name="logo_description">Kasmee Logo</string>
     <string name="back_to_login">Back to Login</string>
+    <string name="back">Back</string>
+    <string name="fab_icon">FAB Icon</string>
 
     <!-- Shared Prefs Key -->
     <string name="user_token">Token</string>
@@ -71,11 +74,15 @@
     <string name="no_cash_message">Maaf saat ini kamu belum memiliki buku kas</string>
 
     <!-- Profile Fragment -->
+    <string name="dummy_name">Admin</string>
+    <string name="edit_profile">Edit Profil</string>
+    <string name="settings">Pengaturan</string>
     <string name="profile_user_name">User Name</string>
     <string name="profile_email_address">Email Address</string>
     <string name="profile_phone_number">Phone Number</string>
     <string name="button_logout_text">Logout</string>
 
-    <string name="fab_icon">FAB Icon</string>
-
+    <!-- Notification -->
+    <string name="pref_key_notify">key_notification</string>
+    <string name="pref_notify_name">Notifikasi</string>
 </resources>

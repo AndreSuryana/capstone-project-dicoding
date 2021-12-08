@@ -31,10 +31,10 @@
         android:id="@+id/fab_add_cash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
+        android:layout_margin="16dp"
         android:backgroundTint="@color/blue"
-        android:src="@drawable/ic_add"
         android:contentDescription="@string/fab_icon"
+        android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />

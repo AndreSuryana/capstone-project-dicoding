@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ProfileFragmentBinding
 import com.dicoding.kasmee.ui.auth.login.LoginActivity
 import com.dicoding.kasmee.ui.main.setting.SettingsActivity
 import com.dicoding.kasmee.util.SessionManager
+import com.dicoding.kasmee.util.Status
+import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -61,11 +65,32 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+
+        setUserInfo()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setUserInfo() {
+
+        lifecycleScope.launch {
+            viewModel.getUserInfo()
+            viewModel.user.observe(viewLifecycleOwner) { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        binding?.tvName?.text = resource.data?.name
+                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
+                    }
+                    Status.ERROR -> {
+                        resource?.message?.let { showSnackBar(it) }
+                    }
+                    Status.LOADING -> Any() // Do nothing
+                }
+            }
+        }
     }
 
     private fun onMenuClicked(menu: String) {
@@ -74,7 +99,7 @@ class ProfileFragment : Fragment() {
                 getString(R.string.edit_profile) -> {
                     Snackbar.make(
                         it,
-                        "Edit",
+                        getString(R.string.edit_profile),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
@@ -85,6 +110,16 @@ class ProfileFragment : Fragment() {
                 }
                 else -> {}
             }
+        }
+    }
+
+    private fun showSnackBar(message: String) {
+        binding?.root?.let {
+            Snackbar.make(
+                it,
+                message,
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 }

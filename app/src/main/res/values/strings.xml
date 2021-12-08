@@ -85,4 +85,14 @@
     <!-- Notification -->
     <string name="pref_key_notify">key_notification</string>
     <string name="pref_notify_name">Notifikasi</string>
+
+    <!-- Detail Cash ACtivity -->
+    <string name="detail_cash_title">Detail Buku Kas</string>
+    <string name="target_label">Target</string>
+    <string name="percentage_detail">(Persentase capaian %1$s %%)</string>
+    <string name="detail_transaction_label">Transaksi Buku Kas</string>
+    <string name="cash_deleted">Buku kas telah dihapus!</string>
+    <string name="delete_button">Delete Button</string>
+
+
 </resources>

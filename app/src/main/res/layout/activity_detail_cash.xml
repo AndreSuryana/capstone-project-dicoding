@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.detail.cash.DetailCashActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back_to_login"
+                android:src="@drawable/ic_back" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/toolbar_title"
+                style="@style/Typography.BlackText.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/detail_cash_title" />
+
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/delete_button"
+                android:src="@drawable/ic_trash_bin"
+                app:tint="@color/red" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <TextView
+            android:id="@+id/tv_cash_title"
+            style="@style/Typography.BlackText.Large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/item_cash_title"
+            app:layout_constraintEnd_toStartOf="@+id/iv_cash_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <ImageView
+            android:id="@+id/iv_cash_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/cash_icon_image"
+            android:src="@drawable/ic_cash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_cash_title"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_income_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/income_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_cash_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cash_title" />
+
+        <TextView
+            android:id="@+id/tv_income"
+            style="@style/Typography.BlackText.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            app:layout_constraintStart_toStartOf="@+id/tv_income_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
+
+        <TextView
+            android:id="@+id/tv_outcome_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:text="@string/outcome_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_income_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
+
+        <TextView
+            android:id="@+id/tv_outcome"
+            style="@style/Typography.BlackText.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_outcome_label" />
+
+        <TextView
+            android:id="@+id/tv_profit_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/profit_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_income"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income" />
+
+        <TextView
+            android:id="@+id/tv_profit"
+            style="@style/Typography.BlackText.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            app:layout_constraintStart_toStartOf="@+id/tv_profit_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profit_label" />
+
+        <TextView
+            android:id="@+id/tv_target_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/target_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_profit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profit" />
+
+        <TextView
+            android:id="@+id/tv_target"
+            style="@style/Typography.GreenText.ExtraLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rupiah_value"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_target_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_target_label" />
+
+        <TextView
+            android:id="@+id/tv_percentage"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/percentage_detail"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_target" />
+
+        <TextView
+            android:id="@+id/tv_transaction_label"
+            style="@style/Typography.BlackText.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:text="@string/detail_transaction_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_percentage" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:scrollbarFadeDuration="3"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_transaction_label"
+            tools:listitem="@layout/item_transaction" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

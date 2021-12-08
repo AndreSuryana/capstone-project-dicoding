@@ -1,5 +1,6 @@
 package com.dicoding.kasmee.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
+import com.dicoding.kasmee.ui.main.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.util.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -124,8 +126,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCashClicked(cash: Cash) {
-        // TODO : Get rid of the snackbar and create an detail cash intent
-        showSnackBar(cash.name)
+        Intent(activity, DetailCashActivity::class.java).also {
+            it.putExtra(DetailCashActivity.EXTRA_CASH, cash)
+            startActivity(it)
+        }
     }
 
     private fun setTransaction() {

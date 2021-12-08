@@ -48,7 +48,7 @@ class HomeViewModel @Inject constructor(
             val result = repository.getAllCash()
 
             if (result.data?.listCash?.isEmpty() == true) {
-                _cash.value = result.message?.let { Resource.error(it) }
+                _cash.value = Resource.error("Kamu belum memiliki buku kas!")
             } else {
                 _cash.value = Resource.success(result.data)
             }
@@ -62,7 +62,7 @@ class HomeViewModel @Inject constructor(
             val result = repository.getAllTransaction()
 
             if (result.data?.listTransaction?.isEmpty() == true) {
-                _transaction.value = result.message?.let { Resource.error(it) }
+                _transaction.value = Resource.error("Kamu belum pernah menambah transaksi!")
             } else {
                 _transaction.value = Resource.success(result.data)
             }

@@ -15,10 +15,7 @@
         android:theme="@style/KasmeeSplashScreenTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.main.detail.transaction.DetailTransactionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.detail.cash.DetailCashActivity"
+            android:name="com.dicoding.kasmee.ui.detail.cash.DetailCashActivity"
             android:exported="false"
             android:theme="@style/Theme.Kasmee" />
         <activity

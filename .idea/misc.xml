@@ -13,6 +13,7 @@
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/rounded_rectangle.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/splash_screen.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout-land/activity_detail_cash.xml" value="0.1875" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout-land/activity_login.xml" value="0.471875" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_detail_cash.xml" value="0.33" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_detail_transaction.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_login.xml" value="0.32685185185185184" />
@@ -28,7 +29,10 @@
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/item_cash_wide.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/item_transaction.xml" value="0.3569230769230769" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/profile_fragment.xml" value="0.32407407407407407" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/transactions_fragment.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash.xml" value="0.3625" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash_wide.xml" value="0.3625" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_transaction.xml" value="0.3625" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/transactions_fragment.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/menu/bottom_nav_menu.xml" value="0.287962962962963" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/xml/root_preferences.xml" value="0.3625" />
       </map>

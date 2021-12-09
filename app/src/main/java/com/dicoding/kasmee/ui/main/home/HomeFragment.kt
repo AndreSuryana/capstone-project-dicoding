@@ -14,6 +14,7 @@ import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
+import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.util.Status
 import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar
@@ -49,7 +50,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        _binding = HomeFragmentBinding.bind(view)
 
         setTodayTransaction()
         setUserInfo()
@@ -176,8 +176,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun onTransactionClicked(transaction: Transaction) {
-        // TODO : Get rid of the snackbar and create an intent of detail transaction
-        showSnackBar(transaction.id.toString())
+        val dialog = DetailTransactionFragment(transaction)
+        dialog.show(childFragmentManager, DetailTransactionFragment::class.java.simpleName)
+        dialog.setOnTransactionDelted(object : DetailTransactionFragment.OnTransactionDeleted {
+            override fun onDeleted(isDeleted: Boolean) {
+                if (isDeleted) {
+                    // Refresh cash and transaction
+                    setCash()
+                    setTransaction()
+                }
+            }
+        })
     }
 
     private fun showShimmerUser() {

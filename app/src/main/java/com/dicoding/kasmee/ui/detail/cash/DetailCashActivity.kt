@@ -3,6 +3,7 @@ package com.dicoding.kasmee.ui.detail.cash
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -69,16 +70,16 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_back -> {
                 finish()
             }
-//            R.id.btn_delete -> {
-//                AlertDialog.Builder(this).apply {
-//                    setMessage(getString(R.string.delete_cash_alert))
-//                    setNegativeButton(getString(R.string.no), null)
-//                    setPositiveButton(getString(R.string.yes)) { _, _ ->
-//                        viewModel.deleteCash()
-//                        finish()
-//                    }
-//                }.show()
-//            }
+            R.id.btn_delete -> {
+                AlertDialog.Builder(this).apply {
+                    setMessage(getString(R.string.delete_cash_alert))
+                    setNegativeButton(getString(R.string.no), null)
+                    setPositiveButton(getString(R.string.yes)) { _, _ ->
+                        viewModel.deleteCash()
+                        finish()
+                    }
+                }.show()
+            }
         }
     }
 

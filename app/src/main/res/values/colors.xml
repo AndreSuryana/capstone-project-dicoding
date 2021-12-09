@@ -12,8 +12,9 @@
     <color name="green">#089A5B</color>
     <color name="blue">#3291D6</color>
     <color name="yellow">#FFA700</color>
-    <color name="windowColor">#F6F6F6</color>
     <color name="red">#D63C32</color>
+    <color name="gray">#F0F0F0</color>
+    <color name="windowColor">#F6F6F6</color>
 
     <color name="divider">#D8D8D8</color>
     <color name="shimmer">#E7E7E7</color>

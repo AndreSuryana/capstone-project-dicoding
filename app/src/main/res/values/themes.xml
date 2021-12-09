@@ -114,4 +114,9 @@
         <item name="android:backgroundTint">@color/red</item>
     </style>
 
+    <style name="Button.Gray" parent="Button">
+        <item name="android:backgroundTint">@color/gray</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
 </resources>

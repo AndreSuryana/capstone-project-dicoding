@@ -13,7 +13,7 @@ import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.HomeFragmentBinding
-import com.dicoding.kasmee.ui.main.detail.cash.DetailCashActivity
+import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.util.Status
 import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar

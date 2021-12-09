@@ -1,19 +1,21 @@
 package com.dicoding.kasmee.ui.main.cash
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.CashFragmentBinding
-import com.dicoding.kasmee.ui.main.detail.cash.DetailCashActivity
+import com.dicoding.kasmee.util.KasmeeLoadStateAdapter
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -51,15 +53,32 @@ class CashFragment : Fragment() {
     private fun setCash() {
 
         // RecyclerView Setup
-        binding?.rvCash?.apply {
-            layoutManager =
+        binding?.apply {
+            val layoutManager =
                 if (context?.applicationContext?.resources?.configuration?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                     GridLayoutManager(context, 2)
                 } else {
                     LinearLayoutManager(context)
                 }
-            setHasFixedSize(true)
-            adapter = cashPagingAdapter
+
+            rvCash.layoutManager = layoutManager
+            rvCash.setHasFixedSize(true)
+            rvCash.adapter = cashPagingAdapter.withLoadStateHeaderAndFooter(
+                header = KasmeeLoadStateAdapter { cashPagingAdapter.retry() },
+                footer = KasmeeLoadStateAdapter { cashPagingAdapter.retry() }
+            )
+
+            layoutError.btnRetry.setOnClickListener { cashPagingAdapter.retry() }
+        }
+
+        cashPagingAdapter.addLoadStateListener { loadState ->
+            when (loadState.source.refresh) {
+                LoadState.Loading -> showShimmer()
+                else -> hideShimmer()
+            }
+
+            binding?.layoutError?.error?.isVisible =
+                loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached && cashPagingAdapter.itemCount < 1
         }
 
         lifecycleScope.launch {
@@ -70,9 +89,21 @@ class CashFragment : Fragment() {
     }
 
     private fun onCashClicked(cash: Cash) {
-        Intent(activity, DetailCashActivity::class.java).also {
-            it.putExtra(DetailCashActivity.EXTRA_CASH_ID, cash.id)
-            startActivity(it)
+        binding?.root?.let {
+            Snackbar.make(
+                it,
+                cash.name,
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
+    }
+
+    private fun showShimmer() {
+        binding?.shimmer?.startShimmer()
+    }
+
+    private fun hideShimmer() {
+        binding?.shimmer?.isVisible = false
+        binding?.shimmer?.stopShimmer()
     }
 }

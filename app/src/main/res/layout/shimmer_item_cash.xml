@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="160dp"
+    android:layout_gravity="center"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_cash_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/cash_icon_image"
+            android:src="@drawable/ic_cash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/shimmer_cash_title"
+            app:tint="@color/green" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shimmer_cash_title"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/shimmer"
+            app:layout_constraintEnd_toStartOf="@+id/iv_cash_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/shimmer_placeholder"
+            tools:ignore="ImageContrastCheck" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_income_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/income_label"
+            app:layout_constraintStart_toStartOf="@+id/shimmer_cash_title"
+            app:layout_constraintTop_toBottomOf="@+id/shimmer_cash_title" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shimmer_income"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/shimmer"
+            app:layout_constraintEnd_toStartOf="@+id/shimmer_profit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income_label"
+            app:srcCompat="@drawable/shimmer_placeholder"
+            tools:ignore="ImageContrastCheck" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_profit_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="@string/profit_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_income_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shimmer_profit"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/shimmer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_profit_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profit_label"
+            app:srcCompat="@drawable/shimmer_placeholder"
+            tools:ignore="ImageContrastCheck" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_outcome_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/outcome_label"
+            app:layout_constraintStart_toStartOf="@+id/shimmer_income"
+            app:layout_constraintTop_toBottomOf="@+id/shimmer_income" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shimmer_outcome"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/shimmer"
+            app:layout_constraintEnd_toStartOf="@+id/shimmer_profit"
+            app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label"
+            app:srcCompat="@drawable/shimmer_placeholder"
+            tools:ignore="ImageContrastCheck" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_target_label"
+            style="@style/Typography.GreyText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/target_percentage_label"
+            app:layout_constraintStart_toStartOf="@+id/shimmer_profit"
+            app:layout_constraintTop_toTopOf="@+id/tv_outcome_label" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shimmer_target"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/shimmer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_target_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_target_label"
+            app:srcCompat="@drawable/shimmer_placeholder"
+            tools:ignore="ImageContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

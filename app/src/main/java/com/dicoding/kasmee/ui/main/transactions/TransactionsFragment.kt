@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.TransactionsFragmentBinding
+import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.util.KasmeeLoadStateAdapter
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -90,13 +90,16 @@ class TransactionsFragment : Fragment() {
     }
 
     private fun onTransactionClicked(transaction: Transaction) {
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                transaction.id.toString(),
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        val dialog = DetailTransactionFragment(transaction)
+        dialog.show(childFragmentManager, DetailTransactionFragment::class.java.simpleName)
+        dialog.setOnTransactionDelted(object : DetailTransactionFragment.OnTransactionDeleted {
+            override fun onDeleted(isDeleted: Boolean) {
+                if (isDeleted) {
+                    // Refresh list
+                    setTransaction()
+                }
+            }
+        })
     }
 
     private fun showShimmer() {

@@ -23,6 +23,8 @@ class DetailTransactionFragment(
     private val binding get() = _binding
     private val viewModel: DetailTransactionViewModel by viewModels()
 
+    private var onTransactionDeleted: OnTransactionDeleted? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -70,6 +72,14 @@ class DetailTransactionFragment(
         }
     }
 
+    fun setOnTransactionDelted(onTransactionDeleted: OnTransactionDeleted) {
+        this.onTransactionDeleted = onTransactionDeleted
+    }
+
+    interface OnTransactionDeleted {
+        fun onDeleted(isDeleted: Boolean)
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_close -> {
@@ -80,7 +90,7 @@ class DetailTransactionFragment(
             }
             R.id.btn_delete -> {
                 viewModel.deleteTransaction()
-                Toast.makeText(context, "Transaksi terhapus!", Toast.LENGTH_SHORT).show()
+                onTransactionDeleted?.onDeleted(true)
                 dismiss()
             }
         }

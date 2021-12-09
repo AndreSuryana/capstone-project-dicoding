@@ -83,7 +83,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun setCash() {
+    fun setCash() {
         viewModel.getCash()
         viewModel.cash.observe(this) { cash ->
             binding?.apply {
@@ -112,7 +112,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun setTransaction() {
+    fun setTransaction() {
 
         // RecyclerView Setup
         binding?.rvTransaction?.apply {
@@ -144,6 +144,15 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     private fun onTransactionClicked(transaction: Transaction) {
         val dialog = DetailTransactionFragment(transaction)
         dialog.show(supportFragmentManager, DetailTransactionFragment::class.java.simpleName)
+        dialog.setOnTransactionDelted(object : DetailTransactionFragment.OnTransactionDeleted {
+            override fun onDeleted(isDeleted: Boolean) {
+                if (isDeleted) {
+                    // Refresh cash content and list transaction
+                    setCash()
+                    setTransaction()
+                }
+            }
+        })
     }
 
     private fun initSwipeDeleteAction() {

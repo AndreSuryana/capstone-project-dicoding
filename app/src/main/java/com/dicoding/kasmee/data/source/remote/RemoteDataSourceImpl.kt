@@ -71,6 +71,17 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun logout(): Resource<Boolean> {
+        val response = apiService.logout()
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
     override suspend fun getAllCash(): Resource<CashResponse> {
         val page = 1
         val response = apiService.getAllCash(page)
@@ -99,6 +110,17 @@ class RemoteDataSourceImpl @Inject constructor(
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
             Resource.success(result.data.first())
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun getLatestCash(): Resource<List<Cash>> {
+        val response = apiService.getLatestCash()
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
         } else {
             Resource.error(response.message())
         }
@@ -177,6 +199,17 @@ class RemoteDataSourceImpl @Inject constructor(
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
             Resource.success(transaction)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun getLatestTransaction(): Resource<List<Transaction>> {
+        val response = apiService.getLatestTransaction()
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
         } else {
             Resource.error(response.message())
         }

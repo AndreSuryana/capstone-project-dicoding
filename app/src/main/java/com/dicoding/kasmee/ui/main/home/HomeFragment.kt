@@ -49,7 +49,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        _binding = HomeFragmentBinding.bind(view)
 
         setTodayTransaction()
         setUserInfo()
@@ -122,7 +121,7 @@ class HomeFragment : Fragment() {
                 Status.SUCCESS -> {
                     hideShimmerCash()
                     hideNoCash()
-                    resource?.data?.listCash?.let {
+                    resource?.data?.let {
                         cashAdapter.submitList(it)
                     }
                 }
@@ -161,7 +160,7 @@ class HomeFragment : Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         hideShimmerTransaction()
-                        transactionAdapter.submitList(resource.data?.listTransaction)
+                        transactionAdapter.submitList(resource.data)
                     }
                     Status.ERROR -> {
                         hideShimmerTransaction()

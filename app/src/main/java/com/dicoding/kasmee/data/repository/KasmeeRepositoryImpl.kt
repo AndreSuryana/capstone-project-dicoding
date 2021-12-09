@@ -35,6 +35,9 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun getUserInfo(): Resource<User> =
         remoteDataSource.getUserInfo()
 
+    override suspend fun logout(): Resource<Boolean> =
+        remoteDataSource.logout()
+
     override suspend fun getAllCash(): Resource<CashResponse> =
         remoteDataSource.getAllCash()
 
@@ -43,6 +46,9 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun getCashById(cashId: Int): Resource<Cash> =
         remoteDataSource.getCashById(cashId)
+
+    override suspend fun getLatestCash(): Resource<List<Cash>> =
+        remoteDataSource.getLatestCash()
 
     override suspend fun addCash(name: String, userId: Int, target: Long): Resource<Cash> =
         remoteDataSource.addCash(name, userId, target)
@@ -69,6 +75,9 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun getAllTransactionByCashId(cashId: Int): Resource<TransactionResponse> =
         remoteDataSource.getAllTransactionByCashId(cashId)
+
+    override suspend fun getLatestTransaction(): Resource<List<Transaction>> =
+        remoteDataSource.getLatestTransaction()
 
     override suspend fun addTransaction(
         cashId: Int,

@@ -32,6 +32,9 @@ interface ApiService {
     @GET("user")
     suspend fun getUserInfo(): Response<Wrapper<User>>
 
+    @POST("logout")
+    suspend fun logout(): Response<Wrapper<Boolean>>
+
     @GET("cash")
     suspend fun getAllCash(
         @Query("page") page: Int
@@ -41,6 +44,9 @@ interface ApiService {
     suspend fun getCashById(
         @Path("id") cashId: Int
     ): Response<Wrapper<List<Cash>>>
+
+    @GET("cash/latest")
+    suspend fun getLatestCash(): Response<Wrapper<List<Cash>>>
 
     @FormUrlEncoded
     @POST("cash")
@@ -77,6 +83,9 @@ interface ApiService {
 
     @GET("transaction/today")
     suspend fun getTodayTransaction(): Response<Wrapper<TransactionResponse>>
+
+    @GET("transaction/latest")
+    suspend fun getLatestTransaction(): Response<Wrapper<List<Transaction>>>
 
     @FormUrlEncoded
     @POST("transaction")

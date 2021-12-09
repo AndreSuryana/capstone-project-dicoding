@@ -58,6 +58,7 @@ class ProfileFragment : Fragment() {
             rvProfile.layoutManager = LinearLayoutManager(context)
 
             btnLogout.setOnClickListener {
+                viewModel.logout()
                 sessionManager.clearToken()
                 Intent(requireContext(), LoginActivity::class.java).also {
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

@@ -1,4 +1,4 @@
-package com.dicoding.kasmee.ui.main.detail.cash
+package com.dicoding.kasmee.ui.detail.cash
 
 import android.os.Bundle
 import android.view.View
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.ActivityDetailCashBinding
+import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.ui.main.home.TransactionAdapter
 import com.dicoding.kasmee.util.Event
 import com.dicoding.kasmee.util.Status
@@ -140,14 +141,8 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun onTransactionClicked(transaction: Transaction) {
-        // TODO : Get rid of the snackbar and create an intent of detail transaction
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                transaction.id.toString(),
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        val dialog = DetailTransactionFragment(transaction)
+        dialog.show(supportFragmentManager, DetailTransactionFragment::class.java.simpleName)
     }
 
     private fun initSwipeDeleteAction() {

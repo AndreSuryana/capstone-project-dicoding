@@ -1,9 +1,10 @@
-package com.dicoding.kasmee.ui.main.detail.cash
+package com.dicoding.kasmee.ui.detail.cash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
@@ -76,7 +77,7 @@ class DetailCashViewModel @Inject constructor(
         viewModelScope.launch {
             repository.deleteTransaction(transaction.id)
             _undoDelete.value = Event(transaction)
-//            _snackBarText.value = Event(R.string.transaction_deleted)
+            _snackBarText.value = Event(R.string.transaction_deleted)
         }
     }
 

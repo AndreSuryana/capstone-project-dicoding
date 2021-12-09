@@ -146,23 +146,32 @@
                 <include
                     android:id="@+id/item_cash_1"
                     layout="@layout/shimmer_item_cash"
-                    android:layout_width="0dp"
+                    android:layout_width="300dp"
                     android:layout_height="160dp"
-                    android:layout_marginVertical="62dp"
+                    android:layout_marginVertical="61dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="24dp"
-                    app:layout_constraintEnd_toStartOf="@+id/item_cash_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <include
                     android:id="@+id/item_cash_2"
                     layout="@layout/shimmer_item_cash"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="160dp"
-                    android:layout_marginVertical="62dp"
-                    android:layout_marginEnd="-200dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginVertical="61dp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintStart_toEndOf="@id/item_cash_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    android:id="@+id/item_cash_3"
+                    layout="@layout/shimmer_item_cash"
+                    android:layout_width="300dp"
+                    android:layout_height="160dp"
+                    android:layout_marginVertical="61dp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintStart_toEndOf="@id/item_cash_2"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -180,7 +189,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="71dp">
+                android:layout_marginTop="73dp">
 
                 <include
                     android:id="@+id/item_transaction_1"
@@ -198,7 +207,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_1" />
@@ -209,7 +218,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_2" />
@@ -220,7 +229,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_3" />
@@ -231,8 +240,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -464,7 +473,7 @@
                     android:overScrollMode="never"
                     android:paddingHorizontal="12dp"
                     android:paddingTop="10dp"
-                    android:paddingBottom="4dp"
+                    android:paddingBottom="220dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

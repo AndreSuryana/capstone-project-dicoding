@@ -1,7 +1,10 @@
 package com.dicoding.kasmee.data.model.response.transaction
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Transaction(
 
     @SerializedName("id")
@@ -31,4 +34,4 @@ data class Transaction(
     @SerializedName("keterangan")
     val description: String
 
-)
+) : Parcelable

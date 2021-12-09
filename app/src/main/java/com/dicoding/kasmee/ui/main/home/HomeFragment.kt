@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +25,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding
+
     private val viewModel: HomeViewModel by viewModels()
 
     private var firstVisit = false
@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        _binding = HomeFragmentBinding.bind(view)
 
         setTodayTransaction()
         setUserInfo()
@@ -78,21 +79,25 @@ class HomeFragment : Fragment() {
         showNoTodayTransaction()
     }
 
-    private fun setUserInfo(){
+    private fun setUserInfo() {
 
         lifecycleScope.launch {
             viewModel.getUserInfo()
             viewModel.user.observe(viewLifecycleOwner) { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        hideShimmerUser()
                         val userName = getString(R.string.home_greetings, resource.data?.name)
                         binding?.tvGreetings?.text = userName
                         binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
                     }
                     Status.ERROR -> {
+                        hideShimmerUser()
                         resource?.message?.let { showSnackBar(it) }
                     }
-                    Status.LOADING -> Any() // Do nothing
+                    Status.LOADING -> {
+                        showShimmerUser()
+                    }
                 }
             }
         }
@@ -115,18 +120,19 @@ class HomeFragment : Fragment() {
         viewModel.cash.observe(viewLifecycleOwner) { resource ->
             when (resource.status) {
                 Status.SUCCESS -> {
-                    hideProgressBar()
+                    hideShimmerCash()
                     hideNoCash()
                     resource?.data?.listCash?.let {
                         cashAdapter.submitList(it)
                     }
                 }
                 Status.ERROR -> {
+                    hideShimmerCash()
                     showNoCash()
                     resource?.message?.let { showSnackBar(it) }
                 }
                 Status.LOADING -> {
-                    showProgressBar()
+                    showShimmerCash()
                     showNoCash()
                 }
             }
@@ -154,15 +160,15 @@ class HomeFragment : Fragment() {
             viewModel.transaction.observe(viewLifecycleOwner) { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        hideProgressBar()
+                        hideShimmerTransaction()
                         transactionAdapter.submitList(resource.data?.listTransaction)
                     }
                     Status.ERROR -> {
-                        hideProgressBar()
+                        hideShimmerTransaction()
                         resource.message?.let { showSnackBar(it) }
                     }
                     Status.LOADING -> {
-                        showProgressBar()
+                        showShimmerTransaction()
                     }
                 }
             }
@@ -174,28 +180,58 @@ class HomeFragment : Fragment() {
         showSnackBar(transaction.id.toString())
     }
 
-    private fun showProgressBar() {
-        binding?.progressBar?.isVisible = true
+    private fun showShimmerUser() {
+        binding?.contentUser?.visibility = View.INVISIBLE
+        binding?.contentRecentTransaction?.visibility = View.INVISIBLE
+        binding?.shimmerUser?.startShimmer()
+        binding?.shimmerRecentTransaction?.startShimmer()
     }
 
-    private fun hideProgressBar() {
-        binding?.progressBar?.isVisible = false
+    private fun hideShimmerUser() {
+        binding?.shimmerUser?.visibility = View.INVISIBLE
+        binding?.shimmerRecentTransaction?.visibility = View.INVISIBLE
+        binding?.shimmerUser?.stopShimmer()
+        binding?.shimmerRecentTransaction?.stopShimmer()
+        binding?.contentUser?.visibility = View.VISIBLE
+        binding?.contentRecentTransaction?.visibility = View.VISIBLE
+    }
+
+    private fun showShimmerCash() {
+        binding?.contentCash?.visibility = View.INVISIBLE
+        binding?.shimmerCash?.startShimmer()
+    }
+
+    private fun hideShimmerCash() {
+        binding?.shimmerCash?.visibility = View.INVISIBLE
+        binding?.shimmerCash?.stopShimmer()
+        binding?.contentCash?.visibility = View.VISIBLE
+    }
+
+    private fun showShimmerTransaction() {
+        binding?.contentTransaction?.visibility = View.INVISIBLE
+        binding?.shimmerTransaction?.startShimmer()
+    }
+
+    private fun hideShimmerTransaction() {
+        binding?.shimmerTransaction?.visibility = View.INVISIBLE
+        binding?.shimmerTransaction?.stopShimmer()
+        binding?.contentTransaction?.visibility = View.VISIBLE
     }
 
     private fun showNoTodayTransaction() {
-        binding?.noTransaction?.isVisible = true
+        binding?.noTransaction?.visibility = View.VISIBLE
     }
 
     private fun hideNoTodayTransaction() {
-        binding?.noTransaction?.isVisible = false
+        binding?.noTransaction?.visibility = View.INVISIBLE
     }
 
     private fun showNoCash() {
-        binding?.noCash?.isVisible = true
+        binding?.noCash?.visibility = View.VISIBLE
     }
 
     private fun hideNoCash() {
-        binding?.noCash?.isVisible = false
+        binding?.noCash?.visibility = View.INVISIBLE
     }
 
     private fun showSnackBar(message: String) {

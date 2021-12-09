@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -81,13 +82,17 @@ class ProfileFragment : Fragment() {
             viewModel.user.observe(viewLifecycleOwner) { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        hideShimmer()
                         binding?.tvName?.text = resource.data?.name
                         binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
                     }
                     Status.ERROR -> {
+                        hideShimmer()
                         resource?.message?.let { showSnackBar(it) }
                     }
-                    Status.LOADING -> Any() // Do nothing
+                    Status.LOADING -> {
+                        showShimmer()
+                    }
                 }
             }
         }
@@ -121,5 +126,14 @@ class ProfileFragment : Fragment() {
                 Snackbar.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun showShimmer() {
+        binding?.shimmer?.startShimmer()
+    }
+
+    private fun hideShimmer() {
+        binding?.shimmer?.isVisible = false
+        binding?.shimmer?.stopShimmer()
     }
 }

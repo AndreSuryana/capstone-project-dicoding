@@ -28,11 +28,15 @@ interface KasmeeRepository {
 
     suspend fun getUserInfo(): Resource<User>
 
+    suspend fun logout(): Resource<Boolean>
+
     suspend fun getAllCash(): Resource<CashResponse>
 
     fun getAllCashPager(): LiveData<PagingData<Cash>>
 
     suspend fun getCashById(cashId: Int): Resource<Cash>
+
+    suspend fun getLatestCash(): Resource<List<Cash>>
 
     suspend fun addCash(
         name: String,
@@ -56,6 +60,8 @@ interface KasmeeRepository {
     fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
 
     suspend fun getTodayTransaction(): Resource<Transaction>
+
+    suspend fun getLatestTransaction(): Resource<List<Transaction>>
 
     suspend fun addTransaction(
         cashId: Int,

@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
             firstVisit = false
         else {
             // Refresh cash and transaction
+            setUserInfo()
             setCash()
             setTransaction()
         }
@@ -122,7 +123,7 @@ class HomeFragment : Fragment() {
                 Status.SUCCESS -> {
                     hideShimmerCash()
                     hideNoCash()
-                    resource?.data?.listCash?.let {
+                    resource?.data?.let {
                         cashAdapter.submitList(it)
                     }
                 }
@@ -161,7 +162,7 @@ class HomeFragment : Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         hideShimmerTransaction()
-                        transactionAdapter.submitList(resource.data?.listTransaction)
+                        transactionAdapter.submitList(resource.data)
                     }
                     Status.ERROR -> {
                         hideShimmerTransaction()
@@ -190,6 +191,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun showShimmerUser() {
+        binding?.shimmerUser?.visibility = View.VISIBLE
+        binding?.shimmerRecentTransaction?.visibility = View.VISIBLE
         binding?.contentUser?.visibility = View.INVISIBLE
         binding?.contentRecentTransaction?.visibility = View.INVISIBLE
         binding?.shimmerUser?.startShimmer()
@@ -206,6 +209,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showShimmerCash() {
+        binding?.shimmerCash?.visibility = View.VISIBLE
         binding?.contentCash?.visibility = View.INVISIBLE
         binding?.shimmerCash?.startShimmer()
     }
@@ -217,6 +221,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showShimmerTransaction() {
+        binding?.shimmerTransaction?.visibility = View.VISIBLE
         binding?.contentTransaction?.visibility = View.INVISIBLE
         binding?.shimmerTransaction?.startShimmer()
     }

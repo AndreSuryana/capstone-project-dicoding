@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.kasmee.data.model.response.auth.User
-import com.dicoding.kasmee.data.model.response.cash.CashResponse
-import com.dicoding.kasmee.data.model.response.transaction.TransactionResponse
+import com.dicoding.kasmee.data.model.response.cash.Cash
+import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.data.repository.KasmeeRepository
 import com.dicoding.kasmee.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,11 +21,11 @@ class HomeViewModel @Inject constructor(
     private var _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> = _user
 
-    private var _cash = MutableLiveData<Resource<CashResponse>>()
-    val cash: LiveData<Resource<CashResponse>> = _cash
+    private var _cash = MutableLiveData<Resource<List<Cash>>>()
+    val cash: LiveData<Resource<List<Cash>>> = _cash
 
-    private var _transaction = MutableLiveData<Resource<TransactionResponse>>()
-    val transaction: LiveData<Resource<TransactionResponse>> = _transaction
+    private var _transaction = MutableLiveData<Resource<List<Transaction>>>()
+    val transaction: LiveData<Resource<List<Transaction>>> = _transaction
 
     fun getUserInfo() {
         viewModelScope.launch {
@@ -45,9 +45,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _cash.value = Resource.loading()
 
-            val result = repository.getAllCash()
+            val result = repository.getLatestCash()
 
-            if (result.data?.listCash?.isEmpty() == true) {
+            if (result.data?.isEmpty() == true) {
                 _cash.value = Resource.error("Kamu belum memiliki buku kas!")
             } else {
                 _cash.value = Resource.success(result.data)
@@ -59,9 +59,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _transaction.value = Resource.loading()
 
-            val result = repository.getAllTransaction()
+            val result = repository.getLatestTransaction()
 
-            if (result.data?.listTransaction?.isEmpty() == true) {
+            if (result.data?.isEmpty() == true) {
                 _transaction.value = Resource.error("Kamu belum pernah menambah transaksi!")
             } else {
                 _transaction.value = Resource.success(result.data)

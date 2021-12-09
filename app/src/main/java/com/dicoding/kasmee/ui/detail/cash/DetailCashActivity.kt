@@ -86,6 +86,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     fun setCash() {
         viewModel.getCash()
         viewModel.cash.observe(this) { cash ->
+            hideShimmerCash()
             binding?.apply {
                 tvCashTitle.text = cash?.name
                 tvIncome.text = getString(
@@ -126,15 +127,15 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
             viewModel.transaction.observe(this@DetailCashActivity, { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        hideProgressBar()
+                        hideShimmerTransaction()
                         transactionAdapter.submitList(resource.data?.listTransaction)
                     }
                     Status.ERROR -> {
-                        hideProgressBar()
+                        hideShimmerTransaction()
                         resource.message?.let { showSnackBar(it) }
                     }
                     Status.LOADING -> {
-                        showProgressBar()
+                        showShimmerTransaction()
                     }
                 }
             })
@@ -192,6 +193,24 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun hideProgressBar() {
         binding?.progressBar?.isVisible = false
+    }
+
+    private fun showShimmerCash() {
+        binding?.shimmerCash?.startShimmer()
+    }
+
+    private fun hideShimmerCash() {
+        binding?.shimmerCash?.visibility = View.INVISIBLE
+        binding?.shimmerCash?.stopShimmer()
+    }
+
+    private fun showShimmerTransaction() {
+        binding?.shimmerTransaction?.startShimmer()
+    }
+
+    private fun hideShimmerTransaction() {
+        binding?.shimmerTransaction?.visibility = View.INVISIBLE
+        binding?.shimmerTransaction?.stopShimmer()
     }
 
     private fun showSnackBarDeleted(event: Event<Int>) {

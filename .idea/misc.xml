@@ -4,37 +4,46 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/drawable/ic_back.xml" value="0.35572916666666665" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/drawable/ic_not_found.xml" value="0.35025641025641024" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/drawable/rv_divider.xml" value="0.12685185185185185" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/drawable/shimmer_placeholder.xml" value="0.35572916666666665" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout-land/activity_detail_cash.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout-land/cash_fragment.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout-land/home_fragment.xml" value="0.42670157068062825" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout-land/profile_fragment.xml" value="0.5873873873873874" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout-land/transactions_fragment.xml" value="0.6580958999305073" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_detail_cash.xml" value="0.6342412451361867" />
         <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_login.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_main.xml" value="0.33958333333333335" />
         <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/home_fragment.xml" value="0.33958333333333335" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/activity_settings.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/cash_fragment.xml" value="0.33958333333333335" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/home_fragment.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/item_cash.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/item_cash_wide.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/item_profile.xml" value="0.41767068273092367" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/item_transaction.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/layout_error.xml" value="0.2" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/load_state.xml" value="0.25" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/profile_fragment.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/shimmer_home_fragment.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash_wide.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_transaction.xml" value="0.33" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/layout/transactions_fragment.xml" value="0.5" />
+        <entry key="..\:/Dev/Studi Independen/Capstone Project/Android/capstone-project-dicoding/app/src/main/res/xml/root_preferences.xml" value="0.28769017980636236" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/edit_text_background.xml" value="0.36944444444444446" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/ic_arrow_up.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/ic_kasmee_logo.xml" value="0.21875" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/rounded_rectangle.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/drawable/splash_screen.xml" value="0.33055555555555555" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout-land/activity_detail_cash.xml" value="0.1875" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout-land/activity_login.xml" value="0.471875" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_detail_cash.xml" value="0.33" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_detail_transaction.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_login.xml" value="0.32685185185185184" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_register.xml" value="0.326984126984127" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/cash_fragment.xml" value="0.3509259259259259" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/fragment_detail_transaction.xml" value="0.33" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/fragment_detail_transaction_dialog.xml" value="0.3625" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/cash_fragment.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/fragment_profile.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/home_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/home_fragment.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/item_cash.xml" value="0.3537037037037037" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/item_cash_wide.xml" value="0.3625" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/item_transaction.xml" value="0.3569230769230769" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/profile_fragment.xml" value="0.32407407407407407" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash.xml" value="0.3625" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_cash_wide.xml" value="0.3625" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/shimmer_item_transaction.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/layout/transactions_fragment.xml" value="0.3625" />
         <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/menu/bottom_nav_menu.xml" value="0.287962962962963" />
-        <entry key="..\:/Users/AndreSuryana/AndroidStudioProjects/capstone-project-dicoding/app/src/main/res/xml/root_preferences.xml" value="0.3625" />
       </map>
     </option>
   </component>

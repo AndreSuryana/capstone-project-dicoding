@@ -55,6 +55,7 @@
 
     <!-- Value -->
     <string name="rupiah_value">Rp %1$s</string>
+    <string name="rupiah_value_minus">-Rp %1$s</string>
     <string name="item_cash_title">Judul Kas</string>
     <string name="transaction_date">28/11/2021</string>
     <string name="item_transaction_title">Judul Transaksi</string>
@@ -103,5 +104,15 @@
     <!-- Snack Bar -->
     <string name="delete_cash_success">Buku kas berhasil dihapus</string>
     <string name="transaction_deleted">Transaksi berhasil dihapus</string>
+
+    <!-- Detail Transaction -->
+    <string name="detail_transaction_title">Detail Transaksi</string>
+    <string name="edit_button">Edit Button</string>
+    <string name="green_arrow_up">Green Arrow Up</string>
+    <string name="description_label">Keterangan</string>
+    <string name="dash">-</string>
+    <string name="close_button">Close Button</string>
+    <string name="btn_edit_text">Edit</string>
+    <string name="btn_delete_text">Delete</string>
 
 </resources>

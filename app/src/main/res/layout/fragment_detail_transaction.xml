@@ -9,7 +9,7 @@
     android:theme="@style/Theme.Kasmee">
 
     <TextView
-        android:id="@+id/tv_d"
+        android:id="@+id/tv_detail_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,9 +28,9 @@
         android:background="?selectableItemBackgroundBorderless"
         android:contentDescription="@string/close_button"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_d"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_d"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_title"
         app:tint="@color/grey" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/income_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_d" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_title" />
 
     <TextView
         android:id="@+id/tv_income"

@@ -115,7 +115,19 @@
     <string name="description_label">Keterangan</string>
     <string name="dash">-</string>
     <string name="close_button">Close Button</string>
-    <string name="btn_edit_text">Edit</string>
-    <string name="btn_delete_text">Delete</string>
+    <string name="btn_edit_text">Ubah</string>
+    <string name="btn_delete_text">Hapus</string>
+
+    <!-- Add Cash Activity -->
+    <string name="empty_cash_name">Nama buku kas tidak boleh kosong!</string>
+    <string name="zero_target_error">Target buku kas tidak bernilai nol!</string>
+    <string name="check_input_message">Mohon isi data buku kas dengan valid!</string>
+    <string name="add_cash_title">Tambah Buku Kas</string>
+    <string name="cash_name_label">Nama Buku Kas</string>
+    <string name="cash_target_label">Target Capaian</string>
+    <string name="cash_name_hint" tools:ignore="TypographyEllipsis">Isi nama buku kas...</string>
+    <string name="cash_target_hint" tools:ignore="TypographyEllipsis">Isi target capaian...</string>
+    <string name="btn_add_text">Tambah</string>
+    <string name="btn_cancel_text">Batal</string>
 
 </resources>

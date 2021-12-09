@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.CashFragmentBinding
+import com.dicoding.kasmee.ui.add.cash.AddCashFragment
 import com.dicoding.kasmee.util.KasmeeLoadStateAdapter
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,8 @@ class CashFragment : Fragment() {
 
     private val viewModel: CashViewModel by viewModels()
 
+    private var firstVisit = false
+
     private val cashPagingAdapter: CashPagingAdapter by lazy {
         CashPagingAdapter(::onCashClicked)
     }
@@ -36,6 +39,7 @@ class CashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        firstVisit = true
         _binding = CashFragmentBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -44,11 +48,27 @@ class CashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setCash()
+
+        // FAB Setup
+        binding?.fabAddCash?.setOnClickListener {
+            navigateToAddCashActivity()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (firstVisit)
+            firstVisit = false
+        else {
+            // Refresh cash list
+            cashPagingAdapter.refresh()
+        }
     }
 
     private fun setCash() {
@@ -94,6 +114,19 @@ class CashFragment : Fragment() {
             it.putExtra(DetailCashActivity.EXTRA_CASH_ID, cash.id)
             startActivity(it)
         }
+    }
+
+    private fun navigateToAddCashActivity() {
+        val dialog = AddCashFragment()
+        dialog.show(childFragmentManager, AddCashFragment::class.java.simpleName)
+        dialog.setOnCashAddedListener(object : AddCashFragment.OnCashAddedListener {
+            override fun onAdded(isAdded: Boolean) {
+                if (isAdded) {
+                    // Refresh list
+                    // TODO : Refresh list if any cash is deleted
+                }
+            }
+        })
     }
 
     private fun showShimmer() {

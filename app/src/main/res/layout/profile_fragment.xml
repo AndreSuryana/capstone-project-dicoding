@@ -31,6 +31,47 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/shimmer_profile_image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="40dp"
+                    android:elevation="2dp"
+                    android:src="@drawable/placeholder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shimmer_cash_title"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/shimmer"
+                    app:layout_constraintEnd_toEndOf="@+id/shimmer_profile_image"
+                    app:layout_constraintStart_toStartOf="@+id/shimmer_profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_image"
+                    app:srcCompat="@drawable/shimmer_placeholder"
+                    tools:ignore="ImageContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile_image"
             android:layout_width="140dp"
@@ -49,7 +90,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="@string/dummy_name"
             app:layout_constraintEnd_toEndOf="@+id/iv_profile_image"
             app:layout_constraintStart_toStartOf="@+id/iv_profile_image"
             app:layout_constraintTop_toBottomOf="@+id/iv_profile_image" />

@@ -96,7 +96,7 @@ class TransactionsFragment : Fragment() {
             override fun onDeleted(isDeleted: Boolean) {
                 if (isDeleted) {
                     // Refresh list
-                    setTransaction()
+                    transactionPagingAdapter.refresh()
                 }
             }
         })

@@ -21,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -124,6 +125,17 @@ class HomeFragment : Fragment() {
                     hideShimmerCash()
                     hideNoCash()
                     resource?.data?.let {
+//                        setWorker(requireContext())
+//                        val intent = Intent(requireContext(), TargetReminder::class.java)
+//                        val pendingIntent = PendingIntent.getBroadcast(requireContext(), 101, intent, PendingIntent.FLAG_IMMUTABLE)
+//                        val alarmManager = requireContext().getSystemService(ALARM_SERVICE) as AlarmManager
+//                        alarmManager.setRepeating(
+//                            AlarmManager.RTC_WAKEUP,
+//                            System.currentTimeMillis() + 1000,
+//                            AlarmManager.INTERVAL_DAY,
+//                            pendingIntent
+//                        )
+//                        setReminder()
                         cashAdapter.submitList(it)
                     }
                 }

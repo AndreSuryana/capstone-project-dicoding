@@ -123,7 +123,7 @@ class CashFragment : Fragment() {
             override fun onAdded(isAdded: Boolean) {
                 if (isAdded) {
                     // Refresh list
-                    // TODO : Refresh list if any cash is deleted
+                    cashPagingAdapter.refresh()
                 }
             }
         })

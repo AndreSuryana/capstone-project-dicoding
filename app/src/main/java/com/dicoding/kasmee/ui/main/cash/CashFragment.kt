@@ -51,7 +51,7 @@ class CashFragment : Fragment() {
 
         // FAB Setup
         binding?.fabAddCash?.setOnClickListener {
-            navigateToAddCashActivity()
+            showDialogAddCash()
         }
     }
 
@@ -116,7 +116,7 @@ class CashFragment : Fragment() {
         }
     }
 
-    private fun navigateToAddCashActivity() {
+    private fun showDialogAddCash() {
         val dialog = AddCashFragment()
         dialog.show(childFragmentManager, AddCashFragment::class.java.simpleName)
         dialog.setOnCashAddedListener(object : AddCashFragment.OnCashAddedListener {

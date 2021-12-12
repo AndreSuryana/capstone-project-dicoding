@@ -18,4 +18,8 @@
 
     <color name="divider">#D8D8D8</color>
     <color name="shimmer">#E7E7E7</color>
+
+    <color name="blue_pressed">#803291D6</color>
+    <color name="green_pressed">#80089A5B</color>
+    <color name="red_pressed">#80D63C32</color>
 </resources>

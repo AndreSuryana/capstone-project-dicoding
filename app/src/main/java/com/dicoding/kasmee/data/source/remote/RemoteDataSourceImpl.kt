@@ -109,7 +109,7 @@ class RemoteDataSourceImpl @Inject constructor(
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
-            Resource.success(result.data.first())
+            Resource.success(result.data.firstOrNull())
         } else {
             Resource.error(response.message())
         }
@@ -195,7 +195,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getTodayTransaction(): Resource<Transaction> {
         val response = apiService.getTodayTransaction()
         val result = response.body()
-        val transaction = result?.data?.listTransaction?.first()
+        val transaction = result?.data?.listTransaction?.firstOrNull()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
             Resource.success(transaction)

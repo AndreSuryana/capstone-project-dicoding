@@ -192,10 +192,10 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getTodayTransaction(): Resource<Transaction> {
-        val response = apiService.getTodayTransaction()
+    override suspend fun getTodayTransaction(day: String): Resource<Transaction> {
+        val response = apiService.getTodayTransaction(day)
         val result = response.body()
-        val transaction = result?.data?.listTransaction?.first()
+        val transaction = result?.data
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
             Resource.success(transaction)

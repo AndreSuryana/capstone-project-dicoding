@@ -81,8 +81,10 @@ interface ApiService {
         @Query("page") page: Int
     ): Response<Wrapper<TransactionResponse>>
 
-    @GET("transaction/today")
-    suspend fun getTodayTransaction(): Response<Wrapper<TransactionResponse>>
+    @GET("transaction/today/{day}")
+    suspend fun getTodayTransaction(
+        @Path("day") day: String
+    ): Response<Wrapper<Transaction>>
 
     @GET("transaction/latest")
     suspend fun getLatestTransaction(): Response<Wrapper<List<Transaction>>>

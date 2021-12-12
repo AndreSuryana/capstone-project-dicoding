@@ -59,7 +59,7 @@ interface KasmeeRepository {
 
     fun getAllTransactionPager(): LiveData<PagingData<Transaction>>
 
-    suspend fun getTodayTransaction(): Resource<Transaction>
+    suspend fun getTodayTransaction(day: String): Resource<Transaction>
 
     suspend fun getLatestTransaction(): Resource<List<Transaction>>
 

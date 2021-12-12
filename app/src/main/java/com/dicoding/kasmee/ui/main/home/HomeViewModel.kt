@@ -27,6 +27,9 @@ class HomeViewModel @Inject constructor(
     private var _transaction = MutableLiveData<Resource<List<Transaction>>>()
     val transaction: LiveData<Resource<List<Transaction>>> = _transaction
 
+    private var _todayTransaction = MutableLiveData<Resource<Transaction>>()
+    val todayTransaction: LiveData<Resource<Transaction>> = _todayTransaction
+
     fun getUserInfo() {
         viewModelScope.launch {
             _user.value = Resource.loading()
@@ -65,6 +68,20 @@ class HomeViewModel @Inject constructor(
                 _transaction.value = Resource.error("Kamu belum pernah menambah transaksi!")
             } else {
                 _transaction.value = Resource.success(result.data)
+            }
+        }
+    }
+
+    fun generateTodayTransaction(day: String) {
+        viewModelScope.launch {
+            _todayTransaction.value = Resource.loading()
+
+            val result = repository.getTodayTransaction(day)
+
+            if (result.data?.createdAt.isNullOrEmpty()) {
+                _todayTransaction.value = Resource.error("Kamu belum membuat transaksi hari ini!")
+            } else {
+                _todayTransaction.value = Resource.success(result.data)
             }
         }
     }

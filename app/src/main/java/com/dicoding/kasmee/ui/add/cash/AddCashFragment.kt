@@ -38,6 +38,7 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
         binding?.apply {
             btnCancel.setOnClickListener(this@AddCashFragment)
             btnAdd.setOnClickListener(this@AddCashFragment)
+            btnClose.setOnClickListener(this@AddCashFragment)
         }
 
         // Snackbar Observer
@@ -52,6 +53,9 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
             R.id.btn_add -> {
                 addCash()
                 onCashAddedListener?.onAdded(true)
+                dismiss()
+            }
+            R.id.btn_close -> {
                 dismiss()
             }
         }

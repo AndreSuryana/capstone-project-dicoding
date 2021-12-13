@@ -94,10 +94,10 @@ interface ApiService {
     suspend fun addTransaction(
         @Field("id_kas") cashId: Int,
         @Field("id_user") userId: Int,
-        @Field("pemasukan") pemasukan: Long,
-        @Field("pengeluaran") pengeluaran: Long,
-        @Field("keuntungan") keuntungan: Long,
-        @Field("keterangan") keterangan: String,
+        @Field("pemasukan") income: Long,
+        @Field("pengeluaran") outcome: Long,
+        @Field("keuntungan") profit: Long,
+        @Field("keterangan") description: String,
     ): Response<Wrapper<Transaction>>
 
     @FormUrlEncoded
@@ -106,10 +106,10 @@ interface ApiService {
         @Path("id") transactionId: Int,
         @Field("id_kas") cashId: Int,
         @Field("id_user") userId: Int,
-        @Field("pemasukan") pemasukan: Long,
-        @Field("pengeluaran") pengeluaran: Long,
-        @Field("keuntungan") keuntungan: Long,
-        @Field("keterangan") keterangan: String,
+        @Field("pemasukan") income: Long,
+        @Field("pengeluaran") outcome: Long,
+        @Field("keuntungan") profit: Long,
+        @Field("keterangan") descriptin: String,
     ): Response<Wrapper<Transaction>>
 
     @DELETE("transaction/{id}")

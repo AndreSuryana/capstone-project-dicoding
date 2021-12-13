@@ -132,5 +132,13 @@
     <string name="cash_target_hint" tools:ignore="TypographyEllipsis">Isi target capaian...</string>
     <string name="btn_add_text">Tambah</string>
     <string name="btn_cancel_text">Batal</string>
+    <string name="fab_action_text">Action</string>
+    <string name="edit_cash">Edit Buku Kas</string>
+    <string name="delete_cash">Hapus Buku Kas</string>
+    <string name="income_hint" tools:ignore="TypographyEllipsis">Isi pemasukan transaksi...</string>
+    <string name="outcome_hint" tools:ignore="TypographyEllipsis">Isi pengeluaran transaksi...</string>
+    <string name="description_hint" tools:ignore="TypographyEllipsis">Isi keterangan transaksi...</string>
+    <string name="income_is_zero">Pemasukan tidak boleh kosong!</string>
+    <string name="invalid_outcome">Nilai pengeluaran tidak valid!</string>
 
 </resources>

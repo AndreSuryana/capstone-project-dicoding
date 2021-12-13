@@ -33,17 +33,6 @@
             android:layout_gravity="center"
             android:text="@string/detail_cash_title" />
 
-        <ImageButton
-            android:id="@+id/btn_delete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="20dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:contentDescription="@string/delete_button"
-            android:src="@drawable/ic_trash_bin"
-            app:tint="@color/red" />
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.facebook.shimmer.ShimmerFrameLayout
@@ -52,7 +41,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -144,7 +134,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shimmer_cash">
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_cash"
+        tools:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -344,18 +335,48 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_transaction_label"
         tools:listitem="@layout/item_transaction" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_action_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
-        android:visibility="gone"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:fab_addButtonColorNormal="@color/blue"
+        app:fab_labelsPosition="left"
+        app:fab_labelStyle="@style/FabMenuLabelStyle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_transaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/blue"
+            app:fab_colorPressed="@color/blue_pressed"
+            app:fab_icon="@drawable/ic_add"
+            app:fab_size="mini"
+            app:fab_title="@string/add_transaction" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_edit_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/green"
+            app:fab_colorPressed="@color/green_pressed"
+            app:fab_icon="@drawable/ic_edit"
+            app:fab_size="mini"
+            app:fab_title="@string/edit_cash" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_delete_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/red"
+            app:fab_colorPressed="@color/red_pressed"
+            app:fab_icon="@drawable/ic_trash_bin"
+            app:fab_size="mini"
+            app:fab_title="@string/delete_cash" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

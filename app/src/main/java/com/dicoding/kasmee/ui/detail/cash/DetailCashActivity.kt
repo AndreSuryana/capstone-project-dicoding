@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.ActivityDetailCashBinding
+import com.dicoding.kasmee.ui.add.transaction.AddTransactionFragment
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.ui.main.home.TransactionAdapter
 import com.dicoding.kasmee.util.Event
@@ -30,6 +30,8 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     private val binding get() = _binding
     private val viewModel: DetailCashViewModel by viewModels()
 
+    private var cashId: Int = 0
+
     private val transactionAdapter: TransactionAdapter by lazy {
         TransactionAdapter(::onTransactionClicked, this)
     }
@@ -43,7 +45,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         initSwipeDeleteAction()
 
         // Get data from intent and set cash in view model
-        val cashId = intent.getIntExtra(EXTRA_CASH_ID, 0)
+        cashId = intent.getIntExtra(EXTRA_CASH_ID, 0)
         viewModel.setCashId(cashId)
 
         // Set content of cash
@@ -53,8 +55,10 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         setTransaction()
 
         // Delete and Back Button
-        binding?.btnDelete?.setOnClickListener(this)
         binding?.btnBack?.setOnClickListener(this)
+        binding?.btnAddTransaction?.setOnClickListener(this)
+        binding?.btnEditCash?.setOnClickListener(this)
+        binding?.btnDeleteCash?.setOnClickListener(this)
 
         // Observe snackbar if there is deleted transaction
         viewModel.snackBarText.observe(this, Observer(this::showSnackBarDeleted))
@@ -70,20 +74,50 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_back -> {
                 finish()
             }
-            R.id.btn_delete -> {
-                AlertDialog.Builder(this).apply {
-                    setMessage(getString(R.string.delete_cash_alert))
-                    setNegativeButton(getString(R.string.no), null)
-                    setPositiveButton(getString(R.string.yes)) { _, _ ->
-                        viewModel.deleteCash()
-                        finish()
-                    }
-                }.show()
+            R.id.btn_add_transaction -> {
+                showDialogAddTransaction()
+            }
+            R.id.btn_edit_cash -> {
+                editCash()
+            }
+            R.id.btn_delete_cash -> {
+                deleteCash()
             }
         }
     }
 
+    private fun showDialogAddTransaction() {
+        // TODO : Dialog Fragment is Working, but Data was not inserted to database
+        val dialog = AddTransactionFragment(cashId)
+        dialog.show(supportFragmentManager, AddTransactionFragment::class.java.simpleName)
+        dialog.setOnTransactionAddedListener(object : AddTransactionFragment.OnTransactionAddedListener {
+            override fun onAdded(isAdded: Boolean) {
+                if (isAdded) {
+                    // Refresh list
+                    setCash()
+                    setTransaction()
+                }
+            }
+        })
+    }
+
+    private fun editCash() {
+        // Dialog Fragment Edit Cash
+    }
+
+    private fun deleteCash() {
+        AlertDialog.Builder(this).apply {
+            setMessage(getString(R.string.delete_cash_alert))
+            setNegativeButton(getString(R.string.no), null)
+            setPositiveButton(getString(R.string.yes)) { _, _ ->
+                viewModel.deleteCash()
+                finish()
+            }
+        }.show()
+    }
+
     fun setCash() {
+        showShimmerCash()
         viewModel.getCash()
         viewModel.cash.observe(this) { cash ->
             hideShimmerCash()
@@ -185,14 +219,6 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         })
 
         itemTouchHelper.attachToRecyclerView(binding?.rvTransaction)
-    }
-
-    private fun showProgressBar() {
-        binding?.progressBar?.isVisible = true
-    }
-
-    private fun hideProgressBar() {
-        binding?.progressBar?.isVisible = false
     }
 
     private fun showShimmerCash() {

@@ -87,10 +87,14 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showDialogAddTransaction() {
-        // TODO : Dialog Fragment is Working, but Data was not inserted to database
-        val dialog = AddTransactionFragment(cashId)
+        val bundle = Bundle()
+        bundle.putInt(EXTRA_CASH_ID, cashId)
+
+        val dialog = AddTransactionFragment()
+        dialog.arguments = bundle
         dialog.show(supportFragmentManager, AddTransactionFragment::class.java.simpleName)
-        dialog.setOnTransactionAddedListener(object : AddTransactionFragment.OnTransactionAddedListener {
+        dialog.setOnTransactionAddedListener(object :
+            AddTransactionFragment.OnTransactionAddedListener {
             override fun onAdded(isAdded: Boolean) {
                 if (isAdded) {
                     // Refresh list

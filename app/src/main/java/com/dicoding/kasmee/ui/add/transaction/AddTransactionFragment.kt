@@ -1,7 +1,6 @@
 package com.dicoding.kasmee.ui.add.transaction
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.FragmentAddTransactionBinding
+import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddTransactionFragment(private val cashId: Int) : DialogFragment(), View.OnClickListener {
+class AddTransactionFragment : DialogFragment(), View.OnClickListener {
 
     private var _binding: FragmentAddTransactionBinding? = null
     private val binding get() = _binding
@@ -63,12 +63,12 @@ class AddTransactionFragment(private val cashId: Int) : DialogFragment(), View.O
 
     private fun addTransaction() {
         // Get value from edit text
-        val income = binding?.etIncome?.text.toString().toLong()
-        val outcome = binding?.etOutcome?.text.toString().toLong()
-        val description = binding?.etDescription?.text.toString()
+        val cashId = arguments?.getInt(DetailCashActivity.EXTRA_CASH_ID, 0)
+        val income = binding?.etIncome?.text?.trim().toString().toLong()
+        val outcome = binding?.etOutcome?.text?.trim().toString().toLong()
+        val description = binding?.etDescription?.text?.trim().toString()
 
-        Log.d("AddTransaction: ", "Triggered!")
-        viewModel.addTransaction(cashId, income, outcome, description)
+        cashId?.let { viewModel.addTransaction(it, income, outcome, description) }
     }
 
     fun setOnTransactionAddedListener(onTransactionAddedListener: OnTransactionAddedListener) {

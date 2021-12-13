@@ -85,7 +85,6 @@ class DetailCashViewModel @Inject constructor(
         viewModelScope.launch {
             repository.addTransaction(
                 transaction.cashId,
-                transaction.userId,
                 transaction.income,
                 transaction.outcome,
                 transaction.profit,

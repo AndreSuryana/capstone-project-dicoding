@@ -40,14 +40,12 @@ interface RemoteDataSource {
 
     suspend fun addCash(
         name: String,
-        userId: Int,
         target: Long
     ): Resource<Cash>
 
     suspend fun updateCash(
         cashId: Int,
         name: String,
-        userId: Int,
         target: Long
     ): Resource<Cash>
 
@@ -65,7 +63,6 @@ interface RemoteDataSource {
 
     suspend fun addTransaction(
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,
@@ -75,7 +72,6 @@ interface RemoteDataSource {
     suspend fun updateTransaction(
         transactionId: Int,
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,

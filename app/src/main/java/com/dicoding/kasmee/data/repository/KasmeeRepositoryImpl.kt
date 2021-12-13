@@ -50,16 +50,15 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun getLatestCash(): Resource<List<Cash>> =
         remoteDataSource.getLatestCash()
 
-    override suspend fun addCash(name: String, userId: Int, target: Long): Resource<Cash> =
-        remoteDataSource.addCash(name, userId, target)
+    override suspend fun addCash(name: String, target: Long): Resource<Cash> =
+        remoteDataSource.addCash(name, target)
 
     override suspend fun updateCash(
         cashId: Int,
         name: String,
-        userId: Int,
         target: Long
     ): Resource<Cash> =
-        remoteDataSource.updateCash(cashId, name, userId, target)
+        remoteDataSource.updateCash(cashId, name, target)
 
     override suspend fun deleteCash(cashId: Int): Resource<Cash> =
         remoteDataSource.deleteCash(cashId)
@@ -81,18 +80,16 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun addTransaction(
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,
         description: String
     ): Resource<Transaction> =
-        remoteDataSource.addTransaction(cashId, userId, income, outcome, profit, description)
+        remoteDataSource.addTransaction(cashId, income, outcome, profit, description)
 
     override suspend fun updateTransaction(
         transactionId: Int,
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,
@@ -101,7 +98,6 @@ class KasmeeRepositoryImpl @Inject constructor(
         remoteDataSource.updateTransaction(
             transactionId,
             cashId,
-            userId,
             income,
             outcome,
             profit,

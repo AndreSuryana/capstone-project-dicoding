@@ -25,13 +25,13 @@ data class Transaction(
     @SerializedName("keuntungan")
     val profit: Long,
 
+    @SerializedName("keterangan")
+    val description: String,
+
     @SerializedName("created_at")
     val createdAt: String,
 
     @SerializedName("updated_at")
     val updatedAt: String,
 
-    @SerializedName("keterangan")
-    val description: String
-
-) : Parcelable
+    ) : Parcelable

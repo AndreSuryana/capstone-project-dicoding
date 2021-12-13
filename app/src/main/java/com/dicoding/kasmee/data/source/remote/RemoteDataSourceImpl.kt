@@ -128,10 +128,9 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun addCash(
         name: String,
-        userId: Int,
         target: Long
     ): Resource<Cash> {
-        val response = apiService.addCash(name, userId, target)
+        val response = apiService.addCash(name, target)
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
@@ -144,10 +143,9 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun updateCash(
         cashId: Int,
         name: String,
-        userId: Int,
         target: Long
     ): Resource<Cash> {
-        val response = apiService.updateCash(cashId, name, userId, target)
+        val response = apiService.updateCash(cashId, name, target)
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
@@ -227,14 +225,13 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun addTransaction(
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,
         description: String
     ): Resource<Transaction> {
         val response =
-            apiService.addTransaction(cashId, userId, income, outcome, profit, description)
+            apiService.addTransaction(cashId, income, outcome, profit, description)
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {
@@ -247,7 +244,6 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun updateTransaction(
         transactionId: Int,
         cashId: Int,
-        userId: Int,
         income: Long,
         outcome: Long,
         profit: Long,
@@ -256,7 +252,7 @@ class RemoteDataSourceImpl @Inject constructor(
         val response = apiService.updateTransaction(
             transactionId,
             cashId,
-            userId,
+
             income,
             outcome,
             profit,

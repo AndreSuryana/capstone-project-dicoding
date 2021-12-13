@@ -52,7 +52,6 @@ interface ApiService {
     @POST("cash")
     suspend fun addCash(
         @Field("nama") name: String,
-        @Field("id_user") userId: Int,
         @Field("target") target: Long,
     ): Response<Wrapper<Cash>>
 
@@ -61,7 +60,6 @@ interface ApiService {
     suspend fun updateCash(
         @Path("id") cashId: Int,
         @Field("nama") name: String,
-        @Field("id_user") userId: Int,
         @Field("target") target: Long,
     ): Response<Wrapper<Cash>>
 
@@ -93,7 +91,6 @@ interface ApiService {
     @POST("transaction")
     suspend fun addTransaction(
         @Field("id_kas") cashId: Int,
-        @Field("id_user") userId: Int,
         @Field("pemasukan") income: Long,
         @Field("pengeluaran") outcome: Long,
         @Field("keuntungan") profit: Long,
@@ -105,7 +102,6 @@ interface ApiService {
     suspend fun updateTransaction(
         @Path("id") transactionId: Int,
         @Field("id_kas") cashId: Int,
-        @Field("id_user") userId: Int,
         @Field("pemasukan") income: Long,
         @Field("pengeluaran") outcome: Long,
         @Field("keuntungan") profit: Long,

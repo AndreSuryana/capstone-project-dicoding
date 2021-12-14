@@ -45,15 +45,14 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
 
         initSwipeDeleteAction()
 
-        // Get data from intent and set cash in view model
+        // Get cashId from intent
         cashId = intent.getIntExtra(EXTRA_CASH_ID, 0)
-        viewModel.setCashId(cashId)
 
         // Set content of cash
-        setCash()
+        setCash(cashId)
 
         // Get transaction item
-        setTransaction()
+        setTransaction(cashId)
 
         // Delete and Back Button
         binding?.btnBack?.setOnClickListener(this)
@@ -129,9 +128,9 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         }.show()
     }
 
-    fun setCash() {
+    fun setCash(cashId: Int) {
         showShimmerCash()
-        viewModel.getCash()
+        viewModel.getCash(cashId)
         viewModel.cash.observe(this) { cash ->
             hideShimmerCash()
             binding?.apply {
@@ -160,7 +159,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun setTransaction() {
+    fun setTransaction(cashId: Int) {
 
         // RecyclerView Setup
         binding?.rvTransaction?.apply {
@@ -170,7 +169,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
 
         // Observe List of Transaction
         lifecycleScope.launch {
-            viewModel.getTransaction()
+            viewModel.getTransaction(cashId)
             viewModel.transaction.observe(this@DetailCashActivity, { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
@@ -193,7 +192,8 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     private fun onTransactionClicked(transaction: Transaction) {
         val dialog = DetailTransactionFragment(transaction)
         dialog.show(supportFragmentManager, DetailTransactionFragment::class.java.simpleName)
-        dialog.setOnTransactionChangeListener(object : DetailTransactionFragment.OnTransactionChangeListener {
+        dialog.setOnTransactionChangeListener(object :
+            DetailTransactionFragment.OnTransactionChangeListener {
             override fun onChanged(isChanged: Boolean) {
                 if (isChanged) {
                     refreshActivity()
@@ -225,8 +225,8 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                 viewModel.deleteTransaction(transaction)
 
                 // Refresh cash content and list transaction
-                setCash()
-                setTransaction()
+                setCash(cashId)
+                setTransaction(cashId)
             }
         })
 
@@ -279,8 +279,8 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                     viewModel.undoDelete.value?.getDataIfNotHandled() as Transaction
                 )
                 // Refresh cash content and list transaction
-                setCash()
-                setTransaction()
+                setCash(cashId)
+                setTransaction(cashId)
             }.show()
         }
     }

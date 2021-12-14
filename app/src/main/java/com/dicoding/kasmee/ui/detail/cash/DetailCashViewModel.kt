@@ -20,8 +20,6 @@ class DetailCashViewModel @Inject constructor(
     private val repository: KasmeeRepository
 ) : ViewModel() {
 
-    private val _cashId = MutableLiveData<Int>()
-
     private var _cash = MutableLiveData<Cash>()
     val cash: LiveData<Cash> = _cash
 
@@ -34,33 +32,25 @@ class DetailCashViewModel @Inject constructor(
     private val _undoDelete = MutableLiveData<Event<Transaction>>()
     val undoDelete: LiveData<Event<Transaction>> = _undoDelete
 
-    fun setCashId(cashId: Int) {
-        _cashId.value = cashId
-    }
-
-    fun getCash() {
+    fun getCash(cashId: Int) {
         viewModelScope.launch {
-            val result = _cashId.value?.let { cashId ->
-                repository.getCashById(cashId)
-            }
-            result?.data.let { cash ->
+            val result = repository.getCashById(cashId)
+            result.data?.let { cash ->
                 _cash.value = cash
             }
         }
     }
 
-    fun getTransaction() {
+    fun getTransaction(cashId: Int) {
         viewModelScope.launch {
             _transaction.value = Resource.loading()
 
-            val result = _cashId.value?.let { cashId ->
-                repository.getAllTransactionByCashId(cashId)
-            }
+            val result = repository.getAllTransactionByCashId(cashId)
 
-            if (result?.data?.listTransaction?.isEmpty() == true) {
+            if (result.data?.listTransaction?.isEmpty() == true) {
                 _transaction.value = Resource.error("Kamu belum pernah menambah transaksi!")
             } else {
-                _transaction.value = Resource.success(result?.data)
+                _transaction.value = Resource.success(result.data)
             }
         }
     }

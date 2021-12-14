@@ -15,6 +15,7 @@ import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.ActivityDetailCashBinding
 import com.dicoding.kasmee.ui.add.transaction.AddTransactionFragment
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
+import com.dicoding.kasmee.ui.edit.cash.EditCashFragment
 import com.dicoding.kasmee.ui.main.home.TransactionAdapter
 import com.dicoding.kasmee.util.Event
 import com.dicoding.kasmee.util.Status
@@ -78,7 +79,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                 showDialogAddTransaction()
             }
             R.id.btn_edit_cash -> {
-                editCash()
+                showDialogEditCash()
             }
             R.id.btn_delete_cash -> {
                 deleteCash()
@@ -97,16 +98,24 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
             AddTransactionFragment.OnTransactionAddedListener {
             override fun onAdded(isAdded: Boolean) {
                 if (isAdded) {
-                    // Refresh list
-                    setCash()
-                    setTransaction()
+                    refreshActivity()
                 }
             }
         })
     }
 
-    private fun editCash() {
-        // Dialog Fragment Edit Cash
+    private fun showDialogEditCash() {
+        val bundle = Bundle()
+        bundle.putInt(EXTRA_CASH_ID, cashId)
+
+        val dialog = EditCashFragment()
+        dialog.arguments = bundle
+        dialog.show(supportFragmentManager, EditCashFragment::class.java.simpleName)
+        dialog.setOnCashChangedListener(object : EditCashFragment.OnCashChangedListener {
+            override fun onChanged(isChanged: Boolean) {
+                refreshActivity()
+            }
+        })
     }
 
     private fun deleteCash() {

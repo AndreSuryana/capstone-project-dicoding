@@ -152,5 +152,7 @@
     <!-- Edit Transaction -->
     <string name="edit_transaction">Ubah Transaksi</string>
     <string name="btn_save_text">Simpan</string>
+    <string name="please_fill_income">Mohon isi pemasukan</string>
+    <string name="please_fill_outcome">Mohon isi pengeluaran</string>
 
 </resources>

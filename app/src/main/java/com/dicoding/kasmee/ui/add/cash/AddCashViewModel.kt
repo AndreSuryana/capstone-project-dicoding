@@ -16,18 +16,18 @@ class AddCashViewModel @Inject constructor(
     private val repository: KasmeeRepository
 ) : ViewModel() {
 
-    private var _snackBarText = MutableLiveData<Event<Int>>()
-    val snackBarText: LiveData<Event<Int>> = _snackBarText
+    private var _toastText = MutableLiveData<Event<Int>>()
+    val toastText: LiveData<Event<Int>> = _toastText
 
     fun addCash(name: String, target: Long) {
         viewModelScope.launch {
             // Validate input data
             if (name.isEmpty() && target <= 0) { // When all the input is invalid
-                _snackBarText.value = Event(R.string.check_input_message)
+                _toastText.value = Event(R.string.check_input_message)
             } else if (name.isEmpty()) { // When just name is empty
-                _snackBarText.value = Event(R.string.empty_cash_name)
+                _toastText.value = Event(R.string.empty_cash_name)
             } else if (target <= 0) { // Target should not be minus or 0
-                _snackBarText.value = Event(R.string.zero_target_error)
+                _toastText.value = Event(R.string.zero_target_error)
             } else { // All the input is valid
                 repository.addCash(name, target)
             }

@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.FragmentAddCashBinding
 import com.dicoding.kasmee.util.Event
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,7 +42,7 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
         }
 
         // Snackbar Observer
-        viewModel.snackBarText.observe(this, Observer(this::showSnackBar))
+        viewModel.toastText.observe(this, Observer(this::showToast))
     }
 
     override fun onClick(v: View?) {
@@ -63,21 +63,19 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
 
     private fun addCash() {
         // Get value from edit text
-        val name = binding?.etName?.text.toString()
-        val target = binding?.etTarget?.text.toString().toLong()
+        val name = binding?.etName?.text?.trim().toString()
+        val target = binding?.etTarget?.text?.trim().toString()
 
-        viewModel.addCash(name, target)
+        when {
+            name.isEmpty() -> binding?.etName?.error = getString(R.string.empty_cash_name)
+            target.isEmpty() -> binding?.etTarget?.error = getString(R.string.zero_target_error)
+            else -> viewModel.addCash(name, target.toLong())
+        }
     }
 
-    private fun showSnackBar(eventMessage: Event<Int>) {
+    private fun showToast(eventMessage: Event<Int>) {
         val message = eventMessage.getDataIfNotHandled() ?: return
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                message,
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     fun setOnCashAddedListener(onCashAddedListener: OnCashAddedListener) {

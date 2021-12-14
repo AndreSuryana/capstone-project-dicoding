@@ -70,11 +70,16 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
     private fun addTransaction() {
         // Get value from edit text
         val cashId = arguments?.getInt(DetailCashActivity.EXTRA_CASH_ID, 0)
-        val income = binding?.etIncome?.text?.trim().toString().toLong()
-        val outcome = binding?.etOutcome?.text?.trim().toString().toLong()
-        val description = binding?.etDescription?.text?.trim().toString()
+        val income = binding?.etIncome?.text?.trim().toString()
+        val outcome = binding?.etOutcome?.text?.trim().toString()
+        var description = binding?.etDescription?.text?.trim().toString()
 
-        cashId?.let { viewModel.addTransaction(it, income, outcome, description) }
+        when {
+            income.isEmpty() -> binding?.etIncome?.error = getString(R.string.please_fill_income)
+            outcome.isEmpty() -> binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
+            description.isEmpty() -> description = getString(R.string.dash)
+            else -> cashId?.let { viewModel.addTransaction(it, income.toLong(), outcome.toLong(), description) }
+        }
     }
 
     fun setOnTransactionAddedListener(onTransactionAddedListener: OnTransactionAddedListener) {

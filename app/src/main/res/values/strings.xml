@@ -140,5 +140,7 @@
     <string name="description_hint" tools:ignore="TypographyEllipsis">Isi keterangan transaksi...</string>
     <string name="income_is_zero">Pemasukan tidak boleh kosong!</string>
     <string name="invalid_outcome">Nilai pengeluaran tidak valid!</string>
+    <string name="no_transaction_message">Transaksi masih kosong</string>
+    <string name="no_transaction_subtitle">Ayo buat buku kas pertama kamu terlebih dahulu!</string>
 
 </resources>

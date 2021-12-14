@@ -315,7 +315,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/container_recent_transaction"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="160dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp"
@@ -344,6 +344,23 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <include
+                            android:id="@+id/today_transaction"
+                            layout="@layout/item_transaction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginBottom="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.Group
+                            android:id="@+id/today_transaction_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:constraint_referenced_ids="today_transaction" />
+
                         <TextView
                             android:id="@+id/tv_no_transaction"
                             style="@style/Typography.GreyText.Small"
@@ -364,7 +381,8 @@
                             android:id="@+id/no_transaction"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:constraint_referenced_ids="tv_no_transaction" />
+                            app:constraint_referenced_ids="tv_no_transaction"
+                            tools:visibility="gone" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -412,15 +430,16 @@
 
                 <ImageView
                     android:id="@+id/iv_no_cash"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:contentDescription="@string/no_cash_image"
-                    android:src="@drawable/ic_empty"
+                    android:src="@drawable/ic_cash"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_cash"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/rv_cash"
-                    app:layout_constraintVertical_bias="0.4"
+                    app:layout_constraintVertical_bias="0.166"
                     app:tint="@color/green" />
 
                 <TextView
@@ -428,16 +447,28 @@
                     style="@style/Typography.GreenText.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="@string/no_cash_message"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_no_cash" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_cash"
+                    style="@style/Button.Blue"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/btn_add_text"
+                    android:textAppearance="@style/Typography.Button"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_no_cash"
+                    app:layout_constraintStart_toStartOf="@+id/tv_no_cash"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_no_cash" />
+
                 <androidx.constraintlayout.widget.Group
                     android:id="@+id/no_cash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:constraint_referenced_ids="iv_no_cash,tv_no_cash"
+                    app:constraint_referenced_ids="iv_no_cash,tv_no_cash, btn_add_cash"
                     tools:visibility="gone" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -479,6 +510,36 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:itemCount="5"
                     tools:listitem="@layout/item_transaction" />
+
+                <TextView
+                    android:id="@+id/tv_no_transaction_list_title"
+                    style="@style/Typography.GreenText.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:text="@string/no_transaction_message"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rv_transaction" />
+
+                <TextView
+                    android:id="@+id/tv_no_transaction_list_subtitle"
+                    style="@style/Typography.GreyText.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_transaction_subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_no_transaction_list_title" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/no_transaction_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="tv_no_transaction_list_title, tv_no_transaction_list_subtitle"
+                    tools:visibility="gone"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

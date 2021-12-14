@@ -79,6 +79,7 @@ class HomeFragment : Fragment() {
         else {
             // Refresh cash and transaction
             setUserInfo()
+            setTodayTransaction()
             setCash()
             setTransaction()
         }
@@ -250,6 +251,7 @@ class HomeFragment : Fragment() {
             override fun onDeleted(isDeleted: Boolean) {
                 if (isDeleted) {
                     // Refresh cash and transaction
+                    setTodayTransaction()
                     setCash()
                     setTransaction()
                 }
@@ -264,6 +266,7 @@ class HomeFragment : Fragment() {
             override fun onAdded(isAdded: Boolean) {
                 if (isAdded) {
                     // Refresh cash and transaction
+                    setTodayTransaction()
                     setCash()
                     setTransaction()
                 }

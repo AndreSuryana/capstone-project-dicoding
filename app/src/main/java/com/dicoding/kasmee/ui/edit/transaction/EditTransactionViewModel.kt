@@ -1,4 +1,4 @@
-package com.dicoding.kasmee.ui.add.transaction
+package com.dicoding.kasmee.ui.edit.transaction
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,14 +12,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddTransactionViewModel @Inject constructor(
+class EditTransactionViewModel @Inject constructor(
     private val repository: KasmeeRepository
-) : ViewModel() {
+): ViewModel() {
 
     private var _toastText = MutableLiveData<Event<Int>>()
     val toastText: LiveData<Event<Int>> = _toastText
 
-    fun addTransaction(cashId: Int, income: Long, outcome: Long, description: String) {
+    fun editTransaction(
+        transactionId: Int,
+        cashId: Int,
+        income: Long,
+        outcome: Long,
+        description: String
+    ) {
         viewModelScope.launch {
             // Validate input data
             when {
@@ -30,7 +36,8 @@ class AddTransactionViewModel @Inject constructor(
                     _toastText.value = Event(R.string.invalid_outcome)
                 }
                 else -> {
-                    repository.addTransaction(
+                    repository.updateTransaction(
+                        transactionId = transactionId,
                         cashId = cashId,
                         income = income,
                         outcome = outcome,

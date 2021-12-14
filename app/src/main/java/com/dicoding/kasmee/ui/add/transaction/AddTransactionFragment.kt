@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.FragmentAddTransactionBinding
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
+import com.dicoding.kasmee.util.Event
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +41,9 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
             btnAdd.setOnClickListener(this@AddTransactionFragment)
             btnClose.setOnClickListener(this@AddTransactionFragment)
         }
+
+        // Snackbar Text
+        viewModel.toastText.observe(viewLifecycleOwner, Observer(this::showToast))
     }
 
     override fun onDestroy() {
@@ -77,5 +83,10 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
 
     interface OnTransactionAddedListener {
         fun onAdded(isAdded: Boolean)
+    }
+
+    private fun showToast(eventMessage: Event<Int>) {
+        val message = eventMessage.getDataIfNotHandled() ?: return
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

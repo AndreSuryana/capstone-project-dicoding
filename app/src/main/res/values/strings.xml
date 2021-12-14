@@ -121,7 +121,7 @@
     <string name="btn_edit_text">Ubah</string>
     <string name="btn_delete_text">Hapus</string>
 
-    <!-- Add Cash Activity -->
+    <!-- Add Cash -->
     <string name="empty_cash_name">Nama buku kas tidak boleh kosong!</string>
     <string name="zero_target_error">Target buku kas tidak bernilai nol!</string>
     <string name="check_input_message">Mohon isi data buku kas dengan valid!</string>
@@ -132,15 +132,25 @@
     <string name="cash_target_hint" tools:ignore="TypographyEllipsis">Isi target capaian...</string>
     <string name="btn_add_text">Tambah</string>
     <string name="btn_cancel_text">Batal</string>
+
+    <!-- FAB Detail Cash -->
     <string name="fab_action_text">Action</string>
     <string name="edit_cash">Edit Buku Kas</string>
     <string name="delete_cash">Hapus Buku Kas</string>
+
+    <!-- Add Transaction -->
     <string name="income_hint" tools:ignore="TypographyEllipsis">Isi pemasukan transaksi...</string>
     <string name="outcome_hint" tools:ignore="TypographyEllipsis">Isi pengeluaran transaksi...</string>
     <string name="description_hint" tools:ignore="TypographyEllipsis">Isi keterangan transaksi...</string>
     <string name="income_is_zero">Pemasukan tidak boleh kosong!</string>
     <string name="invalid_outcome">Nilai pengeluaran tidak valid!</string>
+
+    <!-- Empty Message -->
     <string name="no_transaction_message">Transaksi masih kosong</string>
     <string name="no_transaction_subtitle">Ayo buat buku kas pertama kamu terlebih dahulu!</string>
+
+    <!-- Edit Transaction -->
+    <string name="edit_transaction">Ubah Transaksi</string>
+    <string name="btn_save_text">Simpan</string>
 
 </resources>

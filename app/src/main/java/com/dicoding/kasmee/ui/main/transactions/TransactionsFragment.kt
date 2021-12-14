@@ -92,9 +92,9 @@ class TransactionsFragment : Fragment() {
     private fun onTransactionClicked(transaction: Transaction) {
         val dialog = DetailTransactionFragment(transaction)
         dialog.show(childFragmentManager, DetailTransactionFragment::class.java.simpleName)
-        dialog.setOnTransactionDelted(object : DetailTransactionFragment.OnTransactionDeleted {
-            override fun onDeleted(isDeleted: Boolean) {
-                if (isDeleted) {
+        dialog.setOnTransactionChangeListener(object : DetailTransactionFragment.OnTransactionChangeListener {
+            override fun onChanged(isChanged: Boolean) {
+                if (isChanged) {
                     // Refresh list
                     transactionPagingAdapter.refresh()
                 }

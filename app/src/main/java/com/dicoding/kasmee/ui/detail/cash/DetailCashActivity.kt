@@ -166,11 +166,12 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         hideShimmerTransaction()
+                        hideNoTransaction()
                         transactionAdapter.submitList(resource.data?.listTransaction)
                     }
                     Status.ERROR -> {
                         hideShimmerTransaction()
-                        resource.message?.let { showSnackBar(it) }
+                        showNoTransaction()
                     }
                     Status.LOADING -> {
                         showShimmerTransaction()
@@ -183,12 +184,10 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     private fun onTransactionClicked(transaction: Transaction) {
         val dialog = DetailTransactionFragment(transaction)
         dialog.show(supportFragmentManager, DetailTransactionFragment::class.java.simpleName)
-        dialog.setOnTransactionDelted(object : DetailTransactionFragment.OnTransactionDeleted {
-            override fun onDeleted(isDeleted: Boolean) {
-                if (isDeleted) {
-                    // Refresh cash content and list transaction
-                    setCash()
-                    setTransaction()
+        dialog.setOnTransactionChangeListener(object : DetailTransactionFragment.OnTransactionChangeListener {
+            override fun onChanged(isChanged: Boolean) {
+                if (isChanged) {
+                    refreshActivity()
                 }
             }
         })
@@ -225,6 +224,14 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         itemTouchHelper.attachToRecyclerView(binding?.rvTransaction)
     }
 
+    private fun refreshActivity() {
+        overridePendingTransition(0, 0)
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+    }
+
     private fun showShimmerCash() {
         binding?.shimmerCash?.startShimmer()
     }
@@ -243,6 +250,14 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         binding?.shimmerTransaction?.stopShimmer()
     }
 
+    private fun showNoTransaction() {
+        binding?.noTransaction?.visibility = View.VISIBLE
+    }
+
+    private fun hideNoTransaction() {
+        binding?.noTransaction?.visibility = View.INVISIBLE
+    }
+
     private fun showSnackBarDeleted(event: Event<Int>) {
         val message = event.getDataIfNotHandled() ?: return
         binding?.root?.let {
@@ -258,16 +273,6 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                 setCash()
                 setTransaction()
             }.show()
-        }
-    }
-
-    private fun showSnackBar(message: String) {
-        binding?.root?.let {
-            Snackbar.make(
-                it,
-                message,
-                Snackbar.LENGTH_SHORT
-            ).show()
         }
     }
 

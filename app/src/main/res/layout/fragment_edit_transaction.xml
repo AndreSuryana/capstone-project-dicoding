@@ -9,13 +9,13 @@
     android:theme="@style/Theme.Kasmee">
 
     <TextView
-        android:id="@+id/tv_add_transaction_title"
+        android:id="@+id/tv_edit_transaction_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:text="@string/add_transaction"
+        android:text="@string/edit_transaction"
         app:layout_constraintEnd_toStartOf="@+id/btn_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,9 +28,9 @@
         android:background="?selectableItemBackgroundBorderless"
         android:contentDescription="@string/close_button"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_add_transaction_title"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_edit_transaction_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_add_transaction_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_edit_transaction_title"
         app:tint="@color/grey" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -40,8 +40,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/income_label"
         app:layout_constraintEnd_toEndOf="@+id/btn_close"
-        app:layout_constraintStart_toStartOf="@+id/tv_add_transaction_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_add_transaction_title" />
+        app:layout_constraintStart_toStartOf="@+id/tv_edit_transaction_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_transaction_title" />
 
     <EditText
         android:id="@+id/et_income"
@@ -114,13 +114,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_description_label" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_save"
         style="@style/Button.Green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/btn_add_text"
+        android:text="@string/btn_save_text"
         android:textAllCaps="false"
         app:icon="@drawable/ic_check_ok"
         app:iconSize="16dp"

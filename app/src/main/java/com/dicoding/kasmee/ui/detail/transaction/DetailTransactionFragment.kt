@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.FragmentDetailTransactionBinding
+import com.dicoding.kasmee.ui.edit.transaction.EditTransactionFragment
 import com.dicoding.kasmee.util.StringHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +23,7 @@ class DetailTransactionFragment(
     private val binding get() = _binding
     private val viewModel: DetailTransactionViewModel by viewModels()
 
-    private var onTransactionDeleted: OnTransactionDeleted? = null
+    private var onTransactionChangeListener: OnTransactionChangeListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,12 +72,12 @@ class DetailTransactionFragment(
         }
     }
 
-    fun setOnTransactionDelted(onTransactionDeleted: OnTransactionDeleted) {
-        this.onTransactionDeleted = onTransactionDeleted
+    fun setOnTransactionChangeListener(onTransactionChangeListener: OnTransactionChangeListener) {
+        this.onTransactionChangeListener = onTransactionChangeListener
     }
 
-    interface OnTransactionDeleted {
-        fun onDeleted(isDeleted: Boolean)
+    interface OnTransactionChangeListener {
+        fun onChanged(isChanged: Boolean)
     }
 
     override fun onClick(v: View?) {
@@ -86,11 +86,22 @@ class DetailTransactionFragment(
                 dismiss()
             }
             R.id.btn_edit -> {
-                Toast.makeText(context, "Button Edit Clicked!", Toast.LENGTH_SHORT).show()
+                val dialog = EditTransactionFragment(transaction)
+                dialog.show(childFragmentManager, EditTransactionFragment::class.java.simpleName)
+                dialog.setOnTransactionChangeListener(object :
+                    EditTransactionFragment.OnTransactionChangeListener {
+                    override fun onChanged(isChanged: Boolean) {
+                        if (isChanged) {
+                            // Close the dialog fragment
+                            onTransactionChangeListener?.onChanged(true)
+                            dismiss()
+                        }
+                    }
+                })
             }
             R.id.btn_delete -> {
                 viewModel.deleteTransaction()
-                onTransactionDeleted?.onDeleted(true)
+                onTransactionChangeListener?.onChanged(true)
                 dismiss()
             }
         }

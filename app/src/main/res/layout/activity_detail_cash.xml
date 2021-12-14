@@ -335,6 +335,36 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_transaction_label"
         tools:listitem="@layout/item_transaction" />
 
+    <ImageView
+        android:id="@+id/iv_no_transaction"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/no_transaction_image"
+        android:src="@drawable/ic_transactions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transaction_label"
+        app:tint="@color/green" />
+
+    <TextView
+        android:id="@+id/tv_no_transaction"
+        style="@style/Typography.GreenText.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/no_transaction_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_no_transaction" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/no_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="iv_no_transaction, tv_no_transaction"
+        tools:visibility="visible" />
+
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fab_action_menu"
         android:layout_width="wrap_content"
@@ -376,6 +406,7 @@
             app:fab_icon="@drawable/ic_trash_bin"
             app:fab_size="mini"
             app:fab_title="@string/delete_cash" />
+
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

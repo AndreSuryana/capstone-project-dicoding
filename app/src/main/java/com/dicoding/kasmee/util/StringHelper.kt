@@ -1,5 +1,8 @@
 package com.dicoding.kasmee.util
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 object StringHelper {
 
     fun formatIntoIDR(number: Long): String {
@@ -25,5 +28,18 @@ object StringHelper {
             stringResult = "100"
 
         return stringResult
+    }
+
+    fun dateFormat(date: String?): String? {
+        val inputPattern = Constants.DATE_PATTERN
+        val outputPattern = Constants.OUTPUT_DATE_PATTERN
+        val locale = Locale("in", "ID")
+
+        val inputFormat = SimpleDateFormat(inputPattern, locale)
+        val outputFormat = SimpleDateFormat(outputPattern, locale)
+
+        val inputDate = date?.let { inputFormat.parse(it) }
+
+        return inputDate?.let { outputFormat.format(it) }
     }
 }

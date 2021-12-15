@@ -14,9 +14,9 @@ import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ProfileFragmentBinding
 import com.dicoding.kasmee.ui.auth.login.LoginActivity
 import com.dicoding.kasmee.ui.main.setting.SettingsActivity
+import com.dicoding.kasmee.util.Ext.loadImage
 import com.dicoding.kasmee.util.SessionManager
 import com.dicoding.kasmee.util.Status
-import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

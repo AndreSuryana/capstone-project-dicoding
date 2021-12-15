@@ -18,6 +18,8 @@ import com.dicoding.kasmee.ui.add.cash.AddCashFragment
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.util.*
+import com.dicoding.kasmee.util.Ext.loadImage
+import com.dicoding.kasmee.util.StringHelper.dateFormat
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

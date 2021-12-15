@@ -225,8 +225,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
                 viewModel.deleteTransaction(transaction)
 
                 // Refresh cash content and list transaction
-                setCash(cashId)
-                setTransaction(cashId)
+                refreshActivity()
             }
         })
 

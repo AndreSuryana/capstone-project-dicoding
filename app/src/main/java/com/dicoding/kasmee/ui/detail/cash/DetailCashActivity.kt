@@ -24,6 +24,7 @@ import com.dicoding.kasmee.ui.notification.TargetWorker
 import com.dicoding.kasmee.util.*
 import com.dicoding.kasmee.util.Constants.EXTRA_CASH
 import com.dicoding.kasmee.util.Constants.TARGET_UNIQUE_WORK
+import com.dicoding.kasmee.util.SerializerHelper.serializeToJson
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

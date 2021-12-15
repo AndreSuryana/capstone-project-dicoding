@@ -8,7 +8,7 @@
     android:paddingBottom="24dp"
     android:theme="@style/Theme.Kasmee">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_detail_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_detail_title"
         app:tint="@color/grey" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_income_label"
         style="@style/Typography.GreyText.Medium"
         android:layout_width="0dp"
@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_title" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_income"
         style="@style/Typography.BlackText.Medium"
         android:layout_width="0dp"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_income_label"
         app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_arrow_up"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_income"
         app:tint="@color/green" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_outcome_label"
         style="@style/Typography.GreyText.Medium"
         android:layout_width="0dp"
@@ -80,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_outcome"
         style="@style/Typography.BlackText.Medium"
         android:layout_width="0dp"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_outcome_label"
         app:layout_constraintTop_toTopOf="@+id/tv_outcome_label" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_arrow_down"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -115,7 +115,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
         app:layout_constraintTop_toBottomOf="@id/tv_outcome_label" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_profit_label"
         style="@style/Typography.BlackText.Medium"
         android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
         app:layout_constraintStart_toStartOf="@+id/horizontal_line"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_profit"
         style="@style/Typography.GreenText.Large"
         android:layout_width="0dp"
@@ -139,7 +139,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_profit_label"
         app:layout_constraintTop_toTopOf="@+id/tv_profit_label" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_description_label"
         style="@style/Typography.BlackText.Medium"
         android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_profit_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_profit_label" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_description"
         style="@style/Typography.GreyText.Medium"
         android:layout_width="0dp"
@@ -169,6 +169,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/btn_edit_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_edit"
         app:iconSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -184,6 +185,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn_delete_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_trash_bin"
         app:iconSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_description"

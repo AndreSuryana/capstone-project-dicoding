@@ -6,10 +6,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.ActivityDetailCashBinding
@@ -17,12 +20,12 @@ import com.dicoding.kasmee.ui.add.transaction.AddTransactionFragment
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
 import com.dicoding.kasmee.ui.edit.cash.EditCashFragment
 import com.dicoding.kasmee.ui.main.home.TransactionAdapter
-import com.dicoding.kasmee.util.Event
-import com.dicoding.kasmee.util.Status
-import com.dicoding.kasmee.util.StringHelper
+import com.dicoding.kasmee.ui.notification.TargetWorker
+import com.dicoding.kasmee.util.*
+import com.dicoding.kasmee.util.Constants.EXTRA_CASH
+import com.dicoding.kasmee.util.Constants.TARGET_UNIQUE_WORK
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
@@ -98,6 +101,21 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
             override fun onAdded(isAdded: Boolean) {
                 if (isAdded) {
                     refreshActivity()
+                    viewModel.getCash(cashId)
+                    viewModel.cash.observe(this@DetailCashActivity) {
+                        // TODO : Notification does not appear when the target is met and must add 1 more transaction containing the number 1 to bring it up
+                        val cash = serializeToJson(it)
+                        val data = Data.Builder().putString(EXTRA_CASH, cash).build()
+                        val workRequest = OneTimeWorkRequest.Builder(TargetWorker::class.java)
+                            .setInputData(data)
+                            .build()
+
+                        WorkManager.getInstance(applicationContext).enqueueUniqueWork(
+                            TARGET_UNIQUE_WORK,
+                            ExistingWorkPolicy.REPLACE,
+                            workRequest
+                        )
+                    }
                 }
             }
         })
@@ -160,7 +178,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun setTransaction(cashId: Int) {
-
+        showShimmerTransaction()
         // RecyclerView Setup
         binding?.rvTransaction?.apply {
             layoutManager = LinearLayoutManager(context)
@@ -168,24 +186,22 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         // Observe List of Transaction
-        lifecycleScope.launch {
-            viewModel.getTransaction(cashId)
-            viewModel.transaction.observe(this@DetailCashActivity, { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        hideShimmerTransaction()
-                        hideNoTransaction()
-                        transactionAdapter.submitList(resource.data?.listTransaction)
-                    }
-                    Status.ERROR -> {
-                        hideShimmerTransaction()
-                        showNoTransaction()
-                    }
-                    Status.LOADING -> {
-                        showShimmerTransaction()
-                    }
+        viewModel.getTransaction(cashId)
+        viewModel.transaction.observe(this) { resource ->
+            when (resource.status) {
+                Status.SUCCESS -> {
+                    hideShimmerTransaction()
+                    hideNoTransaction()
+                    transactionAdapter.submitList(resource.data?.listTransaction)
                 }
-            })
+                Status.ERROR -> {
+                    hideShimmerTransaction()
+                    showNoTransaction()
+                }
+                Status.LOADING -> {
+                    showShimmerTransaction()
+                }
+            }
         }
     }
 
@@ -250,6 +266,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showShimmerTransaction() {
+        binding?.noTransaction?.visibility = View.INVISIBLE
         binding?.shimmerTransaction?.startShimmer()
     }
 
@@ -259,6 +276,7 @@ class DetailCashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showNoTransaction() {
+        binding?.rvTransaction?.visibility = View.INVISIBLE
         binding?.noTransaction?.visibility = View.VISIBLE
     }
 

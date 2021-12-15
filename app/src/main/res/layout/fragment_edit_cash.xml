@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_edit_cash_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit_cash_title" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_name"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_name"
         app:layout_constraintTop_toBottomOf="@id/et_name" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_target"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -92,6 +92,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn_save_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_check_ok"
         app:iconSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/et_target"
@@ -107,6 +108,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/btn_cancel_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_close"
         app:iconSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"

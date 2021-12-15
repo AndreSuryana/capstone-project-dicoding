@@ -88,11 +88,31 @@
     <string name="button_logout_text">Logout</string>
 
     <!-- Notification -->
-    <string name="pref_key_notify">key_notification</string>
+    <string name="pref_key_notify_daily_reminder">key_daily_reminder_notification</string>
+    <string name="pref_key_notify_target_reminder">key_target_reminder_notification</string>
+    <string name="pref_notify_daily_reminder_title">Pengingat harian transaksi</string>
+    <string name="pref_notify_target_reminder_title">Pengingat target terpenuhi</string>
     <string name="pref_notify_name">Notifikasi</string>
+
+    <string name="pref_notify_off">off</string>
+    <string name="pref_notify_five">17</string>
+    <string name="pref_notify_six">18</string>
+    <string name="pref_notify_seven">19</string>
+    <string name="pref_notify_eight">20</string>
+    <string name="pref_notify_nine">21</string>
+
+    <string name="notify_at_off">Tidak ada alarm</string>
+    <string name="notify_at_five">17:00</string>
+    <string name="notify_at_six">18:00</string>
+    <string name="notify_at_seven">19:00</string>
+    <string name="notify_at_eight">20:00</string>
+    <string name="notify_at_nine">21:00</string>
+
     <string name="notify_channel_name">Cash Reminder</string>
-    <string name="notify_title">Kamu belum menambahkan transaksi hari ini!</string>
-    <string name="notify_content">Jangan lupa untuk menambahkan transaksi ya!</string>
+    <string name="notify_daily_reminder_title">Kasmee</string>
+    <string name="notify_daily_reminder_content">Sudahkah kamu mencatat transaksi hari ini?</string>
+    <string name="notify_target_reminder_title">Target kas %1$s terpenuhi!</string>
+    <string name="notify_target_reminder_content">Teruslah mencatat!</string>
 
     <!-- Detail Cash Activity -->
     <string name="detail_cash_title">Detail Buku Kas</string>

@@ -21,6 +21,8 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
     private val binding get() = _binding
     private val viewModel: AddTransactionViewModel by viewModels()
 
+    private var cashId: Int? = null
+
     private var onTransactionAddedListener: OnTransactionAddedListener? = null
 
     override fun onCreateView(
@@ -68,8 +70,10 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
     }
 
     private fun addTransaction() {
+        // Get cashId from bundle
+        cashId = arguments?.getInt(DetailCashActivity.EXTRA_CASH_ID, 0)
+
         // Get value from edit text
-        val cashId = arguments?.getInt(DetailCashActivity.EXTRA_CASH_ID, 0)
         val income = binding?.etIncome?.text?.trim().toString()
         val outcome = binding?.etOutcome?.text?.trim().toString()
         var description = binding?.etDescription?.text?.trim().toString()
@@ -78,8 +82,20 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
             income.isEmpty() -> binding?.etIncome?.error = getString(R.string.please_fill_income)
             outcome.isEmpty() -> binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
             description.isEmpty() -> description = getString(R.string.dash)
-            else -> cashId?.let { viewModel.addTransaction(it, income.toLong(), outcome.toLong(), description) }
+            else -> cashId?.let {
+                viewModel.addTransaction(
+                    it,
+                    income.toLong(),
+                    outcome.toLong(),
+                    description
+                )
+            }
         }
+    }
+
+    private fun showToast(eventMessage: Event<Int>) {
+        val message = eventMessage.getDataIfNotHandled() ?: return
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     fun setOnTransactionAddedListener(onTransactionAddedListener: OnTransactionAddedListener) {
@@ -88,10 +104,5 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
 
     interface OnTransactionAddedListener {
         fun onAdded(isAdded: Boolean)
-    }
-
-    private fun showToast(eventMessage: Event<Int>) {
-        val message = eventMessage.getDataIfNotHandled() ?: return
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

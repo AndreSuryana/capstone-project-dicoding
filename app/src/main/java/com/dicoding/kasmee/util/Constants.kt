@@ -2,7 +2,7 @@ package com.dicoding.kasmee.util
 
 object Constants {
 
-    const val BASE_URL = "http://192.168.0.105:8000/api/"
+    const val BASE_URL = "http://192.168.0.101:8000/api/"
     const val USER_TOKEN = "user_token"
 
     // Paging
@@ -17,7 +17,16 @@ object Constants {
     const val ID_REPEATING = 101
 
     // Notification
-    const val NOTIFICATION_ID = 102
-    const val NOTIFICATION_CHANNEL_ID = "notify-target"
     const val NOTIFICATION_CHANNEL_NAME = "Kasmee"
+
+    const val NOTIFICATION_DAILY_REMINDER_ID = 102
+    const val NOTIFICATION_DAILY_REMINDER_CHANNEL_ID = "notify-daily"
+
+    const val NOTIFICATION_TARGET_ID = 103
+    const val NOTIFICATION_TARGET_CHANNEL_ID = "notify-target"
+
+    // Work Manager
+    const val EXTRA_CASH = "extra_cash"
+    const val DAILY_UNIQUE_WORK = "Daily Reminder"
+    const val TARGET_UNIQUE_WORK = "Target Reminder"
 }

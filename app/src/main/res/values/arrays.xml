@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notify_at">
+        <item>@string/notify_at_off</item>
+        <item>@string/notify_at_five</item>
+        <item>@string/notify_at_six</item>
+        <item>@string/notify_at_seven</item>
+        <item>@string/notify_at_eight</item>
+        <item>@string/notify_at_nine</item>
+    </string-array>
+    <string-array name="notify_at_value">
+        <item>@string/pref_notify_off</item>
+        <item>@string/pref_notify_five</item>
+        <item>@string/pref_notify_six</item>
+        <item>@string/pref_notify_seven</item>
+        <item>@string/pref_notify_eight</item>
+        <item>@string/pref_notify_nine</item>
+    </string-array>
+</resources>

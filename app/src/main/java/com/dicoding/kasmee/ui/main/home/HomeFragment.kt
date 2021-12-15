@@ -17,7 +17,11 @@ import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.ui.add.cash.AddCashFragment
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
-import com.dicoding.kasmee.util.*
+import com.dicoding.kasmee.util.Constants.DATE_PATTERN
+import com.dicoding.kasmee.util.Status
+import com.dicoding.kasmee.util.StringHelper
+import com.dicoding.kasmee.util.dateFormat
+import com.dicoding.kasmee.util.loadImage
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -66,11 +70,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     override fun onResume() {
         super.onResume()
 
@@ -85,10 +84,15 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun setTodayTransaction() {
         // Get today date
         val currentTime = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat(Constants.DATE_PATTERN, Locale.getDefault())
+        val dateFormat = SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
         val today = dateFormat.format(currentTime)
 
         // Observe view model
@@ -181,17 +185,6 @@ class HomeFragment : Fragment() {
                     hideShimmerCash()
                     hideNoCash()
                     resource?.data?.let {
-//                        setWorker(requireContext())
-//                        val intent = Intent(requireContext(), TargetReminder::class.java)
-//                        val pendingIntent = PendingIntent.getBroadcast(requireContext(), 101, intent, PendingIntent.FLAG_IMMUTABLE)
-//                        val alarmManager = requireContext().getSystemService(ALARM_SERVICE) as AlarmManager
-//                        alarmManager.setRepeating(
-//                            AlarmManager.RTC_WAKEUP,
-//                            System.currentTimeMillis() + 1000,
-//                            AlarmManager.INTERVAL_DAY,
-//                            pendingIntent
-//                        )
-//                        setReminder()
                         cashAdapter.submitList(it)
                     }
                 }

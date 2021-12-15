@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <SwitchPreference
-        app:iconSpaceReserved="false"
-        app:key="@string/pref_key_notify"
-        app:title="@string/pref_notify_name" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="@string/pref_notify_name"
+        app:iconSpaceReserved="false">
+        <ListPreference
+            android:id="@+id/daily_reminder"
+            app:defaultValue="@string/pref_notify_off"
+            app:entries="@array/notify_at"
+            app:entryValues="@array/notify_at_value"
+            app:iconSpaceReserved="false"
+            app:key="@string/pref_key_notify_daily_reminder"
+            app:title="@string/pref_notify_daily_reminder_title"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreference
+            android:id="@+id/target_reminder"
+            app:iconSpaceReserved="false"
+            app:key="@string/pref_key_notify_target_reminder"
+            app:title="@string/pref_notify_target_reminder_title" />
+    </PreferenceCategory>
 </PreferenceScreen>

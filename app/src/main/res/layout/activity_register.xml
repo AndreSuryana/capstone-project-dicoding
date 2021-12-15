@@ -29,7 +29,7 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
             style="@style/Typography.Hint"
             android:layout_marginStart="40dp"
@@ -80,7 +80,7 @@
             app:layout_constraintStart_toStartOf="@+id/et_name"
             app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             style="@style/Typography.Hint"
             android:layout_marginStart="40dp"
@@ -107,7 +107,7 @@
             app:layout_constraintStart_toStartOf="@+id/et_email"
             app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone"
             style="@style/Typography.Hint"
             android:layout_marginStart="40dp"
@@ -134,7 +134,7 @@
             app:layout_constraintStart_toStartOf="@+id/et_phone"
             app:layout_constraintTop_toBottomOf="@+id/et_phone" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             style="@style/Typography.Hint"
             android:layout_marginStart="40dp"
@@ -161,7 +161,7 @@
             app:layout_constraintStart_toStartOf="@+id/et_password"
             app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_repassword"
             style="@style/Typography.Hint"
             android:layout_marginStart="40dp"

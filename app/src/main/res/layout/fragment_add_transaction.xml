@@ -8,7 +8,7 @@
     android:paddingBottom="24dp"
     android:theme="@style/Theme.Kasmee">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_add_transaction_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_add_transaction_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_add_transaction_title" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_income"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_income"
         app:layout_constraintTop_toBottomOf="@id/et_income" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_outcome"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_outcome"
         app:layout_constraintTop_toBottomOf="@id/et_outcome" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_description"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -101,6 +101,7 @@
         android:autofillHints="none"
         android:background="@drawable/edit_text_background"
         android:elevation="4dp"
+        android:gravity="fill_horizontal"
         android:hint="@string/description_hint"
         android:inputType="textMultiLine"
         android:lines="3"
@@ -108,7 +109,6 @@
         android:minLines="3"
         android:padding="10dp"
         android:scrollbars="vertical"
-        android:gravity="fill_horizontal"
         app:layout_constraintEnd_toEndOf="@+id/tv_description_label"
         app:layout_constraintStart_toStartOf="@+id/tv_description_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_label" />
@@ -122,6 +122,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn_add_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_check_ok"
         app:iconSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/et_description"
@@ -137,6 +138,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/btn_cancel_text"
         android:textAllCaps="false"
+        android:textAppearance="@style/Typography.Button"
         app:icon="@drawable/ic_close"
         app:iconSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"

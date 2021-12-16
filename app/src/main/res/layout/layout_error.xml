@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/error"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowColor"
-    android:visibility="gone">
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <TextView
         android:id="@+id/tvFailed"
@@ -25,9 +27,9 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_retry"
         style="@style/Button.Gray"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="150dp"
         android:text="@string/retry"
         android:textAppearance="@style/Typography.Button"
         app:layout_constraintEnd_toEndOf="@+id/tvFailed"

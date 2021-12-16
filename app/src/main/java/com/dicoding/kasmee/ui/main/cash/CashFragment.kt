@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.data.model.response.cash.Cash
 import com.dicoding.kasmee.databinding.CashFragmentBinding
 import com.dicoding.kasmee.ui.add.cash.AddCashFragment
-import com.dicoding.kasmee.util.KasmeeLoadStateAdapter
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
+import com.dicoding.kasmee.util.KasmeeLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -26,7 +26,6 @@ class CashFragment : Fragment() {
 
     private var _binding: CashFragmentBinding? = null
     private val binding get() = _binding
-
     private val viewModel: CashViewModel by viewModels()
 
     private var firstVisit = false
@@ -98,8 +97,10 @@ class CashFragment : Fragment() {
                 else -> hideShimmer()
             }
 
-            binding?.layoutError?.error?.isVisible =
+            binding?.noCash?.isVisible =
                 loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached && cashPagingAdapter.itemCount < 1
+            binding?.layoutError?.error?.isVisible =
+                loadState.source.refresh is LoadState.Error && loadState.append.endOfPaginationReached && cashPagingAdapter.itemCount < 1
         }
 
         lifecycleScope.launch {
@@ -130,11 +131,16 @@ class CashFragment : Fragment() {
     }
 
     private fun showShimmer() {
-        binding?.shimmer?.startShimmer()
+        binding?.apply {
+            shimmer.startShimmer()
+            noCash.visibility = View.GONE
+        }
     }
 
     private fun hideShimmer() {
-        binding?.shimmer?.isVisible = false
-        binding?.shimmer?.stopShimmer()
+        binding?.apply {
+            shimmer.visibility = View.GONE
+            shimmer.stopShimmer()
+        }
     }
 }

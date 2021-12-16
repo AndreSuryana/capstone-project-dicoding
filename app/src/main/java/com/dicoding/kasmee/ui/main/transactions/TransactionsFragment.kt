@@ -24,7 +24,6 @@ class TransactionsFragment : Fragment() {
 
     private var _binding: TransactionsFragmentBinding? = null
     private val binding get() = _binding
-
     private val viewModel: TransactionsViewModel by viewModels()
 
     private val transactionPagingAdapter: TransactionPagingAdapter by lazy {
@@ -77,8 +76,10 @@ class TransactionsFragment : Fragment() {
                 else -> hideShimmer()
             }
 
-            binding?.layoutError?.error?.isVisible =
+            binding?.noTransactionList?.isVisible =
                 loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached && transactionPagingAdapter.itemCount < 1
+            binding?.layoutError?.error?.isVisible =
+                loadState.source.refresh is LoadState.Error && loadState.append.endOfPaginationReached && transactionPagingAdapter.itemCount < 1
         }
 
         // Observe

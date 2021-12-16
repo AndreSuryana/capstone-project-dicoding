@@ -152,6 +152,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_no_cash"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/no_cash_image"
+            android:src="@drawable/ic_cash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_no_cash"
+            style="@style/Typography.GreenText.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/no_cash_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_no_cash" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/no_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_no_cash,tv_no_cash"
+            tools:visibility="visible" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

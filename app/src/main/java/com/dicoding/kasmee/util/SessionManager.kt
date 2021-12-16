@@ -27,7 +27,12 @@ class SessionManager @Inject constructor(
     }
 
     fun fetchAuthToken(): String? {
-        return prefs.getString(USER_TOKEN, null)
+        return if (prefs.contains(USER_TOKEN)) {
+            prefs.getString(USER_TOKEN, null)
+        } else {
+            clearToken()
+            null
+        }
     }
 
     fun checkAuthToken(context: Context) {

@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
 
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding
-
     private val viewModel: LoginViewModel by viewModels()
 
     @Inject

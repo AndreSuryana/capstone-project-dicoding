@@ -21,7 +21,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private var _binding: ActivityRegisterBinding? = null
     private val binding get() = _binding
-
     private val viewModel: RegisterViewModel by viewModels()
 
     @Inject
@@ -39,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             btnBack.setOnClickListener {
-                onBackClicked()
+                finish()
             }
         }
     }
@@ -54,7 +53,8 @@ class RegisterActivity : AppCompatActivity() {
         _binding = null
     }
 
-    private fun onBackClicked() {
+    override fun onBackPressed() {
+        super.onBackPressed()
         finish()
     }
 

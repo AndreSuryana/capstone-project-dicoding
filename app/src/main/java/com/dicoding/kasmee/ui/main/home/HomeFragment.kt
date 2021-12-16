@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding
-
     private val viewModel: HomeViewModel by viewModels()
 
     private var firstVisit = false
@@ -89,6 +88,30 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    private fun setUserInfo() {
+
+        lifecycleScope.launch {
+            viewModel.getUserInfo()
+            viewModel.user.observe(viewLifecycleOwner) { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        hideShimmerUser()
+                        val userName = getString(R.string.home_greetings, resource.data?.name)
+                        binding?.tvGreetings?.text = userName
+                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
+                    }
+                    Status.ERROR -> {
+                        hideShimmerUser()
+                        resource?.message?.let { showSnackBar(it) }
+                    }
+                    Status.LOADING -> {
+                        showShimmerUser()
+                    }
+                }
+            }
+        }
+    }
+
     private fun setTodayTransaction() {
         // Get today date
         val currentTime = Calendar.getInstance().time
@@ -101,13 +124,15 @@ class HomeFragment : Fragment() {
             when (resource.status) {
                 Status.SUCCESS -> {
                     // Set today transaction content
+                    hideShimmerTodayTransaction()
                     resource.data?.let { setTodayTransactionContent(it) }
                 }
                 Status.ERROR -> {
+                    hideShimmerTodayTransaction()
                     hideTodayTransaction()
                 }
                 Status.LOADING -> {
-                    // TODO : Should show shimmer (currently no shimmer for this layout)
+                    showShimmerTodayTransaction()
                 }
             }
         }
@@ -141,30 +166,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUserInfo() {
-
-        lifecycleScope.launch {
-            viewModel.getUserInfo()
-            viewModel.user.observe(viewLifecycleOwner) { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        hideShimmerUser()
-                        val userName = getString(R.string.home_greetings, resource.data?.name)
-                        binding?.tvGreetings?.text = userName
-                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
-                    }
-                    Status.ERROR -> {
-                        hideShimmerUser()
-                        resource?.message?.let { showSnackBar(it) }
-                    }
-                    Status.LOADING -> {
-                        showShimmerUser()
-                    }
-                }
-            }
-        }
-    }
-
     private fun setCash() {
 
         // RecyclerView Setup
@@ -194,7 +195,7 @@ class HomeFragment : Fragment() {
                 }
                 Status.LOADING -> {
                     showShimmerCash()
-                    showNoCash()
+                    hideNoCash()
                 }
             }
         }
@@ -240,7 +241,8 @@ class HomeFragment : Fragment() {
     private fun onTransactionClicked(transaction: Transaction) {
         val dialog = DetailTransactionFragment(transaction)
         dialog.show(childFragmentManager, DetailTransactionFragment::class.java.simpleName)
-        dialog.setOnTransactionChangeListener(object : DetailTransactionFragment.OnTransactionChangeListener {
+        dialog.setOnTransactionChangeListener(object :
+            DetailTransactionFragment.OnTransactionChangeListener {
             override fun onChanged(isChanged: Boolean) {
                 if (isChanged) {
                     // Refresh cash and transaction
@@ -270,21 +272,31 @@ class HomeFragment : Fragment() {
     private fun showShimmerUser() {
         binding?.apply {
             shimmerUser.visibility = View.VISIBLE
-            shimmerRecentTransaction.visibility = View.VISIBLE
-            contentUser.visibility = View.INVISIBLE
-            contentRecentTransaction.visibility = View.INVISIBLE
             shimmerUser.startShimmer()
-            shimmerRecentTransaction.startShimmer()
+            contentUser.visibility = View.INVISIBLE
         }
     }
 
     private fun hideShimmerUser() {
         binding?.apply {
             shimmerUser.visibility = View.INVISIBLE
-            shimmerRecentTransaction.visibility = View.INVISIBLE
             shimmerUser.stopShimmer()
-            shimmerRecentTransaction.stopShimmer()
             contentUser.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showShimmerTodayTransaction() {
+        binding?.apply {
+            shimmerRecentTransaction.visibility = View.VISIBLE
+            shimmerRecentTransaction.startShimmer()
+            contentRecentTransaction.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun hideShimmerTodayTransaction() {
+        binding?.apply {
+            shimmerRecentTransaction.visibility = View.INVISIBLE
+            shimmerRecentTransaction.stopShimmer()
             contentRecentTransaction.visibility = View.VISIBLE
         }
     }
@@ -292,8 +304,8 @@ class HomeFragment : Fragment() {
     private fun showShimmerCash() {
         binding?.apply {
             shimmerCash.visibility = View.VISIBLE
-            contentCash.visibility = View.INVISIBLE
             shimmerCash.startShimmer()
+//            hideNoCash()
         }
     }
 
@@ -301,15 +313,14 @@ class HomeFragment : Fragment() {
         binding?.apply {
             shimmerCash.visibility = View.INVISIBLE
             shimmerCash.stopShimmer()
-            contentCash.visibility = View.VISIBLE
         }
     }
 
     private fun showShimmerTransaction() {
         binding?.apply {
             shimmerTransaction.visibility = View.VISIBLE
-            contentTransaction.visibility = View.INVISIBLE
             shimmerTransaction.startShimmer()
+            contentTransaction.visibility = View.INVISIBLE
         }
     }
 
@@ -325,23 +336,36 @@ class HomeFragment : Fragment() {
         binding?.apply {
             todayTransactionGroup.visibility = View.INVISIBLE
             noTransaction.visibility = View.VISIBLE
+            shimmerRecentTransaction.hideShimmer()
         }
     }
 
     private fun showNoCash() {
-        binding?.noCash?.visibility = View.VISIBLE
+        binding?.apply {
+            noCash.visibility = View.VISIBLE
+            rvCash.visibility = View.INVISIBLE
+        }
     }
 
     private fun hideNoCash() {
-        binding?.noCash?.visibility = View.INVISIBLE
+        binding?.apply {
+            noCash.visibility = View.INVISIBLE
+            rvCash.visibility = View.VISIBLE
+        }
     }
 
     private fun showNoTransaction() {
-        binding?.noTransactionList?.visibility = View.VISIBLE
+        binding?.apply {
+            noTransactionList.visibility = View.VISIBLE
+            rvTransaction.visibility = View.GONE
+        }
     }
 
     private fun hideNoTransaction() {
-        binding?.noTransactionList?.visibility = View.GONE
+        binding?.apply {
+            noTransactionList.visibility = View.GONE
+            rvTransaction.visibility = View.VISIBLE
+        }
     }
 
     private fun showSnackBar(message: String) {

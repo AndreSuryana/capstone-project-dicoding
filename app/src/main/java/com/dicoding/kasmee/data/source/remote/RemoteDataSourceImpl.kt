@@ -34,7 +34,7 @@ class RemoteDataSourceImpl @Inject constructor(
         if (response.isSuccessful && response.body()?.meta?.status == "success") {
             resultLogin.value = result.let { Resource.success(it) }
         } else {
-            resultLogin.value = Resource.error(response.message())
+            resultLogin.value = Resource.error("User tidak ditemukan")
         }
 
         return resultLogin

@@ -80,4 +80,10 @@ interface KasmeeRepository {
 
     suspend fun deleteTransaction(transactionId: Int): Resource<Transaction>
 
+    suspend fun updateprofile(
+        name: String,
+        email: String,
+        phoneNumber: String,
+        password: String
+    ): Resource<User>
 }

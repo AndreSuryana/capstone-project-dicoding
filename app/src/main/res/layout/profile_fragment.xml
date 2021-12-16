@@ -45,9 +45,9 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/shimmer_profile_image"
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="32dp"
                     android:elevation="2dp"
                     android:src="@drawable/placeholder"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -74,9 +74,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile_image"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
             android:elevation="2dp"
             android:src="@drawable/placeholder"
             app:layout_constraintEnd_toEndOf="parent"

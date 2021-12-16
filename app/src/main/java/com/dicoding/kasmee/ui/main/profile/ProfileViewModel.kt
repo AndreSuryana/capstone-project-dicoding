@@ -16,9 +16,6 @@ class ProfileViewModel @Inject constructor(
     private val repository: KasmeeRepository
 ) : ViewModel() {
 
-    private var _text = MutableLiveData("Profile")
-    val text: LiveData<String> = _text
-
     private var _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> = _user
 

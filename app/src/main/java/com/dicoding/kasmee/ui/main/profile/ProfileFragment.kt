@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ProfileFragmentBinding
 import com.dicoding.kasmee.ui.auth.login.LoginActivity
+import com.dicoding.kasmee.ui.edit.profile.EditProfileActivity
 import com.dicoding.kasmee.ui.main.setting.SettingsActivity
 import com.dicoding.kasmee.util.Ext.loadImage
 import com.dicoding.kasmee.util.SessionManager
@@ -30,6 +31,8 @@ class ProfileFragment : Fragment() {
 
     private val viewModel: ProfileViewModel by viewModels()
 
+    private var firstVisit = false
+
     private val menu = arrayListOf<String>()
 
     private val profileAdapter: ProfileAdapter by lazy {
@@ -43,6 +46,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        firstVisit = true
         _binding = ProfileFragmentBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -71,6 +75,17 @@ class ProfileFragment : Fragment() {
         setUserInfo()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (firstVisit)
+            firstVisit = false
+        else {
+            // Refresh profile
+            setUserInfo()
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -85,7 +100,7 @@ class ProfileFragment : Fragment() {
                     Status.SUCCESS -> {
                         hideShimmer()
                         binding?.tvName?.text = resource.data?.name
-                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
+                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoUrl)
                     }
                     Status.ERROR -> {
                         hideShimmer()
@@ -103,11 +118,9 @@ class ProfileFragment : Fragment() {
         view?.let {
             when (menu) {
                 getString(R.string.edit_profile) -> {
-                    Snackbar.make(
-                        it,
-                        getString(R.string.edit_profile),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    Intent(requireContext(), EditProfileActivity::class.java).also { intent ->
+                        startActivity(intent)
+                    }
                 }
                 getString(R.string.settings) -> {
                     Intent(requireContext(), SettingsActivity::class.java).also { intent ->

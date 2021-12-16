@@ -277,4 +277,20 @@ class RemoteDataSourceImpl @Inject constructor(
             Resource.error(response.message())
         }
     }
+
+    override suspend fun updateProfile(
+        name: String,
+        email: String,
+        phoneNumber: String,
+        password: String
+    ): Resource<User> {
+        val response = apiService.updateProfile(name, email, phoneNumber, password)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
 }

@@ -106,4 +106,12 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun deleteTransaction(transactionId: Int): Resource<Transaction> =
         remoteDataSource.deleteTransaction(transactionId)
+
+    override suspend fun updateprofile(
+        name: String,
+        email: String,
+        phoneNumber: String,
+        password: String
+    ): Resource<User> =
+        remoteDataSource.updateProfile(name, email, phoneNumber, password)
 }

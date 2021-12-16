@@ -80,4 +80,11 @@ interface RemoteDataSource {
 
     suspend fun deleteTransaction(transactionId: Int): Resource<Transaction>
 
+    suspend fun updateProfile(
+        name: String,
+        email: String,
+        phoneNumber: String,
+        password: String
+    ): Resource<User>
+
 }

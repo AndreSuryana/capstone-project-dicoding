@@ -112,4 +112,7 @@ interface ApiService {
     suspend fun deleteTransaction(
         @Path("id") transactionId: Int,
     ): Response<Wrapper<Transaction>>
+//
+//    @Multipart
+//    suspend fun uploadProfileImage(image: Files)
 }

@@ -11,7 +11,7 @@ import com.dicoding.kasmee.R
 import com.dicoding.kasmee.data.model.response.transaction.Transaction
 import com.dicoding.kasmee.databinding.ItemTransactionBinding
 import com.dicoding.kasmee.util.StringHelper
-import com.dicoding.kasmee.util.dateFormat
+import com.dicoding.kasmee.util.StringHelper.dateFormat
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 class TransactionPagingAdapter(

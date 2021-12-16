@@ -18,7 +18,7 @@ import com.dicoding.kasmee.util.Constants.EXTRA_CASH
 import com.dicoding.kasmee.util.Constants.NOTIFICATION_CHANNEL_NAME
 import com.dicoding.kasmee.util.Constants.NOTIFICATION_TARGET_CHANNEL_ID
 import com.dicoding.kasmee.util.Constants.NOTIFICATION_TARGET_ID
-import com.dicoding.kasmee.util.deserializeFromJson
+import com.dicoding.kasmee.util.SerializerHelper.deserializeFromJson
 
 class TargetWorker(
     context: Context,

@@ -31,7 +31,9 @@ class RemoteDataSourceImpl @Inject constructor(
         val response = apiService.login(email, password)
         val result = response.body()
 
-        if (response.isSuccessful && response.body()?.meta?.status == "success") {
+        if (response.body()?.data?.user?.roles != "ADMIN") {
+            resultLogin.value = Resource.error("User tidak ditemukan")
+        } else if (response.isSuccessful && response.body()?.meta?.status == "success") {
             resultLogin.value = result.let { Resource.success(it) }
         } else {
             resultLogin.value = Resource.error("User tidak ditemukan")
@@ -54,7 +56,7 @@ class RemoteDataSourceImpl @Inject constructor(
         if (response.isSuccessful && response.body()?.meta?.status == "success") {
             resultRegister.value = result.let { Resource.success(it) }
         } else {
-            resultRegister.value = Resource.error(response.message())
+            resultRegister.value = Resource.error("Data tidak valid")
         }
 
         return resultRegister

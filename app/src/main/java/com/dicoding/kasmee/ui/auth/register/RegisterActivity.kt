@@ -122,7 +122,7 @@ class RegisterActivity : AppCompatActivity() {
                 it,
                 message,
                 Snackbar.LENGTH_SHORT
-            )
+            ).show()
         }
     }
 }

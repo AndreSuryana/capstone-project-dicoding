@@ -17,11 +17,11 @@ import com.dicoding.kasmee.databinding.HomeFragmentBinding
 import com.dicoding.kasmee.ui.add.cash.AddCashFragment
 import com.dicoding.kasmee.ui.detail.cash.DetailCashActivity
 import com.dicoding.kasmee.ui.detail.transaction.DetailTransactionFragment
-import com.dicoding.kasmee.util.Ext.loadImage
-import com.dicoding.kasmee.util.StringHelper.dateFormat
 import com.dicoding.kasmee.util.Constants.DATE_PATTERN
+import com.dicoding.kasmee.util.Ext.loadImage
 import com.dicoding.kasmee.util.Status
 import com.dicoding.kasmee.util.StringHelper
+import com.dicoding.kasmee.util.StringHelper.dateFormat
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -98,7 +98,7 @@ class HomeFragment : Fragment() {
                         hideShimmerUser()
                         val userName = getString(R.string.home_greetings, resource.data?.name)
                         binding?.tvGreetings?.text = userName
-                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoPath)
+                        binding?.ivProfileImage?.loadImage(resource.data?.profilePhotoUrl)
                     }
                     Status.ERROR -> {
                         hideShimmerUser()

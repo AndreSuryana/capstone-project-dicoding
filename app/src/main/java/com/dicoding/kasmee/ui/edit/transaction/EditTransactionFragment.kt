@@ -22,6 +22,9 @@ class EditTransactionFragment(
 
     private var onTransactionChangeListener: OnTransactionChangeListener? = null
 
+    // Variable data validation
+    private var isValid: Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,8 +64,6 @@ class EditTransactionFragment(
             }
             R.id.btn_save -> {
                 editTransaction()
-                onTransactionChangeListener?.onChanged(true)
-                dismiss()
             }
             R.id.btn_close -> {
                 dismiss()
@@ -72,11 +73,38 @@ class EditTransactionFragment(
 
     private fun editTransaction() {
         // Get valu efrom edit text
-        val income = binding?.etIncome?.text?.trim().toString().toLong()
-        val outcome = binding?.etOutcome?.text?.trim().toString().toLong()
+        val income = binding?.etIncome?.text?.trim().toString()
+        val outcome = binding?.etOutcome?.text?.trim().toString()
         val description = binding?.etDescription?.text?.trim().toString()
 
-        viewModel.editTransaction(transaction.id, transaction.cashId, income, outcome, description)
+        isValid = true
+
+        when {
+            income.isEmpty() -> {
+                binding?.etIncome?.error = getString(R.string.please_fill_income)
+                isValid = false
+            }
+            outcome.isEmpty() -> {
+                binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
+                isValid = false
+            }
+            description.isEmpty() -> {
+                binding?.etDescription?.error = getString(R.string.please_fill_description)
+            }
+            else -> {
+                if (isValid) {
+                    viewModel.editTransaction(
+                        transaction.id,
+                        transaction.cashId,
+                        income.toLong(),
+                        outcome.toLong(),
+                        description
+                    )
+                    onTransactionChangeListener?.onChanged(true)
+                    dismiss()
+                }
+            }
+        }
     }
 
     fun setOnTransactionChangeListener(onTransactionChangeListener: OnTransactionChangeListener) {

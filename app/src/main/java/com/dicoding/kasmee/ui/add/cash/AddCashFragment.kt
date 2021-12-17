@@ -22,6 +22,9 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
 
     private var onCashAddedListener: OnCashAddedListener? = null
 
+    // Variable data validation
+    private var isValid: Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,8 +55,6 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
             }
             R.id.btn_add -> {
                 addCash()
-                onCashAddedListener?.onAdded(true)
-                dismiss()
             }
             R.id.btn_close -> {
                 dismiss()
@@ -66,10 +67,24 @@ class AddCashFragment : DialogFragment(), View.OnClickListener {
         val name = binding?.etName?.text?.trim().toString()
         val target = binding?.etTarget?.text?.trim().toString()
 
+        isValid = true
+
         when {
-            name.isEmpty() -> binding?.etName?.error = getString(R.string.empty_cash_name)
-            target.isEmpty() -> binding?.etTarget?.error = getString(R.string.zero_target_error)
-            else -> viewModel.addCash(name, target.toLong())
+            name.isEmpty() -> {
+                binding?.etName?.error = getString(R.string.empty_cash_name)
+                isValid = false
+            }
+            target.isEmpty() -> {
+                binding?.etTarget?.error = getString(R.string.zero_target_error)
+                isValid = false
+            }
+            else -> {
+                if(isValid) {
+                    viewModel.addCash(name, target.toLong())
+                    this.onCashAddedListener?.onAdded(true)
+                    dismiss()
+                }
+            }
         }
     }
 

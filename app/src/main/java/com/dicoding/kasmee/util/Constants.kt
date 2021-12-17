@@ -2,7 +2,8 @@ package com.dicoding.kasmee.util
 
 object Constants {
 
-    const val BASE_URL = "http://kasmee.herokuapp.com/api/"
+//    const val BASE_URL = "http://kasmee.herokuapp.com/api/"
+    const val BASE_URL = "http://192.168.1.2:8000/api/"
     const val USER_TOKEN = "user_token"
 
     // Paging
@@ -12,9 +13,6 @@ object Constants {
     // Time Format
     const val DATE_PATTERN = "yyyy-MM-dd"
     const val OUTPUT_DATE_PATTERN = "dd MMM yyyy"
-
-    // Alarm
-    const val ID_REPEATING = 101
 
     // Notification
     const val NOTIFICATION_CHANNEL_NAME = "Kasmee"

@@ -25,6 +25,9 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
 
     private var onTransactionAddedListener: OnTransactionAddedListener? = null
 
+    // Variable data validation
+    private var isValid: Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,8 +63,6 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
             }
             R.id.btn_add -> {
                 addTransaction()
-                onTransactionAddedListener?.onAdded(true)
-                dismiss()
             }
             R.id.btn_close -> {
                 dismiss()
@@ -76,19 +77,33 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
         // Get value from edit text
         val income = binding?.etIncome?.text?.trim().toString()
         val outcome = binding?.etOutcome?.text?.trim().toString()
-        var description = binding?.etDescription?.text?.trim().toString()
+        val description = binding?.etDescription?.text.toString()
+
+        isValid = true
 
         when {
-            income.isEmpty() -> binding?.etIncome?.error = getString(R.string.please_fill_income)
-            outcome.isEmpty() -> binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
-            description.isEmpty() -> description = getString(R.string.dash)
+            income.isEmpty() -> {
+                binding?.etIncome?.error = getString(R.string.please_fill_income)
+                isValid = false
+            }
+            outcome.isEmpty() -> {
+                binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
+                isValid = false
+            }
+            description.isEmpty() -> {
+                binding?.etDescription?.error = getString(R.string.please_fill_description)
+            }
             else -> cashId?.let {
-                viewModel.addTransaction(
-                    it,
-                    income.toLong(),
-                    outcome.toLong(),
-                    description
-                )
+                if (isValid) {
+                    viewModel.addTransaction(
+                        it,
+                        income.toLong(),
+                        outcome.toLong(),
+                        description
+                    )
+                    this.onTransactionAddedListener?.onAdded(true)
+                    dismiss()
+                }
             }
         }
     }

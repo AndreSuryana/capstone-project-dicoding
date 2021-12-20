@@ -18,7 +18,10 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private val binding get() = _binding
     private val viewModel: EditProfileViewModel by viewModels()
 
-    private var onProfileChangeListener: OnProfileChangeListener? = null
+//    private var onProfileChangeListener: OnProfileChangeListener? = null
+
+    // Variable data validation
+    private var isValid: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +51,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_save -> {
                 updateUserInfo()
-                onProfileChangeListener?.onChanged(true)
-                finish()
             }
         }
     }
@@ -68,16 +69,37 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         val name = binding?.etName?.text?.trim().toString()
         val email = binding?.etEmail?.text?.trim().toString()
         val phoneNumber = binding?.etPhone?.text?.trim().toString()
-        val password = binding?.etPassword?.text?.trim().toString()
 
-        viewModel.updateUserInfo(name, email, phoneNumber, password)
+        isValid = true
+
+        when {
+            name.isEmpty() -> {
+                binding?.etName?.error = getString(R.string.empty_profile_name)
+                isValid = false
+            }
+            email.isEmpty() -> {
+                binding?.etEmail?.error = getString(R.string.empty_profile_email)
+                isValid = false
+            }
+            phoneNumber.isEmpty() -> {
+                binding?.etPhone?.error = getString(R.string.empty_profile_phone)
+                isValid = false
+            }
+            else -> {
+                if (isValid) {
+                    viewModel.updateUserInfo(name, email, phoneNumber)
+//                    this.onProfileChangeListener?.onChanged(true)
+                    finish()
+                }
+            }
+        }
     }
 
-    fun setOnProfileChangeListener(onProfileChangeListener: OnProfileChangeListener) {
-        this.onProfileChangeListener = onProfileChangeListener
-    }
+//    fun setOnProfileChangeListener(onProfileChangeListener: OnProfileChangeListener) {
+//        this.onProfileChangeListener = onProfileChangeListener
+//    }
 
-    interface OnProfileChangeListener {
-        fun onChanged(isChanged: Boolean)
-    }
+//    interface OnProfileChangeListener {
+//        fun onChanged(isChanged: Boolean)
+//    }
 }

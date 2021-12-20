@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ProfileFragmentBinding
 import com.dicoding.kasmee.ui.auth.login.LoginActivity
+import com.dicoding.kasmee.ui.edit.password.ChangePasswordActivity
 import com.dicoding.kasmee.ui.edit.profile.EditProfileActivity
 import com.dicoding.kasmee.ui.main.setting.SettingsActivity
 import com.dicoding.kasmee.util.Ext.loadImage
@@ -55,6 +56,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         menu.add(getString(R.string.edit_profile))
+        menu.add(getString(R.string.change_password))
         menu.add(getString(R.string.settings))
 
         binding?.apply {
@@ -119,6 +121,11 @@ class ProfileFragment : Fragment() {
             when (menu) {
                 getString(R.string.edit_profile) -> {
                     Intent(requireContext(), EditProfileActivity::class.java).also { intent ->
+                        startActivity(intent)
+                    }
+                }
+                getString(R.string.change_password) -> {
+                    Intent(requireContext(), ChangePasswordActivity::class.java).also { intent ->
                         startActivity(intent)
                     }
                 }

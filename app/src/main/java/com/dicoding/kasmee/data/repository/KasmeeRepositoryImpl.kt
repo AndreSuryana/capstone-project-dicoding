@@ -110,8 +110,14 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun updateprofile(
         name: String,
         email: String,
-        phoneNumber: String,
-        password: String
+        phoneNumber: String
     ): Resource<User> =
-        remoteDataSource.updateProfile(name, email, phoneNumber, password)
+        remoteDataSource.updateProfile(name, email, phoneNumber)
+
+    override suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        confirmNewPassword: String
+    ): Resource<User> =
+        remoteDataSource.changePassword(oldPassword, newPassword, confirmNewPassword)
 }

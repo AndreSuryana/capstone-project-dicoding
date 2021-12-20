@@ -29,11 +29,10 @@ class EditProfileViewModel @Inject constructor(
     fun updateUserInfo(
         name: String,
         email: String,
-        phoneNumber: String,
-        password: String
+        phoneNumber: String
     ) {
         viewModelScope.launch {
-            repository.updateprofile(name, email, phoneNumber, password)
+            repository.updateprofile(name, email, phoneNumber)
         }
     }
 }

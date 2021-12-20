@@ -83,8 +83,12 @@ interface RemoteDataSource {
     suspend fun updateProfile(
         name: String,
         email: String,
-        phoneNumber: String,
-        password: String
+        phoneNumber: String
     ): Resource<User>
 
+    suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        confirmNewPassword: String
+    ): Resource<User>
 }

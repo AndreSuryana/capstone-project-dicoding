@@ -14,6 +14,9 @@
     <string name="label_name">Name</string>
     <string name="label_phone">Phone Number</string>
     <string name="label_repassword">Re-Password</string>
+    <string name="label_old_password">Old Password</string>
+    <string name="label_new_password">New Password</string>
+    <string name="label_re_new_password">Re-Enter New Password</string>
     <string name="label_or">or</string>
 
     <!-- Hint -->
@@ -22,6 +25,9 @@
     <string name="hint_name" tools:ignore="TypographyEllipsis">Enter your name...</string>
     <string name="hint_phone" tools:ignore="TypographyEllipsis">Enter your phone number...</string>
     <string name="hint_repassword" tools:ignore="TypographyEllipsis">Re-Enter your password...</string>
+    <string name="hint_old_password" tools:ignore="TypographyEllipsis">Enter your old password...</string>
+    <string name="hint_new_password" tools:ignore="TypographyEllipsis">Enter your new password...</string>
+    <string name="hint_re_new_password" tools:ignore="TypographyEllipsis">Re-Enter your new password...</string>
 
     <!-- Button -->
     <string name="login">Login</string>
@@ -42,6 +48,10 @@
     <string name="error_phone_number">Nomor telepon tidak boleh kosong</string>
     <string name="error_password">Password tidak boleh kosong</string>
     <string name="error_confirm_password">Konfirmasi password tidak boleh kosong</string>
+    <string name="empty_profile_name">Nama tidak boleh kosong!</string>
+    <string name="empty_profile_email">Email tidak boleh kosong!</string>
+    <string name="empty_profile_phone">Nomor telepon tidak boleh kosong!</string>
+    <string name="empty_field">Input tidak boleh kosong!</string>
 
     <!-- Label -->
     <string name="today_transaction_label">Transaksi Hari Ini</string>
@@ -78,6 +88,7 @@
 
     <!-- Profile Fragment -->
     <string name="edit_profile">Edit Profil</string>
+    <string name="change_password">Ganti Password</string>
     <string name="settings">Pengaturan</string>
     <string name="button_logout_text">Logout</string>
 

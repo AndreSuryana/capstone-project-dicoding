@@ -118,7 +118,14 @@ interface ApiService {
     suspend fun updateProfile(
         @Field("name") name: String,
         @Field("email") email: String,
-        @Field("phone_number") phoneNumber: String,
-        @Field("password") password: String
+        @Field("phone_number") phoneNumber: String
+    ): Response<Wrapper<User>>
+
+    @FormUrlEncoded
+    @POST("???")
+    suspend fun changePassword(
+        @Field("???") oldPassword: String,
+        @Field("???") newPassword: String,
+        @Field("???") confirmNewPassword: String
     ): Response<Wrapper<User>>
 }

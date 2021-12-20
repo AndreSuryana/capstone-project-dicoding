@@ -1,16 +1,127 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Kasmee" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Kasmee" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/green</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="KasmeeSplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <!-- Typography -->
+    <style name="Typography">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/nunito</item>
+    </style>
+
+    <style name="Typography.Label" parent="Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+    </style>
+
+    <style name="Typography.Hint" parent="Typography">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Typography.Button" parent="Typography">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Typography.Body1" parent="Typography">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Typography.BlackText" parent="Typography">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Typography.BlackText.Small" parent="Typography.BlackText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Typography.BlackText.Medium" parent="Typography.BlackText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Typography.BlackText.Large" parent="Typography.BlackText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Typography.GreyText">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="Typography.GreyText.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Typography.GreyText.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Typography.GreenText">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="Typography.GreenText.Medium" parent="Typography.GreenText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Typography.GreenText.Large" parent="Typography.GreenText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Typography.GreenText.ExtraLarge" parent="Typography.GreenText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Button -->
+    <style name="Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="Button.Green" parent="Button">
+        <item name="android:backgroundTint">@color/green</item>
+    </style>
+
+    <style name="Button.Blue" parent="Button">
+        <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="Button.Red" parent="Button">
+        <item name="android:backgroundTint">@color/red</item>
+    </style>
+
+    <style name="Button.Gray" parent="Button">
+        <item name="android:backgroundTint">@color/gray</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="FabMenuLabelStyle">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

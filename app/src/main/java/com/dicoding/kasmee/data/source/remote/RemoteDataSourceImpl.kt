@@ -31,7 +31,7 @@ class RemoteDataSourceImpl @Inject constructor(
         val response = apiService.login(email, password)
         val result = response.body()
 
-        if (response.body()?.data?.user?.roles != "ADMIN") {
+        if (response.body()?.data?.user?.roles == "ADMIN") {
             resultLogin.value = Resource.error("User tidak ditemukan")
         } else if (response.isSuccessful && response.body()?.meta?.status == "success") {
             resultLogin.value = result.let { Resource.success(it) }

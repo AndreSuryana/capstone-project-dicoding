@@ -63,23 +63,6 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="Typography.WhiteText" parent="Typography">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="Typography.WhiteText.Small" parent="Typography.WhiteText">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="Typography.WhiteText.Medium" parent="Typography.WhiteText">
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="Typography.WhiteText.Large" parent="Typography.WhiteText">
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <style name="Typography.GreyText">
         <item name="android:textColor">@color/grey</item>
     </style>
@@ -94,10 +77,6 @@
 
     <style name="Typography.GreenText">
         <item name="android:textColor">@color/green</item>
-    </style>
-
-    <style name="Typography.GreenText.Small" parent="Typography.GreenText">
-        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="Typography.GreenText.Medium" parent="Typography.GreenText">

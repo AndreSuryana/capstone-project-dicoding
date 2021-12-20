@@ -2,8 +2,7 @@ package com.dicoding.kasmee.util
 
 object Constants {
 
-//    const val BASE_URL = "http://kasmee.herokuapp.com/api/"
-    const val BASE_URL = "http://192.168.1.2:8000/api/"
+    const val BASE_URL = "http://kasmee.herokuapp.com/api/"
     const val USER_TOKEN = "user_token"
 
     // Paging

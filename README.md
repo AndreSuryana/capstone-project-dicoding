@@ -54,8 +54,6 @@ like to change.
 - [Floating Action Button](https://github.com/zendesk/android-floating-action-button)
 - [Circle Image View](https://github.com/hdodenhof/CircleImageView)
 
-*Coming soon*
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

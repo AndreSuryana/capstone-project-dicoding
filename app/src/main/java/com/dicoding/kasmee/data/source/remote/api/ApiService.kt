@@ -32,6 +32,23 @@ interface ApiService {
     @GET("user")
     suspend fun getUserInfo(): Response<Wrapper<User>>
 
+    @FormUrlEncoded
+    @PUT("user/{id}")
+    suspend fun updateProfile(
+        @Path("id") id: Int,
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("phone_number") phoneNumber: String
+    ): Response<Wrapper<User>>
+
+    @FormUrlEncoded
+    @POST("user/password")
+    suspend fun changePassword(
+        @Field("old_password") oldPassword: String,
+        @Field("password") newPassword: String,
+        @Field("confirm_password") confirmNewPassword: String
+    ): Response<Wrapper<User>>
+
     @POST("logout")
     suspend fun logout(): Response<Wrapper<Boolean>>
 
@@ -112,20 +129,4 @@ interface ApiService {
     suspend fun deleteTransaction(
         @Path("id") transactionId: Int,
     ): Response<Wrapper<Transaction>>
-
-    @FormUrlEncoded
-    @POST("user")
-    suspend fun updateProfile(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("phone_number") phoneNumber: String
-    ): Response<Wrapper<User>>
-
-    @FormUrlEncoded
-    @POST("???")
-    suspend fun changePassword(
-        @Field("???") oldPassword: String,
-        @Field("???") newPassword: String,
-        @Field("???") confirmNewPassword: String
-    ): Response<Wrapper<User>>
 }

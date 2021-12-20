@@ -28,6 +28,19 @@ interface RemoteDataSource {
 
     suspend fun getUserInfo(): Resource<User>
 
+    suspend fun updateProfile(
+        id: Int,
+        name: String,
+        email: String,
+        phoneNumber: String
+    ): Resource<User>
+
+    suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        confirmNewPassword: String
+    ): Resource<User>
+
     suspend fun logout(): Resource<Boolean>
 
     suspend fun getAllCash(): Resource<CashResponse>
@@ -79,16 +92,4 @@ interface RemoteDataSource {
     ): Resource<Transaction>
 
     suspend fun deleteTransaction(transactionId: Int): Resource<Transaction>
-
-    suspend fun updateProfile(
-        name: String,
-        email: String,
-        phoneNumber: String
-    ): Resource<User>
-
-    suspend fun changePassword(
-        oldPassword: String,
-        newPassword: String,
-        confirmNewPassword: String
-    ): Resource<User>
 }

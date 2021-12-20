@@ -1,9 +1,9 @@
 package com.dicoding.kasmee.ui.edit.password
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.kasmee.R
 import com.dicoding.kasmee.databinding.ActivityChangePasswordBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,19 +52,22 @@ class ChangePasswordActivity : AppCompatActivity(), View.OnClickListener {
         val newPassword = binding?.etNewPassword?.text?.trim().toString()
         val confirmNewPassword = binding?.etReNewPassword?.text?.trim().toString()
 
-        isValid = false
+        isValid = true
 
         when {
             oldPassword.isEmpty() -> {
                 binding?.etOldPassword?.error = getString(R.string.empty_field)
+                binding?.etOldPassword?.requestFocus()
                 isValid = false
             }
             newPassword.isEmpty() -> {
                 binding?.etNewPassword?.error = getString(R.string.empty_field)
+                binding?.etNewPassword?.requestFocus()
                 isValid = false
             }
             confirmNewPassword.isEmpty() -> {
                 binding?.etReNewPassword?.error = getString(R.string.empty_field)
+                binding?.etReNewPassword?.requestFocus()
                 isValid = false
             }
             else -> {

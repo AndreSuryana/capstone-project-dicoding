@@ -35,6 +35,21 @@ class KasmeeRepositoryImpl @Inject constructor(
     override suspend fun getUserInfo(): Resource<User> =
         remoteDataSource.getUserInfo()
 
+    override suspend fun updateProfile(
+        id: Int,
+        name: String,
+        email: String,
+        phoneNumber: String
+    ): Resource<User> =
+        remoteDataSource.updateProfile(id, name, email, phoneNumber)
+
+    override suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        confirmNewPassword: String
+    ): Resource<User> =
+        remoteDataSource.changePassword(oldPassword, newPassword, confirmNewPassword)
+
     override suspend fun logout(): Resource<Boolean> =
         remoteDataSource.logout()
 
@@ -106,18 +121,4 @@ class KasmeeRepositoryImpl @Inject constructor(
 
     override suspend fun deleteTransaction(transactionId: Int): Resource<Transaction> =
         remoteDataSource.deleteTransaction(transactionId)
-
-    override suspend fun updateprofile(
-        name: String,
-        email: String,
-        phoneNumber: String
-    ): Resource<User> =
-        remoteDataSource.updateProfile(name, email, phoneNumber)
-
-    override suspend fun changePassword(
-        oldPassword: String,
-        newPassword: String,
-        confirmNewPassword: String
-    ): Resource<User> =
-        remoteDataSource.changePassword(oldPassword, newPassword, confirmNewPassword)
 }

@@ -73,6 +73,37 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateProfile(
+        id: Int,
+        name: String,
+        email: String,
+        phoneNumber: String
+    ): Resource<User> {
+        val response = apiService.updateProfile(id, name, email, phoneNumber)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
+    override suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        confirmNewPassword: String
+    ): Resource<User> {
+        val response = apiService.changePassword(oldPassword, newPassword, confirmNewPassword)
+        val result = response.body()
+
+        return if (response.isSuccessful && result?.meta?.status == "success") {
+            Resource.success(result.data)
+        } else {
+            Resource.error(response.message())
+        }
+    }
+
     override suspend fun logout(): Resource<Boolean> {
         val response = apiService.logout()
         val result = response.body()
@@ -271,36 +302,6 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun deleteTransaction(transactionId: Int): Resource<Transaction> {
         val response = apiService.deleteTransaction(transactionId)
-        val result = response.body()
-
-        return if (response.isSuccessful && result?.meta?.status == "success") {
-            Resource.success(result.data)
-        } else {
-            Resource.error(response.message())
-        }
-    }
-
-    override suspend fun updateProfile(
-        name: String,
-        email: String,
-        phoneNumber: String
-    ): Resource<User> {
-        val response = apiService.updateProfile(name, email, phoneNumber)
-        val result = response.body()
-
-        return if (response.isSuccessful && result?.meta?.status == "success") {
-            Resource.success(result.data)
-        } else {
-            Resource.error(response.message())
-        }
-    }
-
-    override suspend fun changePassword(
-        oldPassword: String,
-        newPassword: String,
-        confirmNewPassword: String
-    ): Resource<User> {
-        val response = apiService.changePassword(oldPassword, newPassword, confirmNewPassword)
         val result = response.body()
 
         return if (response.isSuccessful && result?.meta?.status == "success") {

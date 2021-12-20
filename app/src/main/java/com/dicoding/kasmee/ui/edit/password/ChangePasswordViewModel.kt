@@ -12,8 +12,6 @@ class ChangePasswordViewModel @Inject constructor(
     private val repository: KasmeeRepository
 ): ViewModel() {
 
-    // TODO : Implement view model here!
-
     fun changePassword(
         oldPassword: String,
         newPassword: String,

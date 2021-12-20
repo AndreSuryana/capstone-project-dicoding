@@ -32,7 +32,7 @@ class EditProfileViewModel @Inject constructor(
         phoneNumber: String
     ) {
         viewModelScope.launch {
-            repository.updateprofile(name, email, phoneNumber)
+            _user.value?.id?.let { repository.updateProfile(it, name, email, phoneNumber) }
         }
     }
 }

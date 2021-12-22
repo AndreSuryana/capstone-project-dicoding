@@ -53,9 +53,9 @@
             style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/rupiah_value"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_profit"
+            android:text="@string/rupiah_value"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="@+id/tv_income_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
 
@@ -74,9 +74,9 @@
             style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/rupiah_value"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_target"
+            android:text="@string/rupiah_value"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label" />
 
@@ -85,9 +85,9 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@string/profit_label"
-            android:layout_marginStart="130dp"
-            app:layout_constraintStart_toEndOf="@+id/tv_income_label"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
 
         <TextView
@@ -112,15 +112,22 @@
 
         <TextView
             android:id="@+id/tv_target"
-            style="@style/Typography.GreenText.ExtraLarge"
+            style="@style/Typography.GreenText.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:text="@string/target_percentage"
             android:textStyle="bold"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_target_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_target_label" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="190dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,7 +23,7 @@ class AddTransactionViewModel @Inject constructor(
         viewModelScope.launch {
             // Validate input data
             when {
-                income <= 0 -> {
+                income < 0 -> {
                     _toastText.value = Event(R.string.income_is_zero)
                 }
                 outcome < 0 -> {

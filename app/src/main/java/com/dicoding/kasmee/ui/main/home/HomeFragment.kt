@@ -357,14 +357,15 @@ class HomeFragment : Fragment() {
     private fun showNoTransaction() {
         binding?.apply {
             noTransactionList.visibility = View.VISIBLE
-            rvTransaction.visibility = View.GONE
+            contentTransaction.visibility = View.GONE
+            shimmerTransaction.visibility = View.GONE
         }
     }
 
     private fun hideNoTransaction() {
         binding?.apply {
             noTransactionList.visibility = View.GONE
-            rvTransaction.visibility = View.VISIBLE
+            contentTransaction.visibility = View.VISIBLE
         }
     }
 

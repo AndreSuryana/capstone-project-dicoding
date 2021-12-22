@@ -82,14 +82,6 @@ class AddTransactionFragment : DialogFragment(), View.OnClickListener {
         isValid = true
 
         when {
-            income.isEmpty() -> {
-                binding?.etIncome?.error = getString(R.string.please_fill_income)
-                isValid = false
-            }
-            outcome.isEmpty() -> {
-                binding?.etOutcome?.error = getString(R.string.please_fill_outcome)
-                isValid = false
-            }
             description.isEmpty() -> {
                 binding?.etDescription?.error = getString(R.string.please_fill_description)
             }

@@ -49,7 +49,7 @@ class TransactionAdapter(
                     StringHelper.formatIntoIDR(transaction.outcome)
                 )
 
-                if (transaction.profit <= 0) {
+                if (transaction.profit < 0) {
                     tvProfit.text = itemView.resources.getString(
                         R.string.loss_text,
                         StringHelper.formatIntoIDR(transaction.profit)

@@ -67,8 +67,8 @@
     <string name="rupiah_value_minus">-Rp %1$s</string>
     <string name="item_cash_title">Judul Kas</string>
     <string name="transaction_date">28/11/2021</string>
-    <string name="profit_text">Keuntungan Rp %1$s</string>
-    <string name="loss_text">Kerugian Rp %1$s</string>
+    <string name="profit_text">Keuntungan \nRp %1$s</string>
+    <string name="loss_text">Kerugian \nRp %1$s</string>
     <string name="target_percentage">%1$s %%</string>
 
     <!-- Greetings -->
@@ -161,7 +161,7 @@
     <string name="income_hint" tools:ignore="TypographyEllipsis">Isi pemasukan transaksi...</string>
     <string name="outcome_hint" tools:ignore="TypographyEllipsis">Isi pengeluaran transaksi...</string>
     <string name="description_hint" tools:ignore="TypographyEllipsis">Isi keterangan transaksi...</string>
-    <string name="income_is_zero">Pemasukan tidak boleh kosong!</string>
+    <string name="income_is_zero">Pemasukan tidak boleh kurang dari nol!</string>
     <string name="invalid_outcome">Nilai pengeluaran tidak valid!</string>
 
     <!-- Empty Message -->
@@ -174,5 +174,6 @@
     <string name="please_fill_income">Mohon isi pemasukan</string>
     <string name="please_fill_outcome">Mohon isi pengeluaran</string>
     <string name="please_fill_description">Mohon isi keterangan</string>
+    <string name="_0">0</string>
 
 </resources>

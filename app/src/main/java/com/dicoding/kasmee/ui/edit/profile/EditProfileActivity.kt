@@ -3,6 +3,7 @@ package com.dicoding.kasmee.ui.edit.profile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.dicoding.kasmee.R
@@ -17,8 +18,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     private var _binding: ActivityEditProfileBinding? = null
     private val binding get() = _binding
     private val viewModel: EditProfileViewModel by viewModels()
-
-//    private var onProfileChangeListener: OnProfileChangeListener? = null
 
     // Variable data validation
     private var isValid: Boolean = true
@@ -88,18 +87,10 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
             else -> {
                 if (isValid) {
                     viewModel.updateUserInfo(name, email, phoneNumber)
-//                    this.onProfileChangeListener?.onChanged(true)
+                    Toast.makeText(applicationContext, getString(R.string.profile_change_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
         }
     }
-
-//    fun setOnProfileChangeListener(onProfileChangeListener: OnProfileChangeListener) {
-//        this.onProfileChangeListener = onProfileChangeListener
-//    }
-
-//    interface OnProfileChangeListener {
-//        fun onChanged(isChanged: Boolean)
-//    }
 }

@@ -176,4 +176,9 @@
     <string name="please_fill_description">Mohon isi keterangan</string>
     <string name="_0">0</string>
 
+    <!-- Profile and Password Change Message -->
+    <string name="profile_change_success">Profil telah berhasil diubah!</string>
+    <string name="password_change_sucess">Password telah berhasil diubah!</string>
+    <string name="password_cahnge_failed">Mohon maaf terjadi kesalahan!</string>
+
 </resources>

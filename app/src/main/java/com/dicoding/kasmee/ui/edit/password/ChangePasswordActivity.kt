@@ -2,6 +2,7 @@ package com.dicoding.kasmee.ui.edit.password
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.kasmee.R
@@ -27,6 +28,26 @@ class ChangePasswordActivity : AppCompatActivity(), View.OnClickListener {
         binding?.apply {
             btnBack.setOnClickListener(this@ChangePasswordActivity)
             btnSave.setOnClickListener(this@ChangePasswordActivity)
+        }
+
+        // Observe ViewModel
+        viewModel.isPasswordChanged.observe(this) { isPasswordChanged ->
+            when {
+                isPasswordChanged -> {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.password_change_sucess),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.password_cahnge_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 

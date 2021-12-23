@@ -20,4 +20,9 @@
     <color name="blue_pressed">#803291D6</color>
     <color name="green_pressed">#80089A5B</color>
     <color name="red_pressed">#80D63C32</color>
+
+    <color name="item_color_active">#089A5B</color>
+    <color name="item_color_inactive">#999999</color>
+
+    <color name="text_color_hint">#909090</color>
 </resources>

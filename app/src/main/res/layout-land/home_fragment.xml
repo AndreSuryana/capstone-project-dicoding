@@ -83,6 +83,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -138,16 +139,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shimmer_your_cash"
+                    android:layout_width="110dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/shimmer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/shimmer_placeholder" />
+
                 <include
                     android:id="@+id/item_cash_1"
                     layout="@layout/shimmer_item_cash"
                     android:layout_width="300dp"
                     android:layout_height="160dp"
-                    android:layout_marginVertical="40dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_your_cash" />
 
                 <include
                     android:id="@+id/item_cash_2"
@@ -155,8 +169,8 @@
                     android:layout_width="300dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_cash_1"
                     app:layout_constraintStart_toEndOf="@+id/item_cash_1"
-                    app:layout_constraintTop_toBottomOf="@+id/item_cash_1"
                     app:layout_constraintTop_toTopOf="@+id/item_cash_1" />
 
                 <include
@@ -165,8 +179,8 @@
                     android:layout_width="300dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_cash_1"
                     app:layout_constraintStart_toEndOf="@+id/item_cash_2"
-                    app:layout_constraintTop_toBottomOf="@+id/item_cash_1"
                     app:layout_constraintTop_toTopOf="@+id/item_cash_1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -183,8 +197,19 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="54dp">
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shimmer_your_transaction"
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/shimmer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/shimmer_placeholder" />
 
                 <include
                     android:id="@+id/item_transaction_1"
@@ -192,9 +217,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_your_transaction" />
 
                 <include
                     android:id="@+id/item_transaction_2"
@@ -202,7 +228,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_1" />
@@ -213,7 +239,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_2" />
@@ -224,7 +250,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_3" />
@@ -235,7 +261,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -315,6 +341,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"

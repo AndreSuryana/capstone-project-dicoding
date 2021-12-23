@@ -23,7 +23,10 @@
             android:layout_height="24dp"
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/back_to_login"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            app:tint="@color/grey"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/toolbar_title"

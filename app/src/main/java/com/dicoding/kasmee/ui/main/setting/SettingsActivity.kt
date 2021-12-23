@@ -14,7 +14,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         _binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setTheme(R.style.Theme_Kasmee)
+//        setTheme(R.style.Theme_Kasmee)
         setContentView(binding?.root)
 
         supportFragmentManager

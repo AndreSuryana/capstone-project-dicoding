@@ -305,7 +305,7 @@ class HomeFragment : Fragment() {
         binding?.apply {
             shimmerCash.visibility = View.VISIBLE
             shimmerCash.startShimmer()
-//            hideNoCash()
+            contentCash.visibility = View.INVISIBLE
         }
     }
 
@@ -313,6 +313,7 @@ class HomeFragment : Fragment() {
         binding?.apply {
             shimmerCash.visibility = View.INVISIBLE
             shimmerCash.stopShimmer()
+            contentCash.visibility = View.VISIBLE
         }
     }
 
@@ -326,7 +327,7 @@ class HomeFragment : Fragment() {
 
     private fun hideShimmerTransaction() {
         binding?.apply {
-            shimmerTransaction.visibility = View.INVISIBLE
+            shimmerTransaction.visibility = View.GONE
             shimmerTransaction.stopShimmer()
             contentTransaction.visibility = View.VISIBLE
         }

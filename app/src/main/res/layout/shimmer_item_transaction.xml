@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
@@ -19,7 +20,7 @@
             android:id="@+id/shimmer_transaction_date"
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/shimmer"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -31,7 +32,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shimmer_profit"
             android:layout_width="0dp"
-            android:layout_height="18dp"
+            android:layout_height="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/shimmer"
@@ -61,7 +62,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shimmer_income"
             android:layout_width="0dp"
-            android:layout_height="18dp"
+            android:layout_height="20dp"
             android:contentDescription="@string/shimmer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_income_label"
@@ -74,7 +75,7 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/outcome_label"
             android:textAlignment="textEnd"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -83,8 +84,8 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shimmer_outcome"
             android:layout_width="0dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="4dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="2dp"
             android:contentDescription="@string/shimmer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

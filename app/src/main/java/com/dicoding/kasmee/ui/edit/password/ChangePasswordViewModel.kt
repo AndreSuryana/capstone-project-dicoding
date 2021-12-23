@@ -26,8 +26,8 @@ class ChangePasswordViewModel @Inject constructor(
         confirmNewPassword: String
     ) {
         viewModelScope.launch {
-            val result = repository.changePassword(oldPassword, newPassword, confirmNewPassword)
             _isPasswordChanged.value = true
+            val result = repository.changePassword(oldPassword, newPassword, confirmNewPassword)
             _toastMessage.value = result.message.toString()
         }
     }

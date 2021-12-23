@@ -23,7 +23,8 @@
             android:layout_height="24dp"
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/back_to_login"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            app:tint="@color/grey" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/toolbar_title"
@@ -369,8 +370,8 @@
         android:id="@+id/fab_action_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:fab_addButtonColorNormal="@color/blue"
         app:fab_labelsPosition="left"
         app:fab_labelStyle="@style/FabMenuLabelStyle"
@@ -406,7 +407,6 @@
             app:fab_icon="@drawable/ic_trash_bin"
             app:fab_size="mini"
             app:fab_title="@string/delete_cash" />
-
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

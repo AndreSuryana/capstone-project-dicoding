@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:minWidth="350dp"
-    android:paddingBottom="24dp"
+    android:background="@drawable/rounded_dialog_fragment"
+    android:paddingBottom="16dp"
     android:theme="@style/Theme.Kasmee">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_edit_cash_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
@@ -54,6 +54,8 @@
         android:hint="@string/cash_name_hint"
         android:inputType="text"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_color_hint"
         app:layout_constraintEnd_toEndOf="@+id/tv_cash_name_label"
         app:layout_constraintStart_toStartOf="@+id/tv_cash_name_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_cash_name_label" />
@@ -79,6 +81,8 @@
         android:hint="@string/cash_target_hint"
         android:inputType="number"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_color_hint"
         app:layout_constraintEnd_toEndOf="@+id/tv_cash_target_label"
         app:layout_constraintStart_toStartOf="@+id/tv_cash_target_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_cash_target_label" />
@@ -121,6 +125,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="175dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

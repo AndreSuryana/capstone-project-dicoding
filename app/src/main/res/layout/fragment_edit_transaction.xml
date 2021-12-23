@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:minWidth="350dp"
-    android:paddingBottom="24dp"
+    android:background="@drawable/rounded_dialog_fragment"
+    android:paddingBottom="16dp"
     android:theme="@style/Theme.Kasmee">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_edit_transaction_title"
         style="@style/Typography.BlackText.Large"
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_edit_transaction_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit_transaction_title" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_income"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -54,6 +54,8 @@
         android:hint="@string/income_hint"
         android:inputType="number"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_color_hint"
         app:layout_constraintEnd_toEndOf="@+id/tv_income_label"
         app:layout_constraintStart_toStartOf="@+id/tv_income_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
@@ -68,7 +70,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_income"
         app:layout_constraintTop_toBottomOf="@id/et_income" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_outcome"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -79,6 +81,8 @@
         android:hint="@string/outcome_hint"
         android:inputType="number"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_color_hint"
         app:layout_constraintEnd_toEndOf="@+id/tv_outcome_label"
         app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label" />
@@ -93,7 +97,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_outcome"
         app:layout_constraintTop_toBottomOf="@id/et_outcome" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_description"
         style="@style/Typography.Hint"
         android:layout_width="0dp"
@@ -101,6 +105,7 @@
         android:autofillHints="none"
         android:background="@drawable/edit_text_background"
         android:elevation="4dp"
+        android:gravity="fill_horizontal"
         android:hint="@string/description_hint"
         android:inputType="textMultiLine"
         android:lines="3"
@@ -108,7 +113,8 @@
         android:minLines="3"
         android:padding="10dp"
         android:scrollbars="vertical"
-        android:gravity="fill_horizontal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_color_hint"
         app:layout_constraintEnd_toEndOf="@+id/tv_description_label"
         app:layout_constraintStart_toStartOf="@+id/tv_description_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_label" />
@@ -149,6 +155,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="175dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

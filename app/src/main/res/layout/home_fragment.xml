@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/shimmer_greetings"
                     android:layout_width="0dp"
-                    android:layout_height="26dp"
+                    android:layout_height="24dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
                     android:contentDescription="@string/shimmer"
@@ -56,9 +56,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
                     android:text="@string/home_sub_greetings"
-                    app:layout_constraintBottom_toBottomOf="@+id/shimmer_profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/shimmer_profile_image" />
+                    app:layout_constraintStart_toEndOf="@+id/shimmer_profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_greetings" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shimmer_user"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -135,33 +136,46 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shimmer_recent_transaction"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shimmer_your_cash"
+                    android:layout_width="110dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/shimmer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/shimmer_placeholder" />
 
                 <include
                     android:id="@+id/item_cash_1"
                     layout="@layout/shimmer_item_cash"
                     android:layout_width="0dp"
                     android:layout_height="160dp"
-                    android:layout_marginVertical="62dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/item_cash_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_your_cash" />
 
                 <include
                     android:id="@+id/item_cash_2"
                     layout="@layout/shimmer_item_cash"
                     android:layout_width="wrap_content"
                     android:layout_height="160dp"
-                    android:layout_marginVertical="62dp"
                     android:layout_marginEnd="-200dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_cash_1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/item_cash_1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -174,12 +188,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shimmer_cash"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="71dp">
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shimmer_your_transaction"
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/shimmer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/shimmer_placeholder" />
 
                 <include
                     android:id="@+id/item_transaction_1"
@@ -187,9 +212,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="14dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_your_transaction" />
 
                 <include
                     android:id="@+id/item_transaction_2"
@@ -219,7 +245,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_transaction_3" />
@@ -310,6 +336,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -380,24 +407,24 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_cash_label"
-                style="@style/Typography.BlackText.Medium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="@string/home_cash_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/content_recent_transaction" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/content_cash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_cash_label">
+                app:layout_constraintTop_toBottomOf="@+id/content_recent_transaction">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_cash_label"
+                    style="@style/Typography.BlackText.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="@string/home_cash_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_cash"
@@ -412,7 +439,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cash_label"
                     tools:ignore="RtlSymmetry"
                     tools:itemCount="5"
                     tools:listitem="@layout/item_cash" />

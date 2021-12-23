@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginBottom="8dp"
     android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
@@ -17,7 +18,7 @@
 
         <TextView
             android:id="@+id/tv_transaction_date"
-            style="@style/Typography.BlackText.Small"
+            style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -39,7 +40,7 @@
 
         <TextView
             android:id="@+id/tv_income"
-            style="@style/Typography.BlackText.Small"
+            style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rupiah_value"
@@ -61,7 +62,7 @@
 
         <TextView
             android:id="@+id/tv_outcome"
-            style="@style/Typography.BlackText.Small"
+            style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rupiah_value"

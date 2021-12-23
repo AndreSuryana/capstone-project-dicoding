@@ -6,8 +6,9 @@
     android:layout_gravity="center"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="10dp"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="8dp">
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,8 +20,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/item_cash_title"
             app:layout_constraintEnd_toStartOf="@+id/iv_cash_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,20 +31,20 @@
             android:id="@+id/iv_cash_icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
             android:contentDescription="@string/cash_icon_image"
             android:src="@drawable/ic_cash"
-            android:layout_marginEnd="16dp"
-            app:tint="@color/green"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_cash_title" />
+            app:layout_constraintTop_toTopOf="@+id/tv_cash_title"
+            app:tint="@color/green" />
 
         <TextView
             android:id="@+id/tv_income_label"
             style="@style/Typography.GreyText.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/income_label"
             android:layout_marginTop="10dp"
+            android:text="@string/income_label"
             app:layout_constraintStart_toStartOf="@+id/tv_cash_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_cash_title" />
 
@@ -52,8 +53,8 @@
             style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/rupiah_value"
             android:layout_marginEnd="8dp"
+            android:text="@string/rupiah_value"
             app:layout_constraintEnd_toStartOf="@+id/tv_profit"
             app:layout_constraintStart_toStartOf="@+id/tv_income_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_income_label" />
@@ -63,8 +64,8 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/outcome_label"
             android:layout_marginTop="10dp"
+            android:text="@string/outcome_label"
             app:layout_constraintStart_toStartOf="@+id/tv_income"
             app:layout_constraintTop_toBottomOf="@+id/tv_income" />
 
@@ -73,8 +74,8 @@
             style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/rupiah_value"
             android:layout_marginEnd="8dp"
+            android:text="@string/rupiah_value"
             app:layout_constraintEnd_toStartOf="@+id/tv_target"
             app:layout_constraintStart_toStartOf="@+id/tv_outcome_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_outcome_label" />
@@ -84,8 +85,8 @@
             style="@style/Typography.GreyText.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profit_label"
             android:layout_marginStart="80dp"
+            android:text="@string/profit_label"
             app:layout_constraintStart_toEndOf="@+id/tv_income_label"
             app:layout_constraintTop_toTopOf="@+id/tv_income_label" />
 
@@ -94,8 +95,8 @@
             style="@style/Typography.BlackText.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/rupiah_value"
             android:layout_marginEnd="16dp"
+            android:text="@string/rupiah_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_profit_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_profit_label" />
@@ -114,9 +115,9 @@
             style="@style/Typography.GreenText.ExtraLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:text="@string/target_percentage"
             android:textStyle="bold"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_target_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_target_label" />

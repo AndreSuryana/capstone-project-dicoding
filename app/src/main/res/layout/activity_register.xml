@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fillViewport="true"
     tools:context=".ui.auth.register.RegisterActivity">
 
@@ -64,6 +65,8 @@
             android:hint="@string/hint_name"
             android:inputType="textPersonName"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_hint"
             app:layout_constraintEnd_toEndOf="@+id/tv_name_label"
             app:layout_constraintStart_toStartOf="@+id/tv_name_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_name_label" />
@@ -92,6 +95,8 @@
             android:hint="@string/hint_email_address"
             android:inputType="textEmailAddress"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_hint"
             app:layout_constraintEnd_toEndOf="@+id/tv_email_label"
             app:layout_constraintStart_toStartOf="@+id/tv_email_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_email_label" />
@@ -119,6 +124,8 @@
             android:hint="@string/hint_phone"
             android:inputType="phone"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_hint"
             app:layout_constraintEnd_toEndOf="@+id/tv_phone_label"
             app:layout_constraintStart_toStartOf="@+id/tv_phone_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_phone_label" />
@@ -146,6 +153,8 @@
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_hint"
             app:layout_constraintEnd_toEndOf="@id/tv_password_label"
             app:layout_constraintStart_toStartOf="@+id/tv_password_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_password_label" />
@@ -173,6 +182,8 @@
             android:hint="@string/hint_repassword"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_hint"
             app:layout_constraintEnd_toEndOf="@id/tv_repassword_label"
             app:layout_constraintStart_toStartOf="@+id/tv_repassword_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_repassword_label" />
